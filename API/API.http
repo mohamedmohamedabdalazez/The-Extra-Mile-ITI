@@ -1,0 +1,35 @@
+// This creates a variable for your API's base address.
+// It automatically uses the correct HTTPS port every time you run the project.
+@Api_HostAddress = https://localhost:{{$processEnv(ASPNETCORE_HTTPS_PORT)}}
+
+###
+# GET Weather Forecast
+# This is the default endpoint that comes with the template.
+GET {{Api_HostAddress}}/weatherforecast
+Accept: application/json
+
+###
+# ------------------ PRODUCTS API ------------------
+###
+
+###
+# GET All Products
+# Tests your custom endpoint: GET /api/products
+GET {{Api_HostAddress}}/api/products
+Accept: application/json
+
+###
+# POST (Create) a new Product
+# Tests your custom endpoint: POST /api/products
+POST {{Api_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "New Product from http file",
+  "description": "A great new product",
+  "price": 19.99,
+  "pictureUrl": "images/products/placeholder.png",
+  "type": "Board",
+  "brand": "Net",
+  "quantityInStock": 100
+}
