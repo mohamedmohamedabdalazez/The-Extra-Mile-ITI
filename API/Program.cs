@@ -1,3 +1,4 @@
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Core.Interfaces;
@@ -9,20 +10,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("AdelConnection"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));// Use your actual connection string here          
 });
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddCors();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors(x => x
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
 app.MapControllers();
+
 try
 {
     using var scope = app.Services.CreateScope();
@@ -31,9 +36,10 @@ try
     await context.Database.MigrateAsync();
     await StoreContextSeed.SeedAsync(context);
 }
-catch (Exception ex)
+catch (Exception e)
 {
-    Console.WriteLine(ex);
+    Console.WriteLine(e);
     throw;
 }
+
 app.Run();
