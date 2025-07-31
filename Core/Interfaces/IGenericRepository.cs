@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,6 @@ namespace Core.Interfaces
         public void Update(T entity);
 
         public bool Exists(int id);
+        Task<int> CountAsync(ISpecification<T> spec);
     }
 }
