@@ -26,8 +26,8 @@ namespace The_Extra_Mile.Middleware
                 ? new ApiErrorResponse(context.Response.StatusCode, ex.Message, ex.StackTrace)
                 : new ApiErrorResponse(context.Response.StatusCode, ex.Message, "Internal Server Error");
             var option = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-            var json = JsonSerializer.Serialize(context, option);
-            return context.Response.WriteAsync(json);
+            var json = JsonSerializer.Serialize(response, option);
+            return context.Response.WriteAsync(json); 
         }
     }
 }
