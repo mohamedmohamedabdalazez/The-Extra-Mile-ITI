@@ -361,3 +361,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# -------------------------------------------------------------------
+# My Custom Rules for this Project
+# -------------------------------------------------------------------
+
+# ASP.NET Core local development settings (contains secrets)
+**/appsettings.Development.json
+
+# VS Code user-specific workspace settings
+.vscode/settings.json
+
+# Angular local development SSL certificates
+**/ssl/*.pem
