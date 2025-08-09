@@ -1,13 +1,10 @@
-﻿using Core.Entities;
+﻿using API.RequestHelpers;
+using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
-using Infrastructure;
-using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using The_Extra_Mile.Controllers;
-using The_Extra_Mile.RequestHelpers;
+
 namespace API.Controllers;
 
 public class ProductsController(IGenericRepository<Product> repo) : BaseApiController

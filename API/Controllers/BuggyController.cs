@@ -1,10 +1,10 @@
-﻿using API.DTOs;
-using Core.Entities;
+﻿using System.Security.Claims;
+using API.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using The_Extra_Mile.Controllers;
 
 namespace API.Controllers;
+
 
 public class BuggyController : BaseApiController
 {
