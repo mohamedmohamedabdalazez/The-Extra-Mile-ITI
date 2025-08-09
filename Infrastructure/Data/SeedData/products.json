@@ -1,164 +1,434 @@
 [
   {
-    "Name": "Angular Speedster Board 2000",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 200,
-    "PictureUrl": "/images/products/sb-ang1.png",
-    "Type": "Boards",
-    "Brand": "Angular",
-    "QuantityInStock": 82
+    "Name": "47 New York Yankees Cap Black",
+    "Description": "Show your team pride with this classic black New York Yankees cap by '47 Brand. A timeless design for any fan, featuring a comfortable fit and durable construction.",
+    "Price": 34.99,
+    "PictureUrl": "/images/products/47 NEW YORK YANKEES Cap black.png",
+    "Type": "Hats",
+    "Brand": "47 Brand",
+    "QuantityInStock": 88
   },
   {
-    "Name": "Green Angular Board 3000",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 150,
-    "PictureUrl": "/images/products/sb-ang2.png",
-    "Type": "Boards",
-    "Brand": "Angular",
+    "Name": "Activnew Soccer Football - White",
+    "Description": "A durable and reliable soccer ball designed for training sessions and casual matches. Its classic white design offers great visibility on the pitch.",
+    "Price": 24.95,
+    "PictureUrl": "/images/products/ACTIV ACTIVNEW SOCCER FOOTBALL - WHITE.png",
+    "Type": "Ball",
+    "Brand": "Activnew",
+    "QuantityInStock": 120
+  },
+  {
+    "Name": "Adidas 3-Stripes Cushioned Crew Socks (3 Pairs)",
+    "Description": "Experience all-day comfort with these Adidas crew socks. Featuring cushioning in the heel and toe, this 3-pack is perfect for sports or daily wear.",
+    "Price": 18.00,
+    "PictureUrl": "/images/products/adidas 3-Stripes Cushioned Crew Socks 3 Pairs.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "QuantityInStock": 250
+  },
+  {
+    "Name": "Adidas Al Ahly 25-26 Away Socks",
+    "Description": "Complete your kit with the official Al Ahly 2025-2026 away socks from Adidas. Engineered for performance and comfort on the field.",
+    "Price": 22.50,
+    "PictureUrl": "/images/products/adidas Al Ahly 2526 AWAY SOCKS.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "QuantityInStock": 115
+  },
+  {
+    "Name": "Adidas Al Ahly 25-26 Home Socks",
+    "Description": "Official Al Ahly 2025-2026 home socks by Adidas. Designed with supportive cushioning and sweat-wicking fabric to keep you comfortable during the match.",
+    "Price": 22.50,
+    "PictureUrl": "/images/products/adidas Al Ahly 2526 HOME SOCKS.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "QuantityInStock": 130
+  },
+  {
+    "Name": "Adidas FC Bayern 25-26 Home Socks",
+    "Description": "Wear the colors of your team from head to toe. These FC Bayern 2025-2026 home socks from Adidas offer a snug, supportive fit for dedicated fans.",
+    "Price": 23.00,
+    "PictureUrl": "/images/products/adidas FC Bayern 2526 Home Socks.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "QuantityInStock": 110
+  },
+  {
+    "Name": "Adidas Liverpool FC Home Club Ball",
+    "Description": "A durable club football celebrating Liverpool FC. Perfect for kickabouts and showing your support for the Reds. Machine-stitched for longevity.",
+    "Price": 29.99,
+    "PictureUrl": "/images/products/adidas Liverpool FC Home Club Ball.png",
+    "Type": "Ball",
+    "Brand": "Adidas",
+    "QuantityInStock": 95
+  },
+  {
+    "Name": "Adidas Predator League Goalkeeper Gloves",
+    "Description": "Take control of your box with Adidas Predator League Goalkeeper Gloves. Featuring a high-grip palm for confident saves and a comfortable fit.",
+    "Price": 55.00,
+    "PictureUrl": "/images/products/adidas Predator League Goalkeeper Gloves.png",
+    "Type": "Gloves",
+    "Brand": "Adidas",
     "QuantityInStock": 75
   },
   {
-    "Name": "Core Board Speed Rush 3",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "/images/products/sb-core1.png",
-    "Type": "Boards",
-    "Brand": "NetCore",
-    "QuantityInStock": 3
-  },
-  {
-    "Name": "Net Core Super Board",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 300,
-    "PictureUrl": "/images/products/sb-core2.png",
-    "Type": "Boards",
-    "Brand": "NetCore",
-    "QuantityInStock": 52
-  },
-  {
-    "Name": "React Board Super Whizzy Fast",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 250,
-    "PictureUrl": "/images/products/sb-react1.png",
-    "Type": "Boards",
-    "Brand": "React",
-    "QuantityInStock": 97
-  },
-  {
-    "Name": "Typescript Entry Board",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 120,
-    "PictureUrl": "/images/products/sb-ts1.png",
-    "Type": "Boards",
-    "Brand": "Typescript",
-    "QuantityInStock": 37
-  },
-  {
-    "Name": "Core Blue Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 10,
-    "PictureUrl": "/images/products/hat-core1.png",
-    "Type": "Hats",
-    "Brand": "NetCore",
-    "QuantityInStock": 32
-  },
-  {
-    "Name": "Green React Woolen Hat",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 8,
-    "PictureUrl": "/images/products/hat-react1.png",
-    "Type": "Hats",
-    "Brand": "React",
-    "QuantityInStock": 6
-  },
-  {
-    "Name": "Purple React Woolen Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 15,
-    "PictureUrl": "/images/products/hat-react2.png",
-    "Type": "Hats",
-    "Brand": "React",
-    "QuantityInStock": 17
-  },
-  {
-    "Name": "Blue Code Gloves",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 18,
-    "PictureUrl": "/images/products/glove-code1.png",
+    "Name": "Adidas Predator Training Goalkeeper Gloves",
+    "Description": "Hone your skills with the Adidas Predator Training Gloves. Designed for durability and grip, they are perfect for practice sessions.",
+    "Price": 35.00,
+    "PictureUrl": "/images/products/adidas Predator Training Goalkeeper Gloves.png",
     "Type": "Gloves",
-    "Brand": "VS Code",
-    "QuantityInStock": 74
+    "Brand": "Adidas",
+    "QuantityInStock": 89
   },
   {
-    "Name": "Green Code Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 15,
-    "PictureUrl": "/images/products/glove-code2.png",
-    "Type": "Gloves",
-    "Brand": "VS Code",
-    "QuantityInStock": 19
+    "Name": "Adidas Tiro Club Shin Guards Black-White",
+    "Description": "Stay protected on the pitch with Adidas Tiro Club Shin Guards. Hard shields with EVA backing provide comfortable cushioning and impact absorption.",
+    "Price": 19.99,
+    "PictureUrl": "/images/products/adidas Tiro Club Shin Guards black-white.png",
+    "Type": "Gym Equipment",
+    "Brand": "Adidas",
+    "QuantityInStock": 140
   },
   {
-    "Name": "Purple React Gloves",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
-    "Price": 16,
-    "PictureUrl": "/images/products/glove-react1.png",
-    "Type": "Gloves",
-    "Brand": "React",
-    "QuantityInStock": 77
+    "Name": "Adidas Tiro Club Shin Guards Gold-Metallic",
+    "Description": "A stylish and protective choice, the gold-metallic Adidas Tiro Club Shin Guards offer a hard shell and cushioned backing for safety during play.",
+    "Price": 21.99,
+    "PictureUrl": "/images/products/adidas Tiro Club Shin Guards Gold-metalic.png",
+    "Type": "Gym Equipment",
+    "Brand": "Adidas",
+    "QuantityInStock": 98
   },
   {
-    "Name": "Green React Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 14,
-    "PictureUrl": "/images/products/glove-react2.png",
-    "Type": "Gloves",
-    "Brand": "React",
+    "Name": "Adidas UCL 25-26 League Stage Ball",
+    "Description": "The official league stage ball for the UEFA Champions League 2025-2026 season. Designed for top-level performance with a seamless, thermally bonded surface.",
+    "Price": 150.00,
+    "PictureUrl": "/images/products/adidas UCL League 2526 League Stage Ball.png",
+    "Type": "Ball",
+    "Brand": "Adidas",
+    "QuantityInStock": 60
+  },
+  {
+    "Name": "ALLSIX Volleyball Knee Pads VKP500 - Black",
+    "Description": "Protect your knees during intense matches with the ALLSIX VKP500 Volleyball Knee Pads. Designed for optimal flexibility and impact protection.",
+    "Price": 28.00,
+    "PictureUrl": "/images/products/ALLSIX Volleyball Knee Pads VKP500 - Black.png",
+    "Type": "Gym Equipment",
+    "Brand": "ALLSIX",
+    "QuantityInStock": 105
+  },
+  {
+    "Name": "Babolat RH X 12 Pure Drive Tennis Bag",
+    "Description": "Carry all your gear in style with the Babolat RH X 12 Pure Drive bag. Features insulated compartments to protect your rackets and ample space for accessories.",
+    "Price": 119.95,
+    "PictureUrl": "/images/products/Babolat Rh X 12 Pure Drive Tennis Bag.png",
+    "Type": "Bag",
+    "Brand": "Babolat",
     "QuantityInStock": 45
   },
   {
-    "Name": "Redis Red Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 250,
-    "PictureUrl": "/images/products/boot-redis1.png",
-    "Type": "Boots",
-    "Brand": "Redis",
-    "QuantityInStock": 49
-  },
-  {
-    "Name": "Core Red Boots",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Name": "Body Solid Tools - SB840 Rubber Coated Fixed Straight Barbell, 40Kg",
+    "Description": "A professional-grade 40kg fixed straight barbell from Body Solid. Rubber coated for durability and to protect floors. Perfect for heavy lifting.",
     "Price": 189.99,
-    "PictureUrl": "/images/products/boot-core2.png",
-    "Type": "Boots",
-    "Brand": "NetCore",
-    "QuantityInStock": 28
+    "PictureUrl": "/images/products/Body Solid Tools SBB40 Rubber Coated Fixed Straight Barbell 40Kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Body Solid",
+    "QuantityInStock": 15
   },
   {
-    "Name": "Core Purple Boots",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Name": "Centr x Hyrox Competition Octo Kettlebell 24kg",
+    "Description": "Official competition-grade 24kg Octo Kettlebell from Centr x Hyrox. Engineered for performance, balance, and a secure grip during high-intensity workouts.",
+    "Price": 110.00,
+    "PictureUrl": "/images/products/CENTR x HYROX Competition Octo Kettlebells 24kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Centr",
+    "QuantityInStock": 38
+  },
+  {
+    "Name": "Competition Steel Kettlebell 16Kg",
+    "Description": "A high-quality 16kg competition steel kettlebell. Its uniform size and smooth handle make it ideal for swings, presses, and goblet squats.",
+    "Price": 79.99,
+    "PictureUrl": "/images/products/Competition Steel Kettlebell 16Kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Competition",
+    "QuantityInStock": 55
+  },
+  {
+    "Name": "Copa Pure 3 Club Firm-Ground Boots",
+    "Description": "Experience a flawless touch with the Copa Pure 3 Club Firm-Ground Boots. Designed for comfort and control on natural grass pitches.",
+    "Price": 75.00,
+    "PictureUrl": "/images/products/Copa Pure 3 Club FirmMulti-Ground Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "QuantityInStock": 82
+  },
+  {
+    "Name": "Copa Pure 3 League Turf Boots",
+    "Description": "Dominate on artificial turf with the Copa Pure 3 League Boots. The lugged rubber outsole provides excellent traction for quick movements.",
+    "Price": 85.00,
+    "PictureUrl": "/images/products/Copa Pure 3 League Turf Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "QuantityInStock": 78
+  },
+  {
+    "Name": "Element Fitness Kettlebell 2.0 - 6 kg-24 kg",
+    "Description": "A versatile adjustable kettlebell from Element Fitness. Easily switch between 6 kg and 24 kg, making it a perfect all-in-one solution for home gyms.",
     "Price": 199.99,
-    "PictureUrl": "/images/products/boot-core1.png",
-    "Type": "Boots",
-    "Brand": "NetCore",
-    "QuantityInStock": 69
+    "PictureUrl": "/images/products/Element Fitness Kettlebell 2.0 - 6 kg-24 kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Element Fitness",
+    "QuantityInStock": 30
   },
   {
-    "Name": "Angular Purple Boots",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 150,
-    "PictureUrl": "/images/products/boot-ang2.png",
-    "Type": "Boots",
-    "Brand": "Angular",
-    "QuantityInStock": 35
+    "Name": "F50 League Turf Boots",
+    "Description": "Unleash your speed with the F50 League Turf Boots. A lightweight design and supportive fit for explosive acceleration on artificial surfaces.",
+    "Price": 90.00,
+    "PictureUrl": "/images/products/F50 League Turf Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "QuantityInStock": 68
   },
   {
-    "Name": "Angular Blue Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "/images/products/boot-ang1.png",
-    "Type": "Boots",
-    "Brand": "Angular",
-    "QuantityInStock": 27
+    "Name": "Fit Line Fixed Barbells 10kg",
+    "Description": "A sturdy 10kg fixed barbell from Fit Line. Ideal for bicep curls, overhead presses, and other strength training exercises.",
+    "Price": 59.99,
+    "PictureUrl": "/images/products/fit line Fixed Barbells 10kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Fit Line",
+    "QuantityInStock": 70
+  },
+  {
+    "Name": "FitRx Adjustable Smartbell Dumbbell Set 52.5lb",
+    "Description": "The ultimate space-saving solution for your home gym. The FitRx Smartbell set offers adjustable weights up to 52.5lbs, perfect for a wide range of exercises.",
+    "Price": 349.99,
+    "PictureUrl": "/images/products/FitRx Adjustable Dumbbells, 52.5lb Smartbell Dumbell Set with Quick-Select Weights for Home Gym.png",
+    "Type": "Gym Equipment",
+    "Brand": "FitRx",
+    "QuantityInStock": 25
+  },
+  {
+    "Name": "Inspace Premium Black Rubber Kettlebell 6kg",
+    "Description": "A 6kg premium kettlebell from Inspace. The black rubber coating protects your floors and the equipment, while the chrome handle ensures a solid grip.",
+    "Price": 39.95,
+    "PictureUrl": "/images/products/Inspace Premium Black Rubber Kettlebell 6kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Inspace",
+    "QuantityInStock": 85
+  },
+  {
+    "Name": "Authentic Boston Celtics Larry Bird 1985-86 Jersey",
+    "Description": "A throwback jersey celebrating the legendary Larry Bird and the 1985-86 Boston Celtics. A must-have for any true NBA fan, crafted by Mitchell & Ness.",
+    "Price": 130.00,
+    "PictureUrl": "/images/products/Jersey Boston Celtics Authentic Larry Bird 198586.png",
+    "Type": "Shirt",
+    "Brand": "Mitchell & Ness",
+    "QuantityInStock": 42
+  },
+  {
+    "Name": "Jordan Pro Jumpman Snapback Cap Midnight Navy",
+    "Description": "A classic snapback with iconic style. The Jordan Pro Jumpman Cap features a high crown, flat bill, and the legendary Jumpman logo front and center.",
+    "Price": 38.00,
+    "PictureUrl": "/images/products/Jordan PRO JUMPMAN SNAPBACK Cap midnight navyblackblue lightningdark blue.png",
+    "Type": "Hats",
+    "Brand": "Jordan",
+    "QuantityInStock": 92
+  },
+  {
+    "Name": "Kipsta Beach Volleyball Size 5 BY100 Classic - Turquoise",
+    "Description": "Perfect for fun in the sun, this Kipsta size 5 beach volleyball offers a soft touch and good durability for recreational play.",
+    "Price": 15.99,
+    "PictureUrl": "/images/products/KIPSTA Beach Volleyball Size 5 BY100 Classic - Turquoise.png",
+    "Type": "Ball",
+    "Brand": "Kipsta",
+    "QuantityInStock": 150
+  },
+  {
+    "Name": "Kipsta UEFA Conference League Replica Football 2024-2025 Size 5",
+    "Description": "Play like the pros with this official replica of the 2024-2025 UEFA Conference League football by Kipsta. Size 5, ideal for matches and training.",
+    "Price": 32.00,
+    "PictureUrl": "/images/products/KIPSTA UEFA Conference League Replica Football 2024-2025 Size 5.png",
+    "Type": "Ball",
+    "Brand": "Kipsta",
+    "QuantityInStock": 110
+  },
+  {
+    "Name": "Men's Black 1995-96 Chicago Bulls Hebru Jersey",
+    "Description": "A special edition Chicago Bulls jersey from the 95-96 season, with unique styling. A collector's item for fans of the historic team.",
+    "Price": 140.00,
+    "PictureUrl": "/images/products/Men's Black 199595 Chicago Bulls Hebru Jersey.png",
+    "Type": "Shirt",
+    "Brand": "NBA",
+    "QuantityInStock": 55
+  },
+  {
+    "Name": "Men's Jason Richardson Golden State Warriors Maxxed Out Fashion Jersey",
+    "Description": "A vibrant and stylish 'Maxxed Out' fashion jersey for Golden State Warriors star Jason Richardson. A unique piece for any collection.",
+    "Price": 95.00,
+    "PictureUrl": "/images/products/Men's Jason Richardson Navy Golden State Warriors Maxxed Out Fashion Jersey.png",
+    "Type": "Shirt",
+    "Brand": "NBA",
+    "QuantityInStock": 65
+  },
+  {
+    "Name": "Mitchell & Ness Authentic Michael Jordan 1996-97 Chicago Bulls Alternate Jersey",
+    "Description": "Own a piece of history. This authentic Mitchell & Ness alternate jersey celebrates Michael Jordan's iconic 1996-97 season with the Chicago Bulls.",
+    "Price": 300.00,
+    "PictureUrl": "/images/products/Mitchell & Ness Nba Authentic Jersey Chicago Bulls Alternate 1996 97 Michael Jordan.png",
+    "Type": "Shirt",
+    "Brand": "Mitchell & Ness",
+    "QuantityInStock": 25
+  },
+  {
+    "Name": "Mizuno T10 Plus Volleyball Kneepad",
+    "Description": "Low-profile yet highly protective, the Mizuno T10 Plus kneepad offers strategic padding and freedom of movement for volleyball players.",
+    "Price": 25.99,
+    "PictureUrl": "/images/products/Mizuno T10 Plus Kneepad volleyball.png",
+    "Type": "Gym Equipment",
+    "Brand": "Mizuno",
+    "QuantityInStock": 115
+  },
+  {
+    "Name": "Nike Everyday Playground 8P Basketball",
+    "Description": "Built for the blacktop, the Nike Everyday Playground basketball has a durable rubber exterior to stand up to outdoor play. Note: Ships deflated.",
+    "Price": 29.95,
+    "PictureUrl": "/images/products/Nike Everyday Playground 8P Basketball (Deflated).png",
+    "Type": "Ball",
+    "Brand": "Nike",
+    "QuantityInStock": 180
+  },
+  {
+    "Name": "Nike Flight Soccer Ball",
+    "Description": "Engineered for precision flight, the Nike Flight Soccer Ball features molded grooves for a more consistent and true spin. The ultimate ball for serious players.",
+    "Price": 160.00,
+    "PictureUrl": "/images/products/Nike Flight Soccer Ball (1).png",
+    "Type": "Ball",
+    "Brand": "Nike",
+    "QuantityInStock": 70
+  },
+  {
+    "Name": "Nike Performance Gym Club Sports Bag - Black",
+    "Description": "A lightweight and durable option for all your gym essentials. The Nike Performance Gym Club bag features a spacious main compartment and multiple pockets.",
+    "Price": 45.00,
+    "PictureUrl": "/images/products/Nike Performance GYM CLUB Sports bag black.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "QuantityInStock": 95
+  },
+  {
+    "Name": "Nike Performance Gym Club Sports Bag - Light Silver",
+    "Description": "Carry your gear in a sleek, light silver gym bag. The Nike Performance Gym Club bag is both stylish and functional, with ample storage for your workout needs.",
+    "price": 45.00,
+    "PictureUrl": "/images/products/Nike Performance GYM CLUB Sports bag light silver.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "QuantityInStock": 80
+  },
+  {
+    "Name": "Nike Performance Utility Power Duffel Sports Bag - Black",
+    "Description": "Designed to keep your gear secure and organized, the Nike Utility Power Duffel is built with durable materials and features several zippered pockets.",
+    "Price": 70.00,
+    "PictureUrl": "/images/products/Nike Performance UTILITY POWER DUFF UNISEX Sports bag black.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "QuantityInStock": 60
+  },
+  {
+    "Name": "Nike Sportswear Huarache Trainers - White/Pure Platinum",
+    "Description": "An iconic design that hugs your foot for ultimate comfort. The Nike Huarache delivers a classic '90s look with a snug, cushioned fit for all-day wear.",
+    "Price": 125.00,
+    "PictureUrl": "/images/products/Nike Sportswear AIR HUARACHE UNISEX Trainers whitepure.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 88
+  },
+  {
+    "Name": "Nike Sportswear Air Max 270 Trainers - Black/Anthracite",
+    "Description": "Featuring Nike's biggest-ever Air unit in the heel, the Air Max 270 provides visible air and unbelievable comfort with every step.",
+    "Price": 160.00,
+    "PictureUrl": "/images/products/Nike Sportswear AIR MAX 270 Trainers blackanthracitewhiteblack.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 76
+  },
+  {
+    "Name": "Nike Sportswear Blazer 77 VNTG Trainers - White/Black",
+    "Description": "A timeless classic that's easy to wear. The Nike Blazer Mid '77 Vintage harnesses the old-school look of Nike basketball with a retro midsole finish.",
+    "Price": 105.00,
+    "PictureUrl": "/images/products/Nike Sportswear BLAZER 77 VNTG UNISEX Trainers whiteblack.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 94
+  },
+  {
+    "Name": "Nike Sportswear Blazer Mid 77 VNTG High-Top Trainers - White",
+    "Description": "Crisp, clean, and classic. The all-white Nike Blazer Mid '77 Vintage high-top offers versatile style and proven comfort that lasts.",
+    "Price": 110.00,
+    "PictureUrl": "/images/products/Nike Sportswear BLAZER MID 77 VNTG High-top trainers white.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 85
+  },
+  {
+    "Name": "Nike Sportswear Dunk Trainers - White/Black",
+    "Description": "From the hardwood to the streets, the Nike Dunk's iconic style is a slam dunk. This classic white and black colorway is a must-have for any sneakerhead.",
+    "Price": 115.00,
+    "PictureUrl": "/images/products/Nike Sportswear DUNK Trainers whiteblack.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 112
+  },
+  {
+    "Name": "Nike Sportswear Dunk Unisex Trainers - Grey/Mineral Teal",
+    "Description": "A fresh take on the classic Dunk silhouette. This version features a subtle grey and mineral teal color scheme for a unique, modern look.",
+    "Price": 120.00,
+    "PictureUrl": "/images/products/Nike Sportswear DUNK UNISEX Trainers football greymineral tealpearl.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "QuantityInStock": 79
+  },
+  {
+    "Name": "Nike Sportswear Heritage Futura Washed Hat - Elemental Gold",
+    "Description": "A classic 6-panel cap with a washed fabric for a soft, worn-in feel. Features an embroidered Nike logo for a timeless, sporty look.",
+    "Price": 28.00,
+    "PictureUrl": "/images/products/Nike Sportswear HERITAGE FUTURA WASHED HAT UNISEX Cap elemental gold.png",
+    "Type": "Hats",
+    "Brand": "Nike",
+    "QuantityInStock": 130
+  },
+  {
+    "Name": "Nike Sportswear Heritage Adjustable Unisex Cap - Black",
+    "Description": "An everyday essential, this black Nike Heritage cap offers a comfortable, adjustable fit and the iconic swoosh logo for a simple, classic style.",
+    "Price": 25.00,
+    "PictureUrl": "/images/products/Nike Sportswear HERITAGE IUSTABLE UNISEX Cap black.png",
+    "Type": "Hats",
+    "Brand": "Nike",
+    "QuantityInStock": 155
+  },
+  {
+    "Name": "Nivia Spotvolley VFI-Approved Leather Match Volleyball",
+    "Description": "An official VFI-approved match volleyball from Nivia. Crafted from high-quality leather for superior performance, touch, and durability in competitive play.",
+    "Price": 42.50,
+    "PictureUrl": "/images/products/nivia Spotvolley VFI-Approved Leather Match Volleyball.png",
+    "Type": "Ball",
+    "Brand": "Nivia",
+    "QuantityInStock": 65
+  },
+  {
+    "Name": "Peak Basketball Shoes - Red",
+    "Description": "Explode to the hoop with these vibrant red basketball shoes from Peak. Designed for high performance, offering excellent traction and ankle support.",
+    "Price": 95.99,
+    "PictureUrl": "/images/products/Peak Basketball Shoes Red.png",
+    "Type": "Shoes",
+    "Brand": "Peak",
+    "QuantityInStock": 77
+  },
+  {
+    "Name": "Predator League Firm Ground Boots",
+    "Description": "Built for goals. The Predator League boots provide a stable platform for powerful, accurate striking on firm ground pitches.",
+    "Price": 90.00,
+    "PictureUrl": "/images/products/Predator League Firm Ground Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "QuantityInStock": 81
   }
 ]

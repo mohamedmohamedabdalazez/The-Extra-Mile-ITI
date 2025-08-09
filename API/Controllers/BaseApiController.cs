@@ -1,9 +1,10 @@
-﻿using Core.Entities;
+﻿using System;
+using API.RequestHelpers;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using The_Extra_Mile.RequestHelpers;
 
-namespace The_Extra_Mile.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("API/[controller]")]
