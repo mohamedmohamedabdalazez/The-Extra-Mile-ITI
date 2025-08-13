@@ -36,6 +36,8 @@ app.UseCors(x => x
     .AllowAnyMethod()
     .WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
+app.UseStaticFiles();// added
+
 app.MapControllers();
 
 try
