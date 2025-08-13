@@ -1,18 +1,61 @@
-.custom-badge .mat-badge-content {
-  width: 24px;
-  height: 24px;
-  font-size: 14px;
-  line-height: 24px; 
-}
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+  cursor: pointer;
 
-.custom-badge mat-icon {
-  font-size: 32px;
-  width: 32px;
-  height: 32px; 
-}
+  &:hover {
+    color: #0056b3;
+  }
 
-a {
   &.active {
-    color: #ff6e06
+    font-weight: bold;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #0056b3;
+    }
+  }
+}
+
+.search-bar {
+  border-radius: 9999px;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
+    outline: none;
+  }
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+
+  mat-icon {
+    color: #333;
+    transition: color 0.3s;
+  }
+
+  &:hover, &:focus, &.active {
+    background-color: #ff6e06;
+
+    mat-icon {
+      color: white;
+    }
   }
 }

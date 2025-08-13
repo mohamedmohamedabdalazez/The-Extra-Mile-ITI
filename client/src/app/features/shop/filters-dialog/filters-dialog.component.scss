@@ -1,0 +1,23 @@
+.filters-sidebar {
+  .mat-slider-thumb-label {
+    background-color: #0056b3;
+  }
+
+  .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #0056b3;
+  }
+
+  input[type="text"], select {
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      border-color: #0056b3;
+      box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
+      outline: none;
+    }
+  }
+
+  .mat-slider-track-fill {
+    background-color: #0056b3;
+  }
+}

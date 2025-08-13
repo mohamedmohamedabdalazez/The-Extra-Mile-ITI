@@ -1,17 +1,50 @@
 @if (product) {
-<mat-card appearance="raised" routerLink="/shop/{{product.id}}" class="product-card">
-    <img src="{{product.pictureUrl}}" class="rounded-t-lg" alt="image of {{product.name}}">
-    
+<div class="product-card bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
+  <div class="relative">
+    <img class="w-full h-48 object-cover" [src]="product.pictureUrl" [alt]="product.name">
+    <div class="absolute top-2 left-2">
+      <span *ngIf="product.isNew" class="ribbon bg-blue-500 text-white">New</span>
+      <span *ngIf="product.onSale" class="ribbon bg-red-500 text-white">Sale</span>
+      <span *ngIf="product.isOutOfStock" class="ribbon bg-gray-500 text-white">Out of Stock</span>
+    </div>
+    <button class="absolute top-2 right-2 text-gray-400 hover:text-red-500">
+      <mat-icon>favorite_border</mat-icon>
+    </button>
+    <div class="quick-add-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <button class="quick-add-btn bg-white text-black py-2 px-4 rounded-full font-bold">Quick Add</button>
+    </div>
+  </div>
 
-    <mat-card-content class="mt-2">
-      <h2 class="text-sm font-semibold uppercase">{{product.name}}</h2>
-      <p class="font-light">{{product.price | currency}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button class="w-full">
-        <mat-icon>add_shopping_cart</mat-icon>
-        Add to cart
-      </button>
-    </mat-card-actions>
-</mat-card>
+  <div class="p-4">
+    <p class="text-gray-500 text-sm">{{product.type}}</p>
+    <h3 class="text-lg font-bold truncate">{{product.name}}</h3>
+    
+    <div class="flex items-center my-2">
+      <div class="flex text-yellow-400" *ngIf="product.rating">
+        <mat-icon *ngFor="let i of [].constructor(Math.floor(product.rating))">star</mat-icon>
+        <mat-icon *ngIf="product.rating % 1 !== 0">star_half</mat-icon>
+        <mat-icon *ngFor="let i of [].constructor(5 - Math.ceil(product.rating))">star_border</mat-icon>
+      </div>
+      <span class="text-gray-600 ml-2" *ngIf="product.reviews">({{product.reviews}} reviews)</span>
+    </div>
+
+    <div class="my-2">
+      <select class="w-full p-2 border rounded-lg">
+        <option>Select Size</option>
+        <!-- Add size options here -->
+      </select>
+    </div>
+
+    <div class="flex items-baseline justify-between">
+      <div *ngIf="product.onSale && product.salePrice">
+        <span class="text-2xl font-bold">{{product.salePrice | currency}}</span>
+        <span class="text-gray-500 line-through ml-2">{{product.price | currency}}</span>
+      </div>
+      <div *ngIf="!product.onSale">
+        <span class="text-2xl font-bold">{{product.price | currency}}</span>
+      </div>
+      <span *ngIf="product.onSale && product.salePrice" class="text-green-600 font-semibold">Save {{ (product.price - product.salePrice) / product.price | percent }}</span>
+    </div>
+  </div>
+</div>
 }

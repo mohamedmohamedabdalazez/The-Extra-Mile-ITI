@@ -1,43 +1,61 @@
 @if (product) {
-<section class="py-8">
-    <div class="max-w-screen-2xl px-4 mx-auto">
-        <div class="grid grid-cols-2 gap-8">
-            <div class="max-w-xl mx-auto">
-                <img class="w-full" src="{{product.pictureUrl}}"
-                    alt="product image" />
-            </div>
-
-            <div class="mt-6 sm:mt-8 lg:mt-0">
-                <h1 class="text-2xl font-semibold text-gray-900">
-                    {{product.name}}
-                </h1>
-                <div class="mt-4 items-center gap-4 flex">
-                    <p class="text-3xl font-extrabold text-gray-900">
-                        {{product.price | currency}}
-                    </p>
-                </div>
-
-                <div class="flex gap-4 mt-6">
-                    <button mat-flat-button class="match-input-height">
-                        <mat-icon>shopping_cart</mat-icon>
-                        Add to cart
-                    </button>
-
-                    <mat-form-field appearance="outline" class="flex flex-row">
-                        <mat-label>Quantity</mat-label>
-                        <input matInput type="number">
-                    </mat-form-field>
-                </div>
-
-                <mat-divider class="my-6"></mat-divider>
-
-                <p class="mt-6 text-gray-500">
-                    {{product.description}}
-                </p>
-
-            </div>
-        </div>
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <!-- Product Image -->
+    <div class="relative">
+      <img class="w-full h-auto object-cover rounded-lg shadow-lg" [src]="product.pictureUrl" [alt]="product.name">
+      <div class="absolute top-4 left-4">
+        <span *ngIf="product.isNew" class="ribbon bg-blue-500 text-white">New</span>
+        <span *ngIf="product.onSale" class="ribbon bg-red-500 text-white">Sale</span>
+        <span *ngIf="product.isOutOfStock" class="ribbon bg-gray-500 text-white">Out of Stock</span>
+      </div>
     </div>
-</section>
 
+    <!-- Product Info -->
+    <div>
+      <p class="text-gray-500 text-lg">{{product.type}}</p>
+      <h1 class="text-4xl font-bold my-2">{{product.name}}</h1>
+
+      <div class="flex items-center my-4">
+        <div class="flex text-yellow-400" *ngIf="product.rating">
+          <mat-icon *ngFor="let i of [].constructor(Math.floor(product.rating))">star</mat-icon>
+          <mat-icon *ngIf="product.rating % 1 !== 0">star_half</mat-icon>
+          <mat-icon *ngFor="let i of [].constructor(5 - Math.ceil(product.rating))">star_border</mat-icon>
+        </div>
+        <span class="text-gray-600 ml-2" *ngIf="product.reviews">({{product.reviews}} reviews)</span>
+      </div>
+
+      <p class="text-lg my-4">{{product.description}}</p>
+
+      <div class="my-4" *ngIf="product.onSale && product.salePrice">
+        <span class="text-4xl font-bold">{{product.salePrice | currency}}</span>
+        <span class="text-xl text-gray-500 line-through ml-2">{{product.price | currency}}</span>
+        <span class="text-green-600 font-semibold ml-4">Save {{ (product.price - product.salePrice) / product.price | percent }}</span>
+      </div>
+      <div class="my-4" *ngIf="!product.onSale">
+        <span class="text-4xl font-bold">{{product.price | currency}}</span>
+      </div>
+
+      <div class="flex items-center space-x-4 my-6">
+        <mat-form-field appearance="outline" class="w-24">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" value="1" min="1">
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="py-3 px-6 text-lg">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+        <button mat-icon-button class="text-gray-500 hover:text-red-500">
+          <mat-icon class="text-3xl">favorite_border</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="mt-12">
+    <h2 class="text-3xl font-bold mb-6">Customer Reviews</h2>
+    <!-- Add review items here -->
+  </div>
+</div>
 }

@@ -1,9 +1,29 @@
 .product-card {
-  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+
+  .quick-add-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .quick-add-overlay {
+    opacity: 1;
+  }
+
+  .quick-add-btn {
+    transition: background-color 0.3s, color 0.3s;
+    &:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+  }
 }
 
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+.ribbon {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-right: 4px;
 }

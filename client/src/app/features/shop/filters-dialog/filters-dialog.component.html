@@ -1,25 +1,56 @@
-<div>
-  <h3 class="text-3xl text-center pt-6 mb-3">Filters</h3>
-  <mat-divider></mat-divider>
-  <div class="flex p-4">
-    <div class="w-1/2">
-      <h4 class="font-semibold text-xl text-primary">Brands</h4>
-      <mat-selection-list [(ngModel)]="selectedBrands" [multiple]="true">
-        @for (brand of shopService.brands; track brand) {
-          <mat-list-option [value]="brand">{{brand}}</mat-list-option>
-        }
-      </mat-selection-list>
-    </div>
-    <div class="w-1/2">
-      <h4 class="font-semibold text-xl text-primary">Types</h4>
-      <mat-selection-list [(ngModel)]="selectedTypes" [multiple]="true">
-        @for (type of shopService.types; track type) {
-          <mat-list-option [value]="type">{{type}}</mat-list-option>
-        }
-      </mat-selection-list>
+<div class="filters-sidebar p-6 bg-white rounded-lg shadow-md">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Filters</h2>
+    <button (click)="clearFilters()" class="text-blue-600 hover:underline">Clear</button>
+  </div>
+
+  <!-- Search Input -->
+  <div class="mb-6">
+    <input type="text" placeholder="Search products..." class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+           [(ngModel)]="shopParams.search" (keyup.enter)="onSearch()">
+  </div>
+
+  <!-- Sort By Dropdown -->
+  <div class="mb-6">
+    <label for="sort-by" class="block text-lg font-semibold mb-2">Sort By</label>
+    <select id="sort-by" class="w-full p-3 border rounded-lg" [(ngModel)]="shopParams.sort" (change)="onSortChange()">
+      <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}}</option>
+    </select>
+  </div>
+
+  <!-- Price Slider -->
+  <div class="mb-6">
+    <label class="block text-lg font-semibold mb-2">Price Range</label>
+    <mat-slider min="0" max="500" step="10" discrete="true" showTickMarks="true" class="w-full">
+      <input [(ngModel)]="shopParams.minPrice" matSliderStartThumb (valueChange)="onPriceChange()">
+      <input [(ngModel)]="shopParams.maxPrice" matSliderEndThumb (valueChange)="onPriceChange()">
+    </mat-slider>
+    <div class="flex justify-between text-gray-600">
+      <span>{{shopParams.minPrice | currency}}</span>
+      <span>{{shopParams.maxPrice | currency}}</span>
     </div>
   </div>
-  <div class="flex justify-end p-4">
-    <button mat-flat-button (click)="applyFilters()">Apply Filters</button>
+
+  <!-- Category Dropdown -->
+  <div class="mb-6">
+    <label for="category" class="block text-lg font-semibold mb-2">Category</label>
+    <select id="category" class="w-full p-3 border rounded-lg" [(ngModel)]="shopParams.category" (change)="onCategoryChange()">
+      <option value="">All</option>
+      <option *ngFor="let type of shopService.types()" [value]="type">{{type}}</option>
+    </select>
+  </div>
+
+  <!-- Brand Dropdown -->
+  <div class="mb-6">
+    <label for="brand" class="block text-lg font-semibold mb-2">Brand</label>
+    <select id="brand" class="w-full p-3 border rounded-lg" [(ngModel)]="shopParams.brands" (change)="onBrandChange()">
+      <option value="">All</option>
+      <option *ngFor="let brand of shopService.brands()" [value]="brand">{{brand}}</option>
+    </select>
+  </div>
+
+  <!-- In Stock Only Checkbox -->
+  <div>
+    <mat-checkbox color="primary" [(ngModel)]="shopParams.inStockOnly" (change)="onInStockChange()">In stock only</mat-checkbox>
   </div>
 </div>

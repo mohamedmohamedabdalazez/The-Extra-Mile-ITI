@@ -1,20 +1,40 @@
-<header class="shadow-md p-3 w-full ">
-  <div class="flex align-middle items-center justify-between max-w-screen-2xl mx-auto">
-    <img routerLink="/" src="/images/logo.png" alt="app logo" class="max-h-16">
-    <nav class="flex gap-3 my-2 uppercase text-2xl">
-      <a routerLink="/" 
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}"
-        >Home</a>
-      <a routerLink="/shop" routerLinkActive="active">Shop</a>
-      <a>Contact</a>
+<header class="shadow-md p-3 w-full bg-white">
+  <div class="flex items-center justify-between max-w-screen-2xl mx-auto">
+    <!-- Logo and Brand Name -->
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-full">
+        <span class="text-white text-2xl font-bold">E</span>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold">The Extra Mile</h1>
+        <p class="text-sm text-gray-500">Gear Up for Greatness</p>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="hidden md:flex items-center space-x-8 text-lg">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a>
+      <a routerLink="/shop" routerLinkActive="active" class="nav-link">Products</a>
+      <a routerLink="/shop/football" routerLinkActive="active" class="nav-link">Football</a>
+      <a routerLink="/shop/basketball" routerLinkActive="active" class="nav-link">Basketball</a>
+      <a routerLink="/shop/running" routerLinkActive="active" class="nav-link">Running</a>
+      <a routerLink="/shop/fitness" routerLinkActive="active" class="nav-link">Fitness</a>
+      <a routerLink="/shop/outdoor" routerLinkActive="active" class="nav-link">Outdoor</a>
+      <a routerLink="/shop/sale" routerLinkActive="active" class="nav-link text-red-500">Sale</a>
     </nav>
-    <div class="flex gap-3 align-middle">
-      <a matBadge="5" matBadgeSize="large" class="custom-badge mt-2 mr-2">
+
+    <!-- Search Bar and Icons -->
+    <div class="flex items-center space-x-4">
+      <div class="relative">
+        <input type="search" placeholder="Search sports eq" class="search-bar">
+        <mat-icon class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">search</mat-icon>
+      </div>
+      <a class="cart-icon">
         <mat-icon>shopping_cart</mat-icon>
       </a>
-      <button mat-stroked-button>Login</button>
-      <button mat-stroked-button>Register</button>
+      <a>
+        <mat-icon>account_circle</mat-icon>
+      </a>
     </div>
   </div>
 </header>

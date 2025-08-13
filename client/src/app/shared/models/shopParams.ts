@@ -5,4 +5,9 @@ export class ShopParams {
   pageNumber = 1;
   pageSize = 10;
   search = '';
+  minPrice = 0;
+  maxPrice = 500;
+  inStockOnly = false;
+  category = '';
+  sport = '';
 }
