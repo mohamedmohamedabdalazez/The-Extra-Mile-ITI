@@ -43,7 +43,7 @@ namespace Core.Specifications
         {
             IsDistinct = true;
         }
-        protected void ApplyPaging(int skip, int take)
+        public void ApplyPaging(int skip, int take)
         {
             Skip = skip;
             Take = take;

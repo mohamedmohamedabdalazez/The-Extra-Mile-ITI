@@ -10,11 +10,18 @@ namespace API.Controllers;
 public class ProductsController(IGenericRepository<Product> repo) : BaseApiController
 {
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery]ProductSpecParams specParams)
+    public async Task<ActionResult<Pagination<Product>>> GetProducts([FromQuery]ProductSpecParams specParams)
     {
         var spec = new ProductSpecification(specParams);
-        
-        return await CreatePagedResult(repo,spec,specParams.PageIndex, specParams.PageSize); 
+        var countSpec = new CountSpecification(specParams);
+
+        var totalItems = await repo.CountAsync(countSpec);
+
+        spec.ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
+
+        var products = await repo.ListAsync(spec);
+
+        return Ok(new Pagination<Product>(specParams.PageIndex, specParams.PageSize, totalItems, products));
     }
 
     [HttpGet("{id:int}")]
