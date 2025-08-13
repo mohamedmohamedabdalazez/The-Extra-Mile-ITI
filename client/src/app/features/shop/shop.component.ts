@@ -53,7 +53,7 @@ export class ShopComponent implements OnInit {
   }
 
   onSearchChange() {
-    this.shopParams.pageNumber = 1;
+    this.shopParams.pageNumber = 0;
     this.shopService.getProducts(this.shopParams).subscribe({
       next: response => this.products = response,
       error: error => console.error(error)
@@ -68,7 +68,7 @@ export class ShopComponent implements OnInit {
   }
 
   onSortChange(event: any) {
-    this.shopParams.pageNumber = 1;
+    this.shopParams.pageNumber = 0;
     const selectedOption = event.options[0];
     if (selectedOption) {
       this.shopParams.sort = selectedOption.value;
@@ -87,7 +87,7 @@ export class ShopComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: result => {
         if (result) {
-          this.shopParams.pageNumber = 1;
+          this.shopParams.pageNumber = 0;
           this.shopParams.types = result.selectedTypes;
           this.shopParams.brands = result.selectedBrands;
           this.getProducts();
@@ -97,7 +97,7 @@ export class ShopComponent implements OnInit {
   }
 
   handlePageEvent(event: PageEvent) {
-    this.shopParams.pageNumber = event.pageIndex + 1;
+    this.shopParams.pageNumber = event.pageIndex;
     this.shopParams.pageSize = event.pageSize;
     this.getProducts();
   }
