@@ -1,0 +1,49 @@
+<div class="login-background">
+  <mat-card class="max-w-lg mx-auto p-8 ">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="text-center mb-6">
+              <h1 class="text-3xl font-semibold text-primary">Sign In</h1>
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-4">
+              <mat-label class="text-black">Email or Username</mat-label>
+              <input matInput formControlName="email" type="text"
+                  placeholder="Enter your email or username" />
+              @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+                @if (loginForm.get('email')?.hasError('required')) {
+                  <mat-error>Email or username is required</mat-error>
+                }
+              }
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-full mb-6">
+              <mat-label class="text-black">Password</mat-label>
+              <input matInput formControlName="password" type="password"
+                  placeholder="Password" />
+              @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+                @if (loginForm.get('password')?.hasError('required')) {
+                  <mat-error>Password is required</mat-error>
+                }
+                @if (loginForm.get('password')?.hasError('minlength')) {
+                  <mat-error>Password must be at least 3 characters</mat-error>
+                }
+              }
+          </mat-form-field>
+          <button 
+              mat-flat-button 
+              type="submit" 
+              color="primary"
+              [disabled]="loginForm.invalid || isLoading"
+              class="w-full py-2">
+              @if (isLoading) {
+                Signing in...
+              } @else {
+                Sign in
+              }
+          </button>
+          
+          <div class="text-center mt-4">
+            <span class="text-gray-600">Don't have an account? </span>
+            <a routerLink="/account/register" class="text-primary hover:underline font-medium">REGISTER</a>
+          </div>
+      </form>
+  </mat-card>
+</div>

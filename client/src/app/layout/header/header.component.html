@@ -1,0 +1,114 @@
+<header class="modern-header" [class.auth-page]="isOnAuthPage()" *ngIf="!shouldHideHeader()">
+  <div class="header-container">
+    <!-- Logo Section -->
+    <div class="logo-section" routerLink="/">
+      <div class="logo-icon">
+        <img src="/images/smlogo.png" alt="">
+        <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+          <path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg> -->
+      </div>
+      <span class="logo-text">Extra Mile</span>
+    </div>
+
+    <!-- Navigation Section -->
+    <nav class="navigation-section">
+      <a routerLink="/" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+        Home
+      </a>
+      <a routerLink="/shop" routerLinkActive="nav-active" class="nav-link">
+        Shop
+      </a>
+      @if (!accountService.isAdmin()) {
+        <a routerLink="/contact-us" routerLinkActive="nav-active" class="nav-link">
+          Contact Us
+        </a>
+      }
+      @if (accountService.isAdmin()) {
+        <a routerLink="/admin/dashboard" routerLinkActive="nav-active" class="nav-link">Dashboard</a>
+      }
+      @if (accountService.isVendor()) {
+        <a routerLink="/vendor/dashboard" routerLinkActive="nav-active" class="nav-link">Dashboard</a>
+      }
+    </nav>
+
+    <!-- Right Section -->
+        <div class="header-actions">
+      <button mat-stroked-button color="primary" (click)="openAskAI()" class="ask-ai-btn">
+        Ask AI ✨
+      </button>
+      <button mat-icon-button (click)="toggleTheme()" class="theme-toggle-button" aria-label="Toggle theme">
+        <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+      <!-- Cart -->
+      @if (!accountService.isVendor() && !accountService.isAdmin()) {
+        <a matBadge="{{cartService.itemCount()}}" routerLink="/cart" routerLinkActive="active" matBadgeSize="medium"
+          class="cart-button">
+          <mat-icon>shopping_cart</mat-icon>
+        </a>
+      }
+
+      <!-- User Account -->
+      @if (accountService.currentUser()) {
+      <div class="user-menu">
+        <button mat-button [matMenuTriggerFor]="menu" class="user-button" [class.admin-user]="accountService.isAdmin()">
+          @if (accountService.isAdmin()) {
+            <mat-icon class="admin-icon">admin_panel_settings</mat-icon>
+          } @else {
+            <mat-icon>account_circle</mat-icon>
+          }
+          <span class="user-name">{{accountService.currentUser()?.firstName}}
+            {{accountService.currentUser()?.lastName}}</span>
+          @if (accountService.isAdmin()) {
+            <span class="admin-label">Admin</span>
+          }
+          <mat-icon class="dropdown-icon">arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="user-dropdown p-2" panelClass="user-dropdown-panel" [overlapTrigger]="false" yPosition="above">
+          <div class="user-info flex items-center justify-around">
+            <mat-icon class="user-icon fs-15 me-1" style="color: #374151 !important;">account_circle</mat-icon>
+            <span class="user-email" style="color: #374151 !important; text-shadow: none !important;">{{accountService.currentUser()?.email}}</span>
+          </div>
+          <mat-divider></mat-divider>
+          
+          <!-- Regular User Options (not admin or vendor) -->
+          @if (!accountService.isVendor() && !accountService.isAdmin()) {
+            <button mat-menu-item routerLink="/cart" class="menu-item-cart">
+              <mat-icon>shopping_cart</mat-icon>
+              <span>My Cart</span>
+            </button>
+            <button mat-menu-item routerLink="/orders" class="menu-item-orders">
+              <mat-icon>receipt_long</mat-icon>
+              <span>View Orders</span>
+            </button>
+            <mat-divider></mat-divider>
+          }
+          
+          @if (accountService.isVendor()) {
+            <button mat-menu-item routerLink="/vendor/products" class="menu-item-vendor">
+              <mat-icon>inventory_2</mat-icon>
+              <span>My Products</span>
+            </button>
+            <mat-divider></mat-divider>
+          }
+          <button mat-menu-item (click)="logout()" class="menu-item-logout">
+            <mat-icon>logout</mat-icon>
+            <span>Sign Out</span>
+          </button>
+        </mat-menu>
+      </div>
+      } @else {
+      <div class="auth-buttons">
+        <button mat-button routerLink="/account/login" class="login-btn">Sign In</button>
+        <button mat-raised-button routerLink="/account/register" class="register-btn">Sign Up</button>
+      </div>
+      }
+    </div>
+  </div>
+</header>
+
+@if (busyService.loading) {
+<mat-progress-bar class="loading-bar" mode="indeterminate"></mat-progress-bar>
+}

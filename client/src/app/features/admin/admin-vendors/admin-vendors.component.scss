@@ -1,0 +1,368 @@
+// Admin Vendors Styles
+.admin-vendors {
+  min-height: 100vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 2rem;
+  padding-top: 100px;
+}
+
+// Page Header
+.page-header {
+  margin-bottom: 2rem;
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    
+    .header-info {
+      flex: 1;
+      
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin: 0 0 0.5rem 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        mat-icon {
+          color: var(--primary-color);
+          font-size: 2.5rem;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+      
+      .page-subtitle {
+        font-size: 1.1rem;
+        color: var(--placeholder-text-color);
+        margin: 0;
+        font-weight: 400;
+      }
+    }
+    
+    .header-actions {
+      .refresh-btn {
+        background: var(--card-background-color);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 0.75rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: var(--hover-background-color);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        mat-icon {
+          color: var(--text-color);
+        }
+      }
+    }
+  }
+}
+
+// Table Section
+.table-section {
+  .table-card {
+    background: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-color);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%);
+      
+      .header-info {
+        .card-title {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: var(--text-color);
+          margin: 0 0 0.5rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          
+          mat-icon {
+            color: var(--primary-color);
+          }
+        }
+        
+        .card-subtitle {
+          font-size: 0.9rem;
+          color: var(--placeholder-text-color);
+          margin: 0;
+        }
+      }
+    }
+    
+    .card-content {
+      .table-container {
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: auto;
+        position: relative;
+        
+        // Custom scrollbar styling
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        &::-webkit-scrollbar-track {
+          background: var(--background-color);
+          border-radius: 4px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          background: var(--border-color);
+          border-radius: 4px;
+          
+          &:hover {
+            background: var(--primary-color);
+          }
+        }
+        
+        .loading-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 3rem;
+          gap: 1rem;
+          
+          p {
+            color: var(--placeholder-text-color);
+            margin: 0;
+          }
+        }
+        
+        .empty-state {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 3rem;
+          gap: 1rem;
+          text-align: center;
+          
+          mat-icon {
+            font-size: 4rem;
+            width: 4rem;
+            height: 4rem;
+            color: var(--placeholder-text-color);
+          }
+          
+          h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+          }
+          
+          p {
+            color: var(--placeholder-text-color);
+            margin: 0;
+          }
+        }
+        
+        .vendors-table {
+          width: 100%;
+          
+          // Table Header Styling
+          .mat-mdc-header-row {
+            background: var(--card-background-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+          }
+          
+          .column-header {
+            background: var(--card-background-color);
+            border-bottom: 2px solid var(--border-color);
+            padding: 1rem;
+            text-align: center;
+            
+            .header-content {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              font-weight: 600;
+              color: var(--text-color);
+              
+              mat-icon {
+                color: var(--primary-color);
+                font-size: 1rem;
+                width: 1rem;
+                height: 1rem;
+              }
+              
+              span {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+            }
+          }
+          
+          // Table Row Styling
+          .mat-mdc-row {
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            background: var(--card-background-color);
+            
+            &:nth-child(even) {
+              background: var(--background-color);
+            }
+            
+            &:hover {
+              background: var(--hover-background-color);
+              transform: translateY(-1px);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            td {
+              padding: 1rem;
+              vertical-align: middle;
+              border: none;
+              text-align: center;
+            }
+          }
+          
+          .name-cell {
+            text-align: center;
+            .vendor-info {
+              .vendor-name {
+                font-weight: 600;
+                color: var(--text-color);
+                font-size: 1rem;
+              }
+            }
+          }
+          
+          .email-cell {
+            text-align: center;
+            .vendor-email {
+              color: var(--text-color);
+              font-family: 'Courier New', monospace;
+              font-size: 0.9rem;
+            }
+          }
+          
+          .username-cell {
+            text-align: center;
+            .vendor-username {
+              color: var(--text-color);
+              font-weight: 500;
+              font-size: 0.9rem;
+            }
+          }
+          
+          .actions-cell {
+            text-align: center;
+            .action-buttons {
+              display: flex;
+              gap: 0.5rem;
+              justify-content: center;
+              
+              .action-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 12px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%);
+                border: 1px solid rgba(59, 130, 246, 0.3);
+                
+                &:hover {
+                  transform: translateY(-2px);
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.3) 100%);
+                }
+                
+                mat-icon {
+                  font-size: 1rem;
+                  width: 1rem;
+                  height: 1rem;
+                  color: #3b82f6;
+                }
+                
+                span {
+                  color: #3b82f6;
+                  font-size: 0.9rem;
+                }
+              }
+            }
+          }
+          
+
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .admin-vendors {
+    padding: 1rem;
+    padding-top: 80px;
+    
+    .page-header {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        
+        .page-title {
+          font-size: 2rem;
+        }
+      }
+    }
+    
+    .table-section {
+      .table-card {
+        .card-content {
+          .table-container {
+            .vendors-table {
+              font-size: 0.9rem;
+              
+              td, th {
+                padding: 0.75rem 0.5rem;
+              }
+              
+              .actions-cell {
+                .action-buttons {
+                  .action-btn {
+                    padding: 0.4rem 0.8rem;
+                    font-size: 0.8rem;
+                    
+                    span {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

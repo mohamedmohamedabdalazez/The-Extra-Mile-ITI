@@ -1,0 +1,206 @@
+// Order Component Styles
+.orders-container {
+  margin: 100px auto 5rem auto;
+  max-width: 1024px;
+  padding: 0 1rem;
+}
+
+.orders-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.orders-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-table-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card-background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  cursor: pointer;
+}
+
+.table-header {
+  background: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-row {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--placeholder-text-color);
+}
+
+.header-cell {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
+
+  &.order-header {
+    text-align: center;
+  }
+}
+
+.table-body {
+  background: var(--card-background-color);
+}
+
+.table-row {
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--hover-background-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.table-cell {
+  padding: 1rem 1.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+
+  &.order-cell {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .orders-title {
+    color: var(--text-color);
+  }
+
+  .orders-table-wrapper {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .table-header {
+    background: var(--background-color);
+    border-bottom-color: var(--border-color);
+  }
+
+  .header-row {
+    color: var(--placeholder-text-color);
+  }
+
+  .header-cell {
+    border-bottom-color: var(--border-color);
+  }
+
+  .table-body {
+    background: var(--card-background-color);
+  }
+
+  .table-row {
+    border-bottom-color: var(--border-color);
+
+    &:hover {
+      background: var(--hover-background-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .table-cell {
+    color: var(--text-color);
+
+    &.order-cell {
+      color: var(--primary-color);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .orders-container {
+    margin: 80px 1rem 3rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .orders-container {
+    margin: 70px 0.5rem 2rem 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .orders-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .header-cell {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .table-cell {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .orders-table-wrapper {
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-container {
+    margin: 60px 0.25rem 1.5rem 0.25rem;
+    padding: 0 0.25rem;
+  }
+
+  .orders-title {
+    font-size: 1.125rem;
+  }
+
+  .header-cell {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .table-cell {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .orders-table-wrapper {
+    border-radius: 6px;
+  }
+}

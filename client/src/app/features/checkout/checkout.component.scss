@@ -1,0 +1,264 @@
+// Checkout Page Styles
+.checkout-container {
+  display: flex;
+  gap: 1.5rem;
+  margin: 100px 2rem 5rem 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: calc(100vh - 200px);
+}
+
+.checkout-content {
+  flex: 3;
+  width: 75%;
+}
+
+.order-summary-section {
+  flex: 1;
+  width: 25%;
+}
+
+// Material Stepper Overrides
+::ng-deep .checkout-stepper {
+  background: var(--card-background-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  // Header styling
+  .mat-stepper-header {
+    background: var(--background-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1rem !important;
+
+    .mat-step-header {
+      background: transparent !important;
+      color: var(--text-color) !important;
+      border-radius: 8px !important;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--hover-background-color) !important;
+      }
+
+      &.mat-step-header-selected {
+        background: var(--primary-color) !important;
+        color: white !important;
+
+        .mat-step-icon {
+          background: white !important;
+          color: var(--primary-color) !important;
+        }
+      }
+
+      &.mat-step-header-completed {
+        .mat-step-icon {
+          background: var(--primary-color) !important;
+          color: white !important;
+        }
+      }
+
+      .mat-step-icon {
+        background: var(--border-color) !important;
+        color: var(--placeholder-text-color) !important;
+        transition: all 0.3s ease;
+      }
+
+      .mat-step-label {
+        color: inherit !important;
+        font-weight: 500 !important;
+      }
+    }
+  }
+
+  // Content styling
+  .mat-stepper-content {
+    padding: 2rem !important;
+    background: var(--card-background-color) !important;
+    color: var(--text-color) !important;
+
+    .mat-step-content {
+      color: var(--text-color) !important;
+    }
+  }
+}
+
+// Save Address Section
+.save-address-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+
+  ::ng-deep .mat-mdc-checkbox {
+    .mdc-checkbox {
+      .mdc-checkbox__background {
+        border-color: var(--border-color) !important;
+      }
+    }
+
+    .mdc-form-field > label {
+      color: var(--text-color) !important;
+    }
+  }
+}
+
+// Step Navigation
+.step-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+
+  button {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    min-width: 120px !important;
+
+    &:hover {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    &:disabled {
+      opacity: 0.6 !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .continue-shopping-btn,
+  .back-btn {
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+
+    &:hover {
+      background: var(--hover-background-color) !important;
+      border-color: var(--primary-color) !important;
+    }
+  }
+
+  .next-btn,
+  .pay-btn {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+
+    &:hover {
+      background: var(--primary-color-dark) !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
+    }
+
+    &:disabled {
+      background: var(--border-color) !important;
+      color: var(--placeholder-text-color) !important;
+    }
+  }
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .checkout-container {
+    background: var(--background-color);
+  }
+
+  ::ng-deep .checkout-stepper {
+    background: var(--card-background-color) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .mat-stepper-header {
+      background: var(--background-color) !important;
+      border-bottom-color: var(--border-color) !important;
+    }
+
+    .mat-stepper-content {
+      background: var(--card-background-color) !important;
+    }
+  }
+
+  .step-navigation {
+    .continue-shopping-btn,
+    .back-btn {
+      border-color: var(--border-color) !important;
+      color: var(--text-color) !important;
+
+      &:hover {
+        background: var(--hover-background-color) !important;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .checkout-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .checkout-content,
+  .order-summary-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-container {
+    margin: 80px 1rem 3rem 1rem;
+  }
+
+  ::ng-deep .checkout-stepper {
+    .mat-stepper-header {
+      padding: 0.5rem !important;
+
+      .mat-step-header {
+        .mat-step-label {
+          font-size: 0.875rem !important;
+        }
+      }
+    }
+
+    .mat-stepper-content {
+      padding: 1rem !important;
+    }
+  }
+
+  .step-navigation {
+    flex-direction: column;
+    gap: 0.75rem;
+
+    button {
+      width: 100%;
+      min-width: auto !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-container {
+    margin: 70px 0.5rem 2rem 0.5rem;
+  }
+
+  ::ng-deep .checkout-stepper {
+    .mat-stepper-header {
+      .mat-step-header {
+        .mat-step-label {
+          display: none !important;
+        }
+      }
+    }
+  }
+}

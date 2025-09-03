@@ -1,0 +1,208 @@
+<div class="vendor-products mt-16 mb-20">
+  <div class="products-container">
+    <!-- Header Section -->
+    <div class="products-header">
+      <div class="header-content">
+        <div class="title-section">
+          <h1 class="products-title">My Products</h1>
+          <p class="products-subtitle">Manage and track all your product listings</p>
+        </div>
+        <div class="header-actions">
+          <button mat-raised-button color="primary" class="add-product-btn" routerLink="/vendor/products/new">
+            <mat-icon>add</mat-icon>
+            Add New Product
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <div class="filters-card">
+        <div class="card-header">
+          <h2>
+            <mat-icon>filter_list</mat-icon>
+            Filters & Search
+          </h2>
+        </div>
+        <div class="card-content">
+          <div class="filters-grid">
+            <div class="filter-item">
+              <mat-form-field class="search-field">
+                <mat-label>Search by name</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Awesome Gadget">
+                <mat-icon matSuffix>search</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="filter-item">
+              <mat-form-field class="status-filter">
+                <mat-label>Filter by status</mat-label>
+                <mat-select (selectionChange)="filterByStatus($event)">
+                  <mat-option value="">All Statuses</mat-option>
+                  <mat-option value="Pending">Pending</mat-option>
+                  <mat-option value="Approved">Approved</mat-option>
+                  <mat-option value="Rejected">Rejected</mat-option>
+                  <mat-option value="Suspended">Suspended</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>filter_alt</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products List Section -->
+    <div class="products-section">
+      <div class="products-card">
+        <div class="card-header">
+          <h2>
+            <mat-icon>inventory_2</mat-icon>
+            Product List
+          </h2>
+          <div class="header-stats">
+            <span class="stats-text">{{ dataSource.data.length }} products</span>
+          </div>
+        </div>
+        <div class="card-content">
+          @if (isLoading) {
+            <div class="loading-state">
+              <div class="loading-content">
+                <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+                <h3 class="loading-title">Loading Products</h3>
+                <p class="loading-text">Please wait while we fetch your products...</p>
+              </div>
+            </div>
+          } @else if (dataSource.data.length === 0) {
+            <div class="empty-state">
+              <div class="empty-content">
+                <mat-icon class="empty-icon">inventory_2</mat-icon>
+                <h3 class="empty-title">No Products Found</h3>
+                <p class="empty-description">You haven't added any products yet. Start building your product catalog to grow your business.</p>
+                <button mat-raised-button color="primary" class="empty-action-btn" routerLink="/vendor/products/new">
+                  <mat-icon>add</mat-icon>
+                  Add Your First Product
+                </button>
+              </div>
+            </div>
+          } @else {
+            <div class="products-table-container">
+              <table mat-table [dataSource]="dataSource" matSort class="products-table">
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <div class="column-header">
+                      <mat-icon>label</mat-icon>
+                      <span>Product Name</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let product">
+                    <div class="product-name-cell">
+                      <span class="product-name">{{ product.name }}</span>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Price Column -->
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <div class="column-header">
+                      <mat-icon>attach_money</mat-icon>
+                      <span>Price</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let product">
+                    <div class="price-cell">
+                      <span class="price-value">{{ product.price | currency }}</span>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <div class="column-header">
+                      <mat-icon>info</mat-icon>
+                      <span>Status</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let product">
+                    <div class="status-cell">
+                      <span class="status-badge" [ngClass]="{
+                        'status-approved': product.status === 'Approved',
+                        'status-pending': product.status === 'Pending',
+                        'status-rejected': product.status === 'Rejected',
+                        'status-suspended': product.status === 'Suspended'
+                      }">
+                        {{ product.status }}
+                      </span>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Date Column -->
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <div class="column-header">
+                      <mat-icon>schedule</mat-icon>
+                      <span>Date Added</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let product">
+                    <div class="date-cell">
+                      <span class="date-value">{{ product.date | date: 'mediumDate' }}</span>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <div class="column-header">
+                      <mat-icon>settings</mat-icon>
+                      <span>Actions</span>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let product">
+                    <div class="actions-cell">
+                      <button 
+                        mat-icon-button 
+                        class="action-btn view-btn"
+                        (click)="viewProduct(product)" 
+                        aria-label="View product"
+                        matTooltip="View Details"
+                      >
+                        <mat-icon>visibility</mat-icon>
+                      </button>
+                      <button 
+                        mat-icon-button 
+                        class="action-btn edit-btn"
+                        (click)="editProduct(product)" 
+                        aria-label="Edit product"
+                        matTooltip="Edit Product"
+                      >
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button 
+                        mat-icon-button 
+                        class="action-btn delete-btn"
+                        (click)="deleteProduct(product)" 
+                        aria-label="Delete product"
+                        matTooltip="Delete Product"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="product-row"></tr>
+              </table>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+<div class="vendor-product-form mt-15">
+  <div class="form-container">
+    <!-- Header Section -->
+    <div class="form-header">
+      <h1 class="form-title">
+        {{ isEditMode ? 'Edit' : 'Add' }} Product
+      </h1>
+      <p class="form-subtitle">
+        {{ isEditMode ? 'Update your product information' : 'Create a new product for your store' }}
+      </p>
+    </div>
+
+    <!-- Notification for editing approved products -->
+    @if (isEditMode && originalProductStatus === 'Approved') {
+      <div class="notification-card">
+        <div class="notification-content">
+          <mat-icon class="notification-icon">info</mat-icon>
+          <div class="notification-text">
+            <h4>Product Status Change</h4>
+            <p>You are editing an approved product. After saving, the product status will change to "Pending" and will require admin review before being published again.</p>
+          </div>
+        </div>
+      </div>
+    }
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <!-- Product Information Card -->
+      <div class="form-card">
+        <div class="card-header">
+          <h2>Product Information</h2>
+        </div>
+        <div class="card-content">
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="field-label">Product Name*</label>
+              <input 
+                type="text" 
+                formControlName="name"
+                class="form-input"
+                placeholder="Enter product name"
+              />
+            </div>
+            
+            <div class="form-field">
+              <label class="field-label">Price*</label>
+              <div class="price-input-wrapper">
+                <span class="currency-symbol">$</span>
+                <input 
+                  type="number" 
+                  formControlName="price"
+                  step="0.01"
+                  class="form-input price-input"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+            
+            <div class="form-field">
+              <label class="field-label">Type*</label>
+              <select 
+                formControlName="type"
+                class="form-input"
+              >
+                <option value="">Select a type</option>
+                @for (type of types; track type) {
+                  <option [value]="type.id">{{type.name}}</option>
+                }
+              </select>
+            </div>
+            
+            <div class="form-field">
+              <label class="field-label">Brand*</label>
+              <select 
+                formControlName="brand"
+                class="form-input"
+              >
+                <option value="">Select a brand</option>
+                @for (brand of brands; track brand) {
+                  <option [value]="brand.id">{{brand.name}}</option>
+                }
+              </select>
+            </div>
+            
+            <div class="form-field full-width">
+              <label class="field-label">Quantity in Stock*</label>
+              <input 
+                type="number" 
+                formControlName="quantity"
+                min="1"
+                class="form-input"
+                placeholder="Enter quantity"
+              />
+            </div>
+            
+            <div class="form-field full-width">
+              <label class="field-label">Description*</label>
+              <textarea 
+                formControlName="description"
+                rows="4"
+                class="form-input textarea-input"
+                placeholder="Describe your product..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Image Card -->
+      <div class="form-card">
+        <div class="card-header">
+          <h2>Product Image</h2>
+        </div>
+        <div class="card-content">
+          <div class="file-upload-section">
+            <label class="upload-label">
+              Upload Product Image{{ isEditMode ? '' : '*' }}
+            </label>
+            <div class="drag-drop-area" 
+                 [class.drag-over]="isDragOver"
+                 (dragover)="onDragOver($event)"
+                 (dragleave)="onDragLeave($event)"
+                 (drop)="onDrop($event)">
+              <div class="drag-content">
+                <div class="upload-icon">
+                  <mat-icon>photo_camera</mat-icon>
+                </div>
+                <div class="upload-text">
+                  <span class="upload-primary">Click to upload</span> or drag and drop
+                </div>
+                <div class="upload-hint">PNG, JPG, WEBP up to 10MB</div>
+                <input 
+                  type="file" 
+                  (change)="onFileSelected($event)" 
+                  accept="image/*" 
+                  class="file-input"
+                  [required]="!isEditMode"
+                />
+              </div>
+
+              <!-- Preview Section -->
+              @if (draggedUrls.length > 0) {
+                <div class="image-preview-section">
+                  <h4 class="preview-title">Selected Images</h4>
+                  <div class="preview-container">
+                    @for (url of draggedUrls; track $index) {
+                      <div class="preview-item">
+                        <img [src]="url" alt="Product preview" class="preview-image">
+                        <button type="button" class="remove-btn" (click)="removeDraggedUrl($index)">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+            @if (isEditMode) {
+              <p class="file-hint">Leave empty to keep the current image</p>
+            }
+          </div>
+
+          @if (imagePreview && draggedUrls.length === 0) {
+            <div class="image-preview">
+              <img [src]="imagePreview" alt="Product Image Preview">
+              <button 
+                type="button"
+                class="remove-image-btn"
+                (click)="clearImagePreview()"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Action Buttons Card -->
+      <div class="form-card ">
+        <div class="card-content">
+          <div class="form-actions">
+
+            <button 
+              type="submit" 
+              class="btn-primary bg-green-500 "
+              [disabled]="productForm.invalid || (!isEditMode && !selectedFile) || isSubmitting"
+            >
+              <mat-icon *ngIf="isSubmitting" class="loading-icon flex justify-center items-center">hourglass_empty</mat-icon>
+              <mat-icon *ngIf="!isSubmitting" class=" flex justify-center items-center">{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+              {{ isEditMode ? 'Update Product' : 'Create Product' }}
+            </button>
+
+            <button 
+              type="button" 
+              class="btn-danger flex justify-center items-center"
+              (click)="onCancel()"
+            >
+              <mat-icon class=" flex justify-center items-center">close</mat-icon>
+              Cancel
+            </button>
+
+            <button 
+              type="button" 
+              class="btn-warning"
+              (click)="onReset()"
+            >
+              <mat-icon class=" flex justify-center items-center">refresh</mat-icon>
+              Reset
+            </button>
+       
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div mat-dialog-title class="flex justify-between items-center">
+  <h2>Order #{{order.id}}</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Customer & Shipping Details -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Customer & Shipping</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Email:</strong> <span>{{order.buyerEmail}}</span></p>
+        <p><strong>Name:</strong> <span>{{order.shippingAddress.name}}</span></p>
+        <p><strong>Address:</strong> <span>{{order.shippingAddress.line1}}, {{order.shippingAddress.city}}, {{order.shippingAddress.state}} {{order.shippingAddress.postalCode}}</span></p>
+        <p><strong>Delivery Method:</strong> <span>{{order.deliveryMethod}}</span></p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Order Summary -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Order Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><strong>Order Date:</strong> <span>{{order.orderDate | date: 'fullDate'}}</span></p>
+        <p><strong>Status:</strong> <span class="status-badge">{{order.status}}</span></p>
+        <p><strong>Subtotal:</strong> <span>{{order.subtotal | currency}}</span></p>
+        <p><strong>Shipping:</strong> <span>{{order.shippingPrice | currency}}</span></p>
+        <p><strong>Total:</strong> <span class="total-amount">{{order.total | currency}}</span></p>
+        <p><strong>Payment:</strong> <span>{{order.paymentSummary.brand}} ending in {{order.paymentSummary.last4}}</span></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Order Items -->
+  <div class="order-items-section">
+    <h3>Items Ordered</h3>
+    <mat-list role="list">
+      <mat-list-item *ngFor="let item of order.orderItems" role="listitem">
+        <img matListItemAvatar src="{{item.pictureUrl}}" alt="{{item.productName}}">
+        <div matListItemTitle>{{item.productName}}</div>
+        <div matListItemLine>Quantity: {{item.quantity}}</div>
+        <div matListItemLine>Price: {{item.price | currency}}</div>
+        <div matListItemMeta>{{ (item.price * item.quantity) | currency }}</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <!-- <button mat-flat-button color="primary">Update Status</button> -->
+</mat-dialog-actions>

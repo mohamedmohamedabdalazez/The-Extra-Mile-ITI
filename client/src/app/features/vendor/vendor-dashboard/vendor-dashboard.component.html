@@ -1,0 +1,179 @@
+<div class="vendor-dashboard mt-16">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="welcome-section">
+        <h1 class="dashboard-title">
+          Welcome back, <span class="vendor-name">{{ vendorName || 'Vendor' }}</span>
+        </h1>
+        <p class="dashboard-subtitle">Manage your products and track your business performance</p>
+      </div>
+      <div class="header-actions">
+        <button mat-raised-button color="primary" class="add-product-btn" (click)="addProduct()">
+          <mat-icon>add</mat-icon>
+          Add Product
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card total-products">
+        <div class="stat-icon">
+          <mat-icon>inventory_2</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Total Products</h3>
+          <p class="stat-value">{{ totalProducts }}</p>
+          <p class="stat-description">All your products</p>
+        </div>
+      </div>
+
+      <div class="stat-card pending-products">
+        <div class="stat-icon">
+          <mat-icon>pending</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Pending Review</h3>
+          <p class="stat-value">{{ pendingProducts }}</p>
+          <p class="stat-description">Awaiting approval</p>
+        </div>
+      </div>
+
+      <div class="stat-card approved-products">
+        <div class="stat-icon">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Approved</h3>
+          <p class="stat-value">{{ approvedProducts }}</p>
+          <p class="stat-description">Live on marketplace</p>
+        </div>
+      </div>
+
+      <div class="stat-card rejected-products">
+        <div class="stat-icon">
+          <mat-icon>cancel</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Rejected</h3>
+          <p class="stat-value">{{ rejectedProducts }}</p>
+          <p class="stat-description">Needs attention</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="main-content">
+    <!-- Recent Products Section -->
+    <div class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <mat-icon>schedule</mat-icon>
+          Recent Products
+        </h2>
+        <button mat-button color="primary" class="view-all-btn" (click)="viewAllProducts()">
+          View All Products
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+
+      <div class="products-card">
+        @if (recentProducts.length > 0) {
+          <div class="products-list">
+            @for (product of recentProducts; track product.id) {
+              <div class="product-item" (click)="viewProduct(product)">
+                <div class="product-info">
+                  <div class="product-details">
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <p class="product-price">{{ product.price | currency }}</p>
+                  </div>
+                  <div class="product-status">
+                    <span class="status-badge" [ngClass]="{
+                      'status-pending': product.status === 'Pending',
+                      'status-approved': product.status === 'Approved',
+                      'status-rejected': product.status === 'Rejected',
+                      'status-suspended': product.status === 'Suspended'
+                    }">
+                      {{ product.status }}
+                    </span>
+                  </div>
+                </div>
+                <mat-icon class="chevron-icon">chevron_right</mat-icon>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="empty-state">
+            <div class="empty-icon">
+              <mat-icon>inventory_2</mat-icon>
+            </div>
+            <h3 class="empty-title">No Products Yet</h3>
+            <p class="empty-description">Start building your product catalog to grow your business</p>
+            <button mat-raised-button color="primary" class="empty-action-btn" (click)="addProduct()">
+              <mat-icon>add</mat-icon>
+              Add Your First Product
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Quick Actions Section -->
+    <div class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <mat-icon>flash_on</mat-icon>
+          Quick Actions
+        </h2>
+      </div>
+
+      <div class="actions-card">
+        <div class="actions-grid">
+          <button class="action-item" (click)="addProduct()">
+            <div class="action-icon">
+              <mat-icon>add_circle</mat-icon>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Add New Product</h3>
+              <p class="action-description">Create a new product listing</p>
+            </div>
+          </button>
+
+          <button class="action-item" (click)="viewAllProducts()">
+            <div class="action-icon">
+              <mat-icon>list_alt</mat-icon>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Manage Products</h3>
+              <p class="action-description">View and edit all products</p>
+            </div>
+          </button>
+
+          <!-- <button class="action-item">
+            <div class="action-icon">
+              <mat-icon>analytics</mat-icon>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">View Analytics</h3>
+              <p class="action-description">Track your performance</p>
+            </div>
+          </button> -->
+
+          <!-- <button class="action-item">
+            <div class="action-icon">
+              <mat-icon>settings</mat-icon>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Store Settings</h3>
+              <p class="action-description">Configure your store</p>
+            </div>
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

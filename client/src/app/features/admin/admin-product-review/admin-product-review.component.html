@@ -1,0 +1,243 @@
+<div class="admin-product-review">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">
+          <mat-icon>edit</mat-icon>
+          Review & Edit Product
+        </h1>
+        <p class="page-subtitle">Review, edit, and publish product to the user shop</p>
+      </div>
+      <div class="header-actions">
+        <button mat-icon-button (click)="onCancel()" matTooltip="Back to Products" class="back-btn">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading) {
+    <div class="loading-section">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading product details...</p>
+    </div>
+  } @else if (product) {
+    <!-- Product Status Card -->
+    <div class="status-section">
+      <div class="status-card">
+        <div class="status-header">
+          <h3 class="status-title">
+            <mat-icon>info</mat-icon>
+            Product Status
+          </h3>
+        </div>
+        <div class="status-content">
+          <div class="status-info">
+            <div class="status-item">
+              <span class="label">Current Status:</span>
+              <mat-chip [color]="getProductStatusColor(product.status)" selected>
+                {{ product.status }}
+              </mat-chip>
+            </div>
+            <div class="status-item">
+              <span class="label">Product ID:</span>
+              <span class="value">#{{ product.id }}</span>
+            </div>
+            <div class="status-item">
+              <span class="label">Vendor:</span>
+              <span class="value">{{ product.vendorName || 'ExtraMile' }}</span>
+            </div>
+            <div class="status-item">
+              <span class="label">Created:</span>
+              <span class="value">{{ product.createdAt ? (product.createdAt | date:'medium') : 'Not available' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Form Section -->
+    <div class="form-section">
+      <div class="form-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <mat-icon>inventory_2</mat-icon>
+            Product Information
+          </h2>
+          <p class="card-subtitle">Edit product details below</p>
+        </div>
+        
+        <div class="card-content">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+            <div class="form-grid">
+              <!-- Product Name -->
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Product Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter product name" required>
+                <mat-icon matSuffix>inventory</mat-icon>
+                @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+                  <mat-error>Product name is required and must be at least 3 characters</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Product Description -->
+              <mat-form-field appearance="outline" class="form-field full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter product description" rows="4" required></textarea>
+                <mat-icon matSuffix>description</mat-icon>
+                @if (productForm.get('description')?.invalid && productForm.get('description')?.touched) {
+                  <mat-error>Description is required and must be at least 10 characters</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Price -->
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="price" placeholder="0.00" step="0.01" min="0" required>
+                <mat-icon matSuffix>attach_money</mat-icon>
+                @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+                  <mat-error>Valid price is required (minimum $0.01)</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Quantity in Stock -->
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Quantity in Stock</mat-label>
+                <input matInput type="number" formControlName="quantityInStock" placeholder="0" min="0" required>
+                <mat-icon matSuffix>inventory_2</mat-icon>
+                @if (productForm.get('quantityInStock')?.invalid && productForm.get('quantityInStock')?.touched) {
+                  <mat-error>Valid quantity is required (minimum 0)</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Product Type -->
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Product Type</mat-label>
+                <mat-select formControlName="productType" required>
+                  <mat-option *ngFor="let type of productTypes" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>category</mat-icon>
+                @if (productForm.get('productType')?.invalid && productForm.get('productType')?.touched) {
+                  <mat-error>Product type is required</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Product Brand -->
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Product Brand</mat-label>
+                <mat-select formControlName="productBrand" required>
+                  <mat-option *ngFor="let brand of productBrands" [value]="brand">
+                    {{ brand }}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>business</mat-icon>
+                @if (productForm.get('productBrand')?.invalid && productForm.get('productBrand')?.touched) {
+                  <mat-error>Product brand is required</mat-error>
+                }
+              </mat-form-field>
+
+              <!-- Picture URL -->
+              <div class="form-field full-width">
+                <label class="field-label">Product Image</label>
+                <div class="drag-drop-area" 
+                     [class.drag-over]="isDragOver"
+                     (dragover)="onDragOver($event)"
+                     (dragleave)="onDragLeave($event)"
+                     (drop)="onDrop($event)">
+                  <div class="drag-content">
+                    <mat-icon class="drag-icon">cloud_upload</mat-icon>
+                    <p class="drag-text">Drag and drop images here or click to browse</p>
+                    <p class="drag-hint">Supports: JPG, PNG, GIF, WebP</p>
+                    <button type="button" mat-stroked-button class="browse-btn" (click)="fileInput.click()">
+                      <mat-icon>folder_open</mat-icon>
+                      Choose from files
+                    </button>
+                    <input #fileInput type="file" 
+                           multiple 
+                           accept="image/*" 
+                           style="display: none;"
+                           (change)="onFileSelected($event)">
+                  </div>
+
+                  <!-- Preview Section -->
+                  @if (draggedUrls.length > 0) {
+                    <div class="image-preview-section">
+                      <h4 class="preview-title">Selected Images</h4>
+                      <div class="preview-container">
+                        @for (url of draggedUrls; track $index) {
+                          <div class="preview-item">
+                            <img [src]="url" alt="Product preview" class="preview-image">
+                            <button type="button" mat-icon-button class="remove-btn" (click)="removeDraggedUrl($index)">
+                              <mat-icon>close</mat-icon>
+                            </button>
+                          </div>
+                        }
+                      </div>
+                    </div>
+                  } @else if (product.pictureUrl) {
+                    <div class="image-preview-section">
+                      <h4 class="preview-title">Current Image</h4>
+                      <div class="preview-container">
+                        <div class="preview-item">
+                          <img [src]="product.pictureUrl" alt="Product preview" class="preview-image">
+                        </div>
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+              <div class="left-actions">
+                <button type="button" mat-button (click)="onCancel()" class="cancel-btn">
+                  <mat-icon>cancel</mat-icon>
+                  Cancel
+                </button>
+                <button type="submit" mat-raised-button color="primary" [disabled]="productForm.invalid || isSaving" class="save-btn">
+                  @if (isSaving) {
+                    <mat-spinner diameter="20"></mat-spinner>
+                  } @else {
+                    <mat-icon>save</mat-icon>
+                  }
+                  Save Changes
+                </button>
+              </div>
+              <div class="right-actions">
+                @if (product.status !== 'Approved') {
+                  <button type="button" mat-raised-button color="success" [disabled]="isPublishing" (click)="publishProduct()" class="publish-btn">
+                    @if (isPublishing) {
+                      <mat-spinner diameter="20"></mat-spinner>
+                    } @else {
+                      <mat-icon>publish</mat-icon>
+                    }
+                    Publish to Shop
+                  </button>
+                } @else {
+                  <mat-chip color="success" selected class="published-chip">
+                    <mat-icon>check_circle</mat-icon>
+                    Published
+                  </mat-chip>
+                }
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="error-section">
+      <mat-icon class="error-icon">error</mat-icon>
+      <h3>Product Not Found</h3>
+      <p>The product you're looking for doesn't exist or has been removed.</p>
+      <button mat-raised-button color="primary" (click)="onCancel()">
+        <mat-icon>arrow_back</mat-icon>
+        Back to Products
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,13 @@
+.chat-container { display: flex; flex-direction: column; height: 100%; }
+.chat-header { padding: 12px 16px; border-bottom: 1px solid #eee; font-weight: 600; }
+.chat-header .subtle { margin-left: 8px; font-weight: 400; color: #777; font-size: 12px; }
+.chat-body { flex: 1; overflow: auto; padding: 16px; background: #fafafa; }
+.msg { display: flex; margin-bottom: 10px; }
+.msg.user { justify-content: flex-end; }
+.bubble { max-width: 80%; padding: 10px 12px; border-radius: 12px; line-height: 1.4; background: white; border: 1px solid #e5e5e5; }
+.msg.user .bubble { background: #1976d2; color: #fff; border-color: #1976d2; }
+.chat-input { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #eee; }
+.chat-input input { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 10px 12px; }
+.loading { display: flex; align-items: center; gap: 8px; color: #777; }
+
+

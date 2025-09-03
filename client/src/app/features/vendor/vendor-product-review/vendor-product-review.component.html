@@ -1,0 +1,145 @@
+<div class="vendor-product-review mt-16">
+  <div class="review-container">
+    <!-- Header Section -->
+    <div class="review-header">
+      <h1 class="review-title">{{ isUpdateMode ? 'Review Updated Product' : 'Review Product' }}</h1>
+      <p class="review-subtitle">Please review your product details before publishing</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="header-actions">
+      <button class="action-btn edit-btn" (click)="onEdit()" [disabled]="isSubmitting">
+        <mat-icon>edit</mat-icon>
+        {{ isUpdateMode ? 'Edit Again' : 'Edit Product' }}
+      </button>
+      <button class="action-btn publish-btn" (click)="onPublish()" [disabled]="isSubmitting">
+        <mat-icon>publish</mat-icon>
+        {{ isSubmitting ? 'Publishing...' : (isUpdateMode ? 'Confirm Update' : 'Publish Product') }}
+      </button>
+    </div>
+
+    @if (productData) {
+      <!-- Main Review Card -->
+      <div class="review-card">
+        <div class="card-content">
+          <!-- Product Review Grid -->
+          <div class="review-grid">
+            <!-- Image Section -->
+            <div class="review-section image-section">
+              <div class="section-header">
+                <h2 class="section-title">
+                  <mat-icon>image</mat-icon>
+                  Product Image
+                </h2>
+              </div>
+              <div class="image-container">
+                @if (imagePreview) {
+                  <img 
+                    [src]="imagePreview" 
+                    alt="Product Preview" 
+                    class="product-image"
+                    (error)="onImageError($event)"
+                    (load)="onImageLoad($event)"
+                  >
+                } @else {
+                  <div class="no-image-placeholder">
+                    <div class="placeholder-icon">
+                      <mat-icon>image_not_supported</mat-icon>
+                    </div>
+                    <p class="placeholder-text">No image available</p>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <!-- Details Section -->
+            <div class="review-section details-section">
+              <div class="section-header">
+                <h2 class="section-title">
+                  <mat-icon>info</mat-icon>
+                  Product Details
+                </h2>
+              </div>
+              <div class="details-grid">
+                <!-- Product Name -->
+                <div class="detail-item">
+                  <label class="detail-label">Product Name</label>
+                  <p class="detail-value product-name">{{ productData.name }}</p>
+                </div>
+
+                <!-- Description -->
+                <div class="detail-item">
+                  <label class="detail-label">Description</label>
+                  <p class="description-text">{{ productData.description }}</p>
+                </div>
+
+                <!-- Price and Quantity Row -->
+                <div class="details-row">
+                  <div class="detail-item">
+                    <label class="detail-label">Price</label>
+                    <p class="detail-value price">{{ productData.price | currency }}</p>
+                  </div>
+                  <div class="detail-item">
+                    <label class="detail-label">Quantity in Stock</label>
+                    <p class="detail-value quantity">{{ productData.quantity }}</p>
+                  </div>
+                </div>
+
+                <!-- Type and Brand Row -->
+                <div class="details-row">
+                  <div class="detail-item">
+                    <label class="detail-label">Type</label>
+                    <p class="detail-value">{{ productData.type }}</p>
+                  </div>
+                  <div class="detail-item">
+                    <label class="detail-label">Brand</label>
+                    <p class="detail-value">{{ productData.brand }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Information Section -->
+          <div class="status-section">
+            <div class="status-card">
+              <div class="status-header">
+                <div class="status-icon">
+                  <mat-icon>info</mat-icon>
+                </div>
+                <h3 class="status-title">{{ isUpdateMode ? 'What happens after update?' : 'What happens next?' }}</h3>
+              </div>
+              <ul class="status-list">
+                @if (isUpdateMode) {
+                  <li class="status-item">Your updated product will be submitted for admin review</li>
+                  <li class="status-item">The previous version will be replaced with your changes</li>
+                  <li class="status-item">You'll receive a notification once it's approved or rejected</li>
+                  <li class="status-item">You can track the status in your product dashboard</li>
+                } @else {
+                  <li class="status-item">Your product will be submitted for admin review</li>
+                  <li class="status-item">You'll receive a notification once it's approved or rejected</li>
+                  <li class="status-item">You can track the status in your product dashboard</li>
+                  <li class="status-item">Approved products will be available for customers to purchase</li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <!-- Error State -->
+      <div class="review-card">
+        <div class="error-state">
+          <div class="error-icon">
+            <mat-icon>error_outline</mat-icon>
+          </div>
+          <h2 class="error-title">No Product Data Found</h2>
+          <p class="error-message">Please go back and fill out the product form first.</p>
+          <button class="error-action" (click)="onEdit()">
+            Go to Product Form
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<section>
+  @if (cartService.cart()?.items?.length! > 0) {
+
+  <div class="flex w-full items-start gap-6 mt-40 mb-20 px-15">
+    <div class="w-3/4">
+      @for (item of cartService.cart()?.items; track item.productId) {
+      <app-cart-item [item]="item"></app-cart-item>
+      }
+    </div>
+    <div class="w-1/4">
+      <app-order-summary></app-order-summary>
+    </div>
+  </div>
+
+  } @else {
+  <app-empty-state 
+    message="Your shopping cart is empty"
+    icon="remove_shopping_cart"
+    actionText="Go to shop"
+    (action)="onAction()"
+  />
+  }
+
+</section>

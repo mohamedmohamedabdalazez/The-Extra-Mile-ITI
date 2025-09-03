@@ -1,0 +1,123 @@
+<div class="product-review-dialog">
+  <!-- Header with gradient background -->
+  <div class="dialog-header">
+    <div class="header-content">
+      <div class="header-icon">
+        <mat-icon>rate_review</mat-icon>
+      </div>
+      <div class="header-text">
+        <h2 class="dialog-title">Product Review</h2>
+        <p class="dialog-subtitle">Review product details and make a decision</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Status Section -->
+  <div class="status-section">
+    <div class="status-badge">
+      <mat-chip [color]="getProductStatusColor(data.product.status)" selected>
+        <mat-icon>info</mat-icon>
+        {{ data.product.status }}
+      </mat-chip>
+    </div>
+    <div class="product-meta">
+      <span class="product-id">#{{ data.product.id }}</span>
+      <span class="vendor-name">{{ getVendorName(data.product) }}</span>
+    </div>
+  </div>
+
+  <!-- Product Content -->
+  <div class="product-content">
+    <div class="product-grid">
+      <!-- Product Image -->
+      <div class="image-section">
+        <div class="image-container">
+          @if (data.product.pictureUrl) {
+            <img [src]="data.product.pictureUrl" 
+                 [alt]="data.product.name" 
+                 class="product-image"
+                 (error)="onImageError($event)"
+                 style="width: 100%; height: 100%; object-fit: contain;">
+          } @else {
+            <div class="no-image">
+              <mat-icon>image_not_supported</mat-icon>
+              <p>No image available</p>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Product Details -->
+      <div class="details-section">
+        <div class="product-name">
+          <h3>{{ data.product.name }}</h3>
+        </div>
+        
+        <div class="product-info">
+          <div class="info-row">
+            <span class="label">Brand:</span>
+            <span class="value">{{ data.product.brand }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Type:</span>
+            <span class="value">{{ data.product.type }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Price:</span>
+            <span class="value price">{{ formatPrice(data.product.price) }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Stock:</span>
+            <span class="value">{{ data.product.quantityInStock }} units</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="description-section">
+      <h4 class="section-title">
+        <mat-icon>description</mat-icon>
+        Description
+      </h4>
+      <div class="description-content">
+        <p>{{ data.product.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="dialog-actions">
+    @if (data.product.status === 'Pending') {
+      <button mat-raised-button 
+              color="success" 
+              (click)="onApprove()" 
+              class="approve-btn">
+        <mat-icon>check_circle</mat-icon>
+        Approve Product
+      </button>
+      
+      <button mat-raised-button 
+              color="warn" 
+              (click)="onReject()" 
+              class="reject-btn">
+        <mat-icon>cancel</mat-icon>
+        Reject Product
+      </button>
+    } @else {
+      <div class="status-message">
+        <mat-chip [color]="getProductStatusColor(data.product.status)" selected>
+          <mat-icon>info</mat-icon>
+          Product is already {{ data.product.status.toLowerCase() }}
+        </mat-chip>
+      </div>
+    }
+    
+    <button mat-stroked-button 
+            (click)="onCancel()" 
+            class="cancel-btn">
+      <mat-icon>close</mat-icon>
+      Close
+    </button>
+  </div>
+</div>

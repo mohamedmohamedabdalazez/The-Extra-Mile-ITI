@@ -1,0 +1,127 @@
+// Confirmation Dialog Styles
+:host {
+  display: block;
+  background: var(--card-background-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.confirmation-dialog {
+  padding: 1.5rem;
+  background: var(--card-background-color);
+  color: var(--text-color);
+  
+  .dialog-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+  }
+  
+  .dialog-message {
+    font-size: 1rem;
+    color: var(--placeholder-text-color);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    
+    .cancel-button {
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+    
+    .confirm-button {
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+      background: var(--primary-color);
+      color: white;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: var(--primary-color-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+      }
+    }
+  }
+}
+
+// Material Dialog Overrides
+::ng-deep .mat-mdc-dialog-container {
+  .mdc-dialog__surface {
+    background-color: var(--card-background-color) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .mdc-dialog__container {
+    border-radius: 12px !important;
+  }
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .confirmation-dialog {
+    background: var(--card-background-color);
+    
+    .dialog-title {
+      color: var(--text-color);
+    }
+    
+    .dialog-message {
+      color: var(--placeholder-text-color);
+    }
+  }
+  
+  ::ng-deep .mat-mdc-dialog-container {
+    .mdc-dialog__surface {
+      background-color: var(--card-background-color) !important;
+      border: 1px solid var(--border-color);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .confirmation-dialog {
+    padding: 1rem;
+    
+    .dialog-title {
+      font-size: 1.1rem;
+    }
+    
+    .dialog-message {
+      font-size: 0.9rem;
+    }
+    
+    .dialog-actions {
+      gap: 0.5rem;
+      
+      .cancel-button,
+      .confirm-button {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

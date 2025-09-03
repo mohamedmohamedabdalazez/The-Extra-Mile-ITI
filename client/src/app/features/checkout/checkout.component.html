@@ -1,0 +1,58 @@
+<div class="checkout-container">
+    <div class="checkout-content">
+        <mat-stepper (selectionChange)="onStepChange($event)" [linear]="true"
+            #stepper class="checkout-stepper">
+            <mat-step label="Address" [completed]="completionStatus().address">
+                <div id="address-element"></div>
+                <div class="save-address-section">
+                    <mat-checkbox [checked]="saveAddress"
+                        (change)="onSaveAddressCheckboxChange($event)">Save as
+                        default address</mat-checkbox>
+                </div>
+                <div class="step-navigation">
+                    <button class="continue-shopping-btn" routerLink="/shop"
+                        mat-stroked-button>Continue shopping</button>
+                    <button [disabled]="!completionStatus().address" class="next-btn"
+                        matStepperNext mat-flat-button>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Shipping"
+                [completed]="completionStatus().delivery">
+                <app-checkout-delivery
+                    (deliveryComplete)="handleDeliveryChange($event)"></app-checkout-delivery>
+                <div class="step-navigation">
+                    <button matStepperPrevious mat-stroked-button>Back</button>
+                    <button [disabled]="!completionStatus().delivery"
+                        matStepperNext mat-flat-button>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Payment" [completed]="completionStatus().card">
+                <div id="payment-element"></div>
+                <div class="step-navigation">
+                    <button matStepperPrevious mat-stroked-button>Back</button>
+                    <button [disabled]="!completionStatus().card" matStepperNext
+                        mat-flat-button>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Confirmation">
+                <app-checkout-review
+                    [confirmationToken]="confirmationToken"></app-checkout-review>
+                <div class="step-navigation">
+                    <button class="back-btn" matStepperPrevious
+                        mat-stroked-button>Back</button>
+                    <button [disabled]="!confirmationToken || loading" (click)="confirmPayment(stepper)" class="pay-btn"
+                        mat-flat-button>
+                        @if (loading) {
+                        <mat-spinner diameter="20"></mat-spinner>
+                        } @else {
+                        <span>Pay {{cartService.totals()?.total | currency}}</span>
+                        }
+                    </button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+    <div class="order-summary-section">
+        <app-order-summary></app-order-summary>
+    </div>
+</div>

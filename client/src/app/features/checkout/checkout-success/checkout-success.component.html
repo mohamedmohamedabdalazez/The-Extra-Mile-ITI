@@ -1,0 +1,59 @@
+@if (signalrService.orderSignal(); as order) {
+<section class="success-container">
+    <div class="success-content">
+        <h2 class="success-title">Thanks for your order!</h2>
+        <p class="success-message">Your order <span class="order-id">#{{order.id}}</span> will never be processed
+            as this
+            is a fake shop. We will not notify you by email once your order has
+            not been shipped.</p>
+        <div class="order-details-card">
+            <dl class="order-detail-item">
+                <dt class="detail-label">Date</dt>
+                <dd class="detail-value">
+                    {{order.orderDate | date: 'medium'}}</dd>
+            </dl>
+            <dl class="order-detail-item">
+                <dt class="detail-label">Payment method</dt>
+                <dd class="detail-value">
+                    {{order.paymentSummary | paymentCard}}
+            </dl>
+            <dl class="order-detail-item">
+                <dt class="detail-label">Address</dt>
+                <dd class="detail-value">
+                    {{order.shippingAddress | address}}
+                </dd>
+            </dl>
+            <dl class="order-detail-item">
+                <dt class="detail-label">Amount</dt>
+                <dd class="detail-value">{{order.total |
+                    currency}}</dd>
+            </dl>
+        </div>
+        <div class="action-buttons">
+            <button routerLink="/orders/{{order.id}}" mat-flat-button class="view-order-btn">View your
+                order</button>
+            <button routerLink="/shop" mat-stroked-button class="continue-shopping-btn">Continue
+                shopping</button>
+        </div>
+    </div>
+</section>
+} @else {
+<section class="success-container">
+    <div class="success-content">
+        <h2 class="success-title">Order processing, please wait</h2>
+
+        <div class="loading-card">
+            <div class="loading-content">
+                <mat-spinner diameter="30"></mat-spinner>
+                <p class="loading-text">Loading order...</p>
+                <span class="loading-message">Your payment has been received, we are creating the order</span>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button routerLink="/shop" mat-stroked-button class="continue-shopping-btn">Continue
+                shopping</button>
+        </div>
+    </div>
+</section>
+}

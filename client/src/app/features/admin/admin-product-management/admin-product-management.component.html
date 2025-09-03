@@ -1,0 +1,209 @@
+<div class="admin-product-management">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">
+          <mat-icon>inventory_2</mat-icon>
+          Product Management
+          @if (currentStatus) {
+          <span class="status-filter">- {{ currentStatus }} Products</span>
+          }
+          @if (currentVendorName) {
+          <span class="vendor-filter">- {{ currentVendorName }}'s Products</span>
+          }
+        </h1>
+        <p class="page-subtitle">
+          @if (currentStatus && currentVendorName) {
+          Review and manage {{ currentStatus.toLowerCase() }} products from {{ currentVendorName }}
+          } @else if (currentStatus) {
+          Review and manage {{ currentStatus.toLowerCase() }} products on the platform
+          } @else if (currentVendorName) {
+          Review and manage all products from {{ currentVendorName }}
+          } @else {
+          Review and manage all products on the platform
+          }
+        </p>
+      </div>
+      <div class="header-actions">
+        <button mat-icon-button (click)="loadProducts()" matTooltip="Refresh Data" class="refresh-btn">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="search-section">
+    <div class="search-card">
+      <div class="search-content">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Search Products</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search by name, brand, type, or status" #input>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Table Section -->
+  <div class="table-section">
+    <div class="table-card">
+      <div class="card-header">
+        <div class="header-info">
+          <h2 class="card-title">
+            <mat-icon>table_chart</mat-icon>
+            Products Overview
+          </h2>
+          <p class="card-subtitle">{{ dataSource.data.length }} products found</p>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" matSort class="products-table">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content ">
+                  <mat-icon>inventory</mat-icon>
+                  <span>Product Name</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="product-name-cell">
+                <div class="product-info">
+                  <span class="product-name">{{ product.name }}</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Brand Column -->
+            <ng-container matColumnDef="brand">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content">
+                  <mat-icon>business</mat-icon>
+                  <span>Brand</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="brand-cell">
+                {{ product.brand }}
+              </td>
+            </ng-container>
+
+            <!-- Type Column -->
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content">
+                  <mat-icon>category</mat-icon>
+                  <span>Type</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="type-cell">
+                {{ product.type }}
+              </td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content">
+                  <mat-icon>attach_money</mat-icon>
+                  <span>Price</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="price-cell">
+                <span class="price-value">{{ product.price | currency }}</span>
+              </td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="quantityInStock">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content">
+                  <mat-icon>inventory</mat-icon>
+                  <span>Stock</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="stock-cell">
+                <span class="stock-value" [ngClass]="{
+                  'low-stock': product.quantityInStock < 10,
+                  'out-of-stock': product.quantityInStock === 0
+                }">{{ product.quantityInStock }}</span>
+              </td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="column-header">
+                <div class="header-content">
+                  <mat-icon>info</mat-icon>
+                  <span>Status</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="status-cell">
+                <span class="status-badge" [ngClass]="getStatusClass(product.status)">
+                  {{ product.status }}
+                </span>
+              </td>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="column-header">
+                <div class="header-content">
+                  <mat-icon>settings</mat-icon>
+                  <span>Actions</span>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let product" class="actions-cell">
+                <div class="action-buttons">
+                  <button mat-icon-button color="primary" (click)="reviewProduct(product)" matTooltip="Review Product"
+                    class="action-btn review-btn">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="accent" (click)="approveProduct(product)" matTooltip="Approve Product"
+                    [disabled]="product.status === 'Approved'" class="action-btn approve-btn">
+                    <mat-icon>check_circle</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="rejectProduct(product)" matTooltip="Reject Product"
+                    [disabled]="product.status === 'Rejected'" class="action-btn reject-btn">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                  <button mat-icon-button color="primary" (click)="suspendProduct(product)" matTooltip="Suspend Product"
+                    [disabled]="product.status === 'Suspended'" class="action-btn suspend-btn">
+                    <mat-icon>pause_circle</mat-icon>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header-row"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+
+            <!-- Loading and Empty States -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="7">
+                <div class="empty-state">
+                  @if (isLoading) {
+                  <div class="loading-state">
+                    <mat-spinner diameter="40"></mat-spinner>
+                    <p>Loading products...</p>
+                  </div>
+                  } @else {
+                  <div class="no-data-state">
+                    <mat-icon>inventory_2</mat-icon>
+                    <p>No products found</p>
+                    <span>Try adjusting your search criteria</span>
+                  </div>
+                  }
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,404 @@
+// Admin Order Details Styles
+:host {
+  display: block;
+  max-width: 1200px !important;
+  width: 90vw !important;
+  margin: 0 auto;
+}
+
+// Dialog Title
+.mat-dialog-title {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  margin: -24px -24px 0 -24px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    &::before {
+      content: '📦';
+      font-size: 1.5rem;
+    }
+  }
+  
+  button {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    
+    mat-icon {
+      color: white;
+    }
+  }
+}
+
+// Dialog Content
+.mat-dialog-content {
+  padding: 2rem;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+// Grid Layout
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+// Cards Styling
+mat-card {
+  background: var(--card-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+  }
+  
+  mat-card-header {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    
+    mat-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      
+      &::before {
+        content: '';
+        width: 4px;
+        height: 20px;
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        border-radius: 2px;
+      }
+    }
+  }
+  
+  mat-card-content {
+    padding: 1.5rem;
+    
+    p {
+      margin: 0.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      strong {
+        color: var(--text-color);
+        font-weight: 600;
+      }
+      
+      span {
+        color: var(--placeholder-text-color);
+        font-weight: 500;
+      }
+      
+      .status-badge {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .total-amount {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+// Order Items Section
+.order-items-section {
+  margin-top: 2rem;
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    &::before {
+      content: '🛍️';
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// List Styling
+mat-list {
+  background: var(--card-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  
+  mat-list-item {
+    height: auto !important;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background: var(--hover-background-color);
+      transform: translateX(4px);
+    }
+    
+    img[matListItemAvatar] {
+      width: 80px !important;
+      height: 80px !important;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        border-color: var(--primary-color);
+        transform: scale(1.05);
+      }
+    }
+    
+    [matListItemTitle] {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    [matListItemLine] {
+      color: var(--placeholder-text-color);
+      font-size: 0.9rem;
+      margin: 0.25rem 0;
+      
+      &:first-of-type {
+        color: var(--text-color);
+        font-weight: 500;
+      }
+    }
+    
+    [matListItemMeta] {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+  }
+}
+
+// Dialog Actions
+.mat-dialog-actions {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--card-background-color);
+  margin: 0 -24px -24px -24px;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  
+  button {
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: none;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    
+    &[mat-button] {
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      
+      &:hover {
+        background: var(--hover-background-color);
+        transform: translateY(-2px);
+      }
+    }
+    
+    &[mat-flat-button] {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      color: white;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+    }
+  }
+}
+
+// Force wider dialog and center it on X and Y axes
+::ng-deep .cdk-overlay-pane {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  max-width: 100px !important;
+  width: 90vw !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 55% !important;
+  left: 50% !important;
+  right: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+::ng-deep .mdc-dialog__surface {
+  max-width: 1200px !important;
+  width: 90vw !important;
+  margin: 0 !important;
+  position: relative !important;
+}
+
+// Additional centering for the dialog backdrop
+::ng-deep .cdk-overlay-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  :host {
+    max-width: 100% !important;
+    width: 95vw !important;
+  }
+  
+  .mat-dialog-title {
+    padding: 1rem 1.5rem;
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .mat-dialog-content {
+    padding: 1.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  mat-card {
+    mat-card-content p {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+  
+  mat-list-item {
+    padding: 1rem;
+    
+    img[matListItemAvatar] {
+      width: 60px !important;
+      height: 60px !important;
+    }
+  }
+  
+  .mat-dialog-actions {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// Dark theme adjustments
+body.dark-theme {
+  .mat-dialog-title {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  }
+  
+  mat-card {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+    
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
+  
+  mat-list {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+  }
+  
+  mat-list-item {
+    &:hover {
+      background: var(--hover-background-color);
+    }
+  }
+  
+  .mat-dialog-actions {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+  }
+}

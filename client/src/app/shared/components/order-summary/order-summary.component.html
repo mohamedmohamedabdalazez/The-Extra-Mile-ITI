@@ -1,0 +1,53 @@
+<div class="order-summary-container">
+  <div class="summary-card">
+    <p class="summary-title">Order summary</p>
+    <div class="summary-details">
+      <div class="summary-items">
+        <dl class="summary-item">
+          <dt class="item-label">Subtotal</dt>
+          <dd class="item-value">{{cartService.totals()?.subtotal | currency}}</dd>
+        </dl>
+        <dl class="summary-item">
+          <dt class="item-label">Discount</dt>
+          <dd class="item-value discount">-{{cartService.totals()?.discount | currency}}</dd>
+        </dl>
+        <dl class="summary-item">
+          <dt class="item-label">Delivery fee</dt>
+          <dd class="item-value">{{cartService.totals()?.shipping | currency}}</dd>
+        </dl>
+      </div>
+      <dl class="total-row">
+        <dt class="total-label">Total</dt>
+        <dd class="total-value">{{cartService.totals()?.total | currency}}</dd>
+      </dl>
+    </div>
+
+    @if (location.path() !== '/checkout') {
+    <div class="action-buttons">
+      <button routerLink="/checkout" mat-flat-button class="checkout-btn">Checkout</button>
+      <button routerLink="/shop" mat-button class="continue-shopping-btn">Continue Shopping</button>
+    </div>
+    }
+  </div>
+
+  <div class="coupon-card">
+    <form #form="ngForm" (ngSubmit)="applyCouponCode()" class="coupon-form">
+      <label class="voucher-label">Do you have a voucher code?</label>
+      @if (cartService.cart()?.coupon; as coupon) {
+      <div class="applied-coupon">
+        <span class="applied-coupon-text">{{coupon.name}} applied</span>
+        <button (click)="removeCouponCode()" mat-icon-button class="remove-coupon-btn">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </div>
+      }
+
+      <mat-form-field appearance="outline" class="coupon-input">
+        <mat-label>Voucher code</mat-label>
+        <input [disabled]="!!cartService.cart()?.coupon" [(ngModel)]="code" name="code" type="text" matInput style="color: white !important;">
+      </mat-form-field>
+
+      <button [disabled]="!!cartService.cart()?.coupon" type="submit" mat-flat-button class="apply-coupon-btn">Apply code</button>
+    </form>
+  </div>
+</div>

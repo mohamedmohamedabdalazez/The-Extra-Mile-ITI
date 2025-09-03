@@ -1,0 +1,27 @@
+<div class="orders-container mt-50 mb-80">
+    <h2 class="orders-title">My orders</h2>
+    <div class="orders-content">
+        <div class="orders-table-wrapper">
+            <table class="orders-table">
+                <thead class="table-header">
+                    <tr class="header-row">
+                        <th class="header-cell order-header">Order</th>
+                        <th class="header-cell">Date</th>
+                        <th class="header-cell">Total</th>
+                        <th class="header-cell">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    @for (order of orders; track order.id) {
+                        <tr routerLink="/orders/{{order.id}}" class="table-row">
+                            <td class="table-cell order-cell"># {{order.id}}</td>
+                            <td class="table-cell">{{order.orderDate | date: 'medium'}}</td>
+                            <td class="table-cell">{{order.total | currency}}</td>
+                            <td class="table-cell">{{order.status}}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

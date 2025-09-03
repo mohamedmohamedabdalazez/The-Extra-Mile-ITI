@@ -1,0 +1,217 @@
+/* Base card styling */
+.modern-product-card {
+  background: var(--card-background-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Image container */
+.product-image-container {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--background-color);
+  transition: background-color 0.3s;
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .product-image {
+    transform: scale(1.08);
+  }
+
+  /* New Label */
+  .new-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    z-index: 10;
+    animation: pulse 2s infinite;
+
+    span {
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+  }
+
+  /* Vendor Label - Removed as it's now positioned below image */
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(255, 107, 53, 0.5);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    }
+  }
+}
+
+/* Product info section */
+.product-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.brand-vendor-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.product-brand {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  font-weight: 400;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.vendor-name {
+  font-size: 0.7rem;
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+/* Rating */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+
+  .stars {
+    color: var(--border-color);
+    transition: color 0.3s;
+  }
+
+  .star {
+    font-size: 0.875rem;
+    &.filled {
+      color: #fbbf24; /* Amber-400 */
+    }
+  }
+
+  .rating-text {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    transition: color 0.3s, opacity 0.3s;
+  }
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s, opacity 0.3s;
+  flex-grow: 1;
+}
+
+/* Price and cart section */
+.price-cart-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.price-section {
+  .current-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--success-color);
+    transition: color 0.3s;
+  }
+}
+
+.add-to-cart-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

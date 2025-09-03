@@ -1,0 +1,163 @@
+// Checkout Delivery Component Styles
+.delivery-container {
+  width: 100%;
+}
+
+.delivery-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.delivery-option {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background: var(--card-background-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: var(--hover-background-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.delivery-radio {
+  width: 100%;
+  height: 100%;
+
+  ::ng-deep .mdc-form-field {
+    width: 100%;
+    height: 100%;
+  }
+
+  ::ng-deep .mdc-radio {
+    .mdc-radio__background {
+      .mdc-radio__outer-circle {
+        border-color: var(--border-color) !important;
+      }
+    }
+
+    &.mdc-radio--checked {
+      .mdc-radio__background {
+        .mdc-radio__outer-circle {
+          border-color: var(--primary-color) !important;
+        }
+
+        .mdc-radio__inner-circle {
+          border-color: var(--primary-color) !important;
+        }
+      }
+    }
+  }
+
+  ::ng-deep .mdc-form-field > label {
+    color: var(--text-color) !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.delivery-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.delivery-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.delivery-description {
+  font-size: 0.875rem;
+  color: var(--placeholder-text-color);
+  line-height: 1.4;
+  margin: 0;
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .delivery-option {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+
+    &:hover {
+      background: var(--hover-background-color);
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .delivery-name {
+    color: var(--text-color);
+  }
+
+  .delivery-description {
+    color: var(--placeholder-text-color);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .delivery-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .delivery-option {
+    padding: 0.75rem;
+  }
+
+  .delivery-name {
+    font-size: 0.9rem;
+  }
+
+  .delivery-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivery-option {
+    padding: 0.5rem;
+  }
+
+  .delivery-content {
+    padding-left: 0.25rem;
+  }
+}

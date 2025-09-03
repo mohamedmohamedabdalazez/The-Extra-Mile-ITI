@@ -1,0 +1,34 @@
+<div class="review-container">
+  <h4 class="review-title">Billing and delivery information</h4>
+  <dl class="review-info">
+    <dt class="info-label">Shipping address</dt>
+    <dd class="info-value">
+      <span>{{confirmationToken?.shipping | address}}</span>
+    </dd>
+    <dt class="info-label">Payment details</dt>
+    <dd class="info-value">
+      <span>{{confirmationToken?.payment_method_preview | paymentCard}}</span>
+    </dd>
+  </dl>
+</div>
+
+<div class="order-items-container">
+  <div class="items-table-wrapper">
+    <table class="items-table">
+      <tbody class="items-tbody">
+        @for (item of cartService.cart()?.items; track item.productId) {
+        <tr class="item-row">
+          <td class="item-cell">
+            <div class="item-content">
+              <img src="{{item.pictureUrl}}" alt="product image" class="item-image">
+              <span class="item-name">{{ item.productName }}</span>
+            </div>
+          </td>
+          <td class="quantity-cell">x{{ item.quantity }}</td>
+          <td class="price-cell">{{ item.price | currency }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

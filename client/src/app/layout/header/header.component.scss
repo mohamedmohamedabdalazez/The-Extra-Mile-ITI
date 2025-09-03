@@ -1,0 +1,719 @@
+// Modern Header Styles
+.modern-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--header-background);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s;
+  
+  // Transparent and blurred header for auth pages
+  &.auth-page {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    
+    .logo-text {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-link {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      
+      &:hover {
+        color: #ff6b35;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      &.nav-active {
+        color: #ff6b35;
+      }
+    }
+    
+    .theme-toggle-button,
+    .cart-button {
+      color: white;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .user-button {
+      color: white;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .login-btn {
+      color: white;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .register-btn {
+      background: rgba(255, 107, 53, 0.9) !important;
+      color: white !important;
+      
+      &:hover {
+        background: rgba(255, 107, 53, 1) !important;
+      }
+    }
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 80px;
+}
+
+// Logo Section
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  // background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: -0.025em;
+  transition: color 0.3s;
+}
+
+// Navigation Section
+.navigation-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 3rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+  
+  &:hover {
+    color: #ff6b35;
+    background: var(--button-hover-color);
+  }
+  
+  &.nav-active {
+    color: #ff6b35;
+    font-weight: 600;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background: #ff6b35;
+      border-radius: 1px;
+    }
+  }
+}
+
+// Header Actions
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+// Cart Button
+.theme-toggle-button,
+.cart-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--button-hover-color);
+    transform: translateY(-1px);
+  }
+  
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// User Menu
+.user-menu {
+  position: relative;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  background: #ff6b35 !important;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  transition: all 0.2s ease;
+  border: none;
+  
+  &:hover {
+    background: #e55a2b !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    
+    mat-icon {
+      color: black;
+    }
+    
+    .user-name {
+      color: black;
+    }
+    
+    .dropdown-icon {
+      color: black;
+    }
+  }
+  
+  mat-icon {
+    color: white;
+    transition: color 0.2s ease;
+  }
+  
+  .user-name {
+    color: white;
+    transition: color 0.2s ease;
+  }
+  
+  .dropdown-icon {
+    color: white;
+    transition: color 0.2s ease;
+  }
+  
+  // Admin User Button Styling
+  &.admin-user {
+    .admin-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      color: white;
+      transition: color 0.2s ease;
+    }
+    
+    .admin-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      margin-left: 0.25rem;
+      color: white;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+    
+    &:hover {
+      .admin-icon {
+        color: black;
+      }
+      
+      .admin-label {
+        color: black;
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.dropdown-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+// Rotate dropdown arrow when menu is open
+.user-button[aria-expanded="true"] .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+// Auth Buttons
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.login-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 24px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--button-hover-color);
+  }
+}
+
+.register-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+  color: white !important;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+}
+
+// Loading Bar
+.loading-bar {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+// Badge Customization
+::ng-deep .mat-badge-content {
+  background: #ff6b35 !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+::ng-deep .mat-badge-medium .mat-badge-content {
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+}
+
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 1.5rem;
+  }
+  
+  .navigation-section {
+    margin: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+    height: 70px;
+  }
+  
+  .navigation-section {
+    margin: 0 1rem;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .user-button.admin-user {
+    .admin-label {
+      display: none;
+    }
+    
+    .admin-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  .loading-bar {
+    top: 70px;
+  }
+}
+
+
+
+
+.user-dropdown-panel {
+  .mat-mdc-menu-content {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 300px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .user-info {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(247, 147, 30, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .user-icon {
+      position: relative;
+      z-index: 2;
+      font-size: 1.75rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      color: white;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .user-email {
+      position: relative;
+      z-index: 2;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #374151 !important;
+      text-shadow: none !important;
+      margin: 0;
+    }
+  }
+
+  // Force email text to be black
+  .user-info .user-email,
+  .user-dropdown-panel .user-info .user-email {
+    color: #374151 !important;
+    text-shadow: none !important;
+  }
+
+  .mat-mdc-menu-item {
+    padding: 1rem 1.5rem;
+    margin: 0;
+    gap: 0.75rem;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    min-height: 56px;
+
+    .mdc-list-item__content {
+      justify-content: flex-start !important;
+    }
+
+    mat-icon {
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #374151;
+      transition: color 0.3s ease;
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #374151;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      background: #e2e8f0;
+      
+      mat-icon {
+        color: #ff6b35;
+      }
+      
+      span {
+        color: #ff6b35;
+      }
+    }
+
+    &.menu-item-cart {
+      &:hover {
+        background: rgba(76, 175, 80, 0.1);
+        
+        mat-icon {
+          color: #4caf50;
+        }
+        
+        span {
+          color: #4caf50;
+        }
+      }
+    }
+
+    &.menu-item-orders {
+      &:hover {
+        background: rgba(33, 150, 243, 0.1);
+        
+        mat-icon {
+          color: #2196f3;
+        }
+        
+        span {
+          color: #2196f3;
+        }
+      }
+    }
+
+    &.menu-item-vendor {
+      &:hover {
+        background: rgba(255, 193, 7, 0.1);
+        
+        mat-icon {
+          color: #ffc107;
+        }
+        
+        span {
+          color: #ffc107;
+        }
+      }
+    }
+
+    &.menu-item-logout {
+      &:hover {
+        background: rgba(244, 67, 54, 0.1);
+        
+        mat-icon {
+          color: #f44336;
+        }
+        
+        span {
+          color: #f44336;
+        }
+      }
+    }
+  }
+
+  mat-divider {
+    margin: 0;
+    border-color: #e2e8f0;
+  }
+}
+
+// Consistent light theme for dropdown regardless of site theme
+body.dark-theme {
+  .user-dropdown-panel {
+    .mat-mdc-menu-content {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .user-info {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+      
+      &::before {
+        background: linear-gradient(135deg, rgba(255, 107, 53, 0.95) 0%, rgba(247, 147, 30, 0.95) 100%) !important;
+      }
+
+      .user-icon {
+        color: white !important;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+      }
+
+      .user-email {
+        color: #374151 !important;
+        text-shadow: none;
+      }
+    }
+
+    .mat-mdc-menu-item {
+      mat-icon {
+        color: #374151 !important;
+      }
+
+      span {
+        color: #374151 !important;
+      }
+
+      &:hover {
+        background: #f3f4f6 !important;
+        
+        mat-icon {
+          color: #ff6b35 !important;
+        }
+        
+        span {
+          color: #ff6b35 !important;
+        }
+      }
+
+      &.menu-item-vendor {
+        &:hover {
+          background: #f3f4f6 !important;
+        }
+      }
+
+      &.menu-item-logout {
+        &:hover {
+          background: #f3f4f6 !important;
+        }
+      }
+    }
+
+    mat-divider {
+      border-color: #e5e7eb !important;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .navigation-section {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .header-actions {
+    gap: 0.5rem;
+  }
+  
+  .auth-buttons {
+    gap: 0.5rem;
+  }
+  
+  .login-btn,
+  .register-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .user-button.admin-user {
+    .admin-label {
+      display: none;
+    }
+    
+    .admin-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+// Global override to force email text to be black
+::ng-deep .user-dropdown-panel .user-info .user-email {
+  color: #374151 !important;
+  text-shadow: none !important;
+}
+
+// Additional specific overrides
+::ng-deep .mat-mdc-menu-panel.user-dropdown-panel .user-info .user-email {
+  color: #374151 !important;
+  text-shadow: none !important;
+}
+
+::ng-deep .mat-mdc-menu-panel .user-info span.user-email {
+  color: #374151 !important;
+  text-shadow: none !important;
+}
+
+// Force override for any span with user-email class
+::ng-deep span.user-email {
+  color: #374151 !important;
+  text-shadow: none !important;
+}
+
+// Force override for user icon in dropdown
+::ng-deep .user-dropdown-panel .user-info .user-icon {
+  color: #374151 !important;
+}
+
+::ng-deep .mat-mdc-menu-panel.user-dropdown-panel .user-info .user-icon {
+  color: #374151 !important;
+}
+
+::ng-deep .mat-mdc-menu-panel .user-info mat-icon.user-icon {
+  color: #374151 !important;
+}

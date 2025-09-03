@@ -1,0 +1,23 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <span>Ask AI</span>
+    <span class="subtle">Your product assistant</span>
+  </div>
+
+  <div class="chat-body">
+    <div *ngFor="let m of messages; let i = index" [class.user]="m.role==='user'" class="msg">
+      <div class="bubble" [innerHTML]="m.text"></div>
+    </div>
+    <div class="loading" *ngIf="loading">
+      <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+      <span>Thinking...</span>
+    </div>
+  </div>
+
+  <form class="chat-input" (ngSubmit)="send()">
+    <input [(ngModel)]="input" name="q" placeholder="Ask about products, brands, prices..." />
+    <button mat-flat-button color="primary" type="submit">Send</button>
+  </form>
+</div>
+
+

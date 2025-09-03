@@ -1,0 +1,132 @@
+.login-background {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/images/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    padding: 2rem;
+  
+  mat-card {
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    
+    // Override Material Design default styling
+    ::ng-deep .mdc-card {
+      background: transparent !important;
+    }
+    
+    ::ng-deep .mat-mdc-card-content {
+      background: transparent !important;
+    }
+    
+    // Form styling to match website theme
+    form {
+      .text-center h1 {
+        color: black !important;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      
+      mat-form-field {
+        ::ng-deep .mat-mdc-text-field-wrapper {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          backdrop-filter: blur(5px);
+        }
+        
+        ::ng-deep .mat-mdc-form-field-label {
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
+        }
+        
+        ::ng-deep .mat-mdc-input-element {
+          color: black;
+          font-weight: 500;
+        }
+        
+        ::ng-deep .mat-mdc-form-field-outline {
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        ::ng-deep &.mat-focused {
+          .mat-mdc-form-field-outline {
+            border-color: black;
+          }
+          
+          .mat-mdc-form-field-label {
+            color: black !important;
+          }
+        }
+      }
+      
+      button[type="submit"] {
+        background: linear-gradient(135deg, #ff6b35, #f7931e) !important;
+        color: black !important;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: linear-gradient(135deg, #ff5722, #ff9800) !important;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+        }
+        
+        &:disabled {
+          background: rgba(156, 163, 175, 0.5) !important;
+          color: rgba(255, 255, 255, 0.8) !important;
+        }
+      }
+      
+      // Register link styling
+      .text-center.mt-4 {
+        span {
+          color: rgba(255, 255, 255, 0.8);
+          font-weight: 500;
+        }
+        
+        a {
+          color: #ff6b35 !important;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            color: #e55a2b !important;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    
+    &:hover {
+    //   transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    //   background: rgba(255, 255, 255, 0.15) !important;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .login-background {
+    padding: 1rem;
+    
+    mat-card {
+      margin-top: 0 !important;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

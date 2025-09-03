@@ -1,0 +1,46 @@
+@if (product) {
+<section class="product-details-container">
+    <div class="product-details-content">
+        <div class="product-grid">
+            <div class="product-image-section">
+                <img class="product-image" src="{{product.pictureUrl}}" alt="product image" />
+            </div>
+
+            <div class="product-info-section">
+                <h1 class="product-title">
+                    {{product.name}}
+                </h1>
+
+                <p class="cart-info">You have {{quantityInCart}} of this item in your cart</p>
+
+                <div class="price-section">
+                    <p class="product-price">
+                        {{product.price | currency}}
+                    </p>
+                </div>
+
+                <div class="action-section">
+                    <button (click)="updateCart()" mat-flat-button 
+                        [disabled]="quantity === quantityInCart" 
+                        class="add-to-cart-btn">
+                        <mat-icon>shopping_cart</mat-icon>
+                       {{getButtonText()}}
+                    </button>
+
+                    <mat-form-field appearance="outline" class="quantity-field">
+                        <mat-label>Quantity</mat-label>
+                        <input matInput min="0" type="number" [(ngModel)]="quantity" 
+                            type="number">
+                    </mat-form-field>
+                </div>
+
+                <mat-divider class="divider"></mat-divider>
+
+                <p class="product-description">
+                    {{product.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+}

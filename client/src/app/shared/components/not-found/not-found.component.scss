@@ -1,0 +1,104 @@
+// 404 Not Found Page Styles
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  background: var(--background-color);
+  margin: 60px 0;
+  padding: 2rem;
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 500px;
+  
+  .error-icon {
+    transform: scale(3);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  
+  .error-code {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 1rem 0;
+    line-height: 1;
+  }
+  
+  .error-message {
+    font-size: 1.25rem;
+    color: var(--placeholder-text-color);
+    margin: 0.5rem 0 2rem 0;
+    font-weight: 400;
+  }
+  
+  .back-button {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 12px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    
+    &:hover {
+      background: var(--primary-color-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .not-found-container {
+    min-height: 50vh;
+    margin: 40px 0;
+    padding: 1rem;
+  }
+  
+  .not-found-content {
+    .error-icon {
+      transform: scale(2.5);
+      margin-bottom: 1.5rem;
+    }
+    
+    .error-code {
+      font-size: 3rem;
+    }
+    
+    .error-message {
+      font-size: 1.1rem;
+    }
+    
+    .back-button {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .not-found-container {
+    background: var(--background-color);
+  }
+  
+  .not-found-content {
+    .error-code {
+      color: var(--text-color);
+    }
+    
+    .error-message {
+      color: var(--placeholder-text-color);
+    }
+  }
+}

@@ -1,0 +1,507 @@
+@use '@angular/material' as mat;
+
+:root {
+  --primary-color: #ff6b35;
+  --primary-color-dark: #e55a2b;
+  --background-color: #fafafa;
+  --text-color: #212121;
+  --card-background-color: #ffffff;
+  --border-color: #e0e0e0;
+  --header-background: #ffffff;
+  --button-hover-color: #f5f5f5;
+  --hover-background-color: #f9fafb;
+  --disabled-text-color: #d1d5db;
+  --placeholder-text-color: #9ca3af;
+  --danger-color: #dc2626;
+  --danger-color-dark: #b91c1c;
+  --success-color: #16a34a;
+}
+
+body.dark-theme {
+  --primary-color: #ff8a50;
+  --primary-color-dark: #ff6b35;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --card-background-color: #1e1e1e;
+  --border-color: #424242;
+  --header-background: #1e1e1e;
+  --button-hover-color: #333333;
+  --hover-background-color: #2a2a2a;
+  --disabled-text-color: #555555;
+  --placeholder-text-color: #777777;
+  --danger-color: #f87171;
+  --danger-color-dark: #fca5a5;
+  --success-color: #4ade80;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.button-overrides((filled-container-shape: '6px',
+      outlined-container-shape: '6px'
+    ));
+  @include mat.badge-overrides((background-color: blue));
+}
+
+.match-input-height {
+  height: var(--mat-form-field-container-height) !important;
+}
+
+.mdc-notched-outline__notch {
+  border-right-style: none !important;
+}
+
+.snack-error {
+  @include mat.snack-bar-overrides((button-color: white,
+      container-color: red,
+      supporting-text-color: white));
+}
+
+.snack-success {
+  @include mat.snack-bar-overrides((button-color: white,
+      container-color: green,
+      supporting-text-color: white));
+}
+
+// // Snackbar positioning styles
+// .snack-top {
+//   // For login/register pages - position at top center with no margin
+//   .mat-mdc-snack-bar-container {
+//     margin: 0 !important;
+//     top: 0 !important;
+//     z-index: 9999 !important;
+//   }
+// }
+
+// // Force snackbar to top for auth pages with higher specificity
+// body .snack-top .mat-mdc-snack-bar-container,
+// .snack-top .mat-mdc-snack-bar-container,
+// .mat-mdc-snack-bar-container.snack-top {
+//   margin: 0 !important;
+//   top: 0 !important;
+//   z-index: 9999 !important;
+// }
+
+// Override Material's default positioning
+.cdk-overlay-pane .mat-mdc-snack-bar-container.snack-top {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+.snack-bottom {
+  // All messages at bottom of page
+  .mat-mdc-snack-bar-container {
+    margin: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+  }
+}
+
+.snack-under-dropdown {
+  // For other pages - position under dropdown menu
+  .mat-mdc-snack-bar-container {
+    margin-top: 120px !important;
+    margin-right: 20px !important;
+    margin-bottom: auto !important;
+    margin-left: auto !important;
+    max-width: 400px !important;
+    z-index: 999 !important;
+  }
+}
+
+/* Pagination Arrow Color Overrides */
+.mat-mdc-paginator-navigation-previous .mat-icon,
+.mat-mdc-paginator-navigation-next .mat-icon,
+.mat-mdc-paginator-navigation-first .mat-icon,
+.mat-mdc-paginator-navigation-last .mat-icon {
+  color: #000 !important;
+}
+
+body.dark-theme {
+
+  .mat-mdc-paginator-navigation-previous .mat-icon,
+  .mat-mdc-paginator-navigation-next .mat-icon,
+  .mat-mdc-paginator-navigation-first .mat-icon,
+  .mat-mdc-paginator-navigation-last .mat-icon {
+    color: #fff !important;
+  }
+}
+
+.mat-mdc-paginator-navigation-next .mat-icon,
+.mat-mdc-paginator-navigation-last .mat-icon {
+  color: #fff !important;
+}
+
+// Hide scrollbars on auth pages
+body.auth-page {
+  overflow: hidden;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+// Force black labels in register form
+.register-background app-text-input {
+  .mat-mdc-form-field-label,
+  .mdc-floating-label,
+  .mat-mdc-floating-label {
+    color: black !important;
+  }
+  
+  &.mat-focused {
+    .mat-mdc-form-field-label,
+    .mdc-floating-label,
+    .mat-mdc-floating-label {
+      color: black !important;
+    }
+  }
+}
+
+// Force email text to be black in admin dropdown
+.user-dropdown-panel .user-info .user-email,
+.mat-mdc-menu-panel.user-dropdown-panel .user-info .user-email,
+.mat-mdc-menu-panel .user-info span.user-email,
+span.user-email {
+  color: #374151 !important;
+  text-shadow: none !important;
+}
+
+// Force user icon to be black in admin dropdown
+.user-dropdown-panel .user-info .user-icon,
+.mat-mdc-menu-panel.user-dropdown-panel .user-info .user-icon,
+.mat-mdc-menu-panel .user-info mat-icon.user-icon {
+  color: #374151 !important;
+}
+
+// Update dropdown menu background to match website theme
+.user-dropdown-panel .mat-mdc-menu-content {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.mat-mdc-menu-panel.user-dropdown-panel {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.mat-mdc-menu-panel.user-dropdown-panel .mat-mdc-menu-content {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.user-dropdown-panel .mat-mdc-menu-item:hover {
+  background: #e2e8f0 !important;
+}
+
+.user-dropdown-panel mat-divider {
+  border-color: #e2e8f0 !important;
+}
+
+// Additional Material menu overrides
+.mat-mdc-menu-panel {
+  &.user-dropdown-panel {
+    background: #f8fafc !important;
+    
+    .mat-mdc-menu-content {
+      background: #f8fafc !important;
+    }
+  }
+}
+
+// Additional overrides for dark theme
+body.dark-theme {
+  .user-dropdown-panel .user-info .user-email,
+  .mat-mdc-menu-panel.user-dropdown-panel .user-info .user-email,
+  .mat-mdc-menu-panel .user-info span.user-email,
+  span.user-email {
+    color: #374151 !important;
+    text-shadow: none !important;
+  }
+  
+  .user-dropdown-panel .user-info .user-icon,
+  .mat-mdc-menu-panel.user-dropdown-panel .user-info .user-icon,
+  .mat-mdc-menu-panel .user-info mat-icon.user-icon {
+    color: #374151 !important;
+  }
+}
+
+// Global Material menu background overrides - highest precedence
+.mat-mdc-menu-panel.user-dropdown-panel,
+.mat-mdc-menu-panel.user-dropdown-panel .mat-mdc-menu-content,
+.mat-mdc-menu-panel.user-dropdown-panel .mdc-menu-surface {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+// Force menu background regardless of theme
+body.dark-theme .mat-mdc-menu-panel.user-dropdown-panel,
+body.dark-theme .mat-mdc-menu-panel.user-dropdown-panel .mat-mdc-menu-content,
+body.dark-theme .mat-mdc-menu-panel.user-dropdown-panel .mdc-menu-surface {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+// Global snackbar positioning overrides with highest specificity
+::ng-deep .snack-top .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+::ng-deep .cdk-overlay-pane .snack-top .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-container.snack-top {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
+// Additional aggressive overrides
+::ng-deep .cdk-overlay-container .snack-top .mat-mdc-snack-bar-container,
+::ng-deep .cdk-overlay-container .mat-mdc-snack-bar-container.snack-top {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  transform: none !important;
+}
+
+// Override any Material positioning
+::ng-deep .mat-mdc-snack-bar-container {
+  &.snack-top {
+    margin: 0 !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    transform: none !important;
+  }
+}
+
+// Force top positioning for auth pages
+body .cdk-overlay-container .snack-top .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  transform: none !important;
+}
+
+// Additional auth page specific overrides
+::ng-deep .snack-auth-page .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  position: fixed !important;
+}
+
+::ng-deep .cdk-overlay-container .snack-auth-page .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  position: fixed !important;
+}
+
+// Global override for all snackbar containers - bottom positioning
+::ng-deep .cdk-overlay-container .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  position: fixed !important;
+}
+
+// Bottom positioning overrides
+::ng-deep .snack-bottom .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  position: fixed !important;
+}
+
+::ng-deep .cdk-overlay-container .snack-bottom .mat-mdc-snack-bar-container {
+  margin: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  position: fixed !important;
+}
+
+// Global override for voucher code input text in dark mode
+body.dark-theme {
+  ::ng-deep .coupon-input input.mat-mdc-input-element,
+  ::ng-deep .coupon-input .mat-mdc-input-element,
+  ::ng-deep .coupon-input input,
+  ::ng-deep .coupon-input .mdc-text-field__input,
+  ::ng-deep .order-summary-container .coupon-input input,
+  ::ng-deep .order-summary-container .coupon-input .mat-mdc-input-element,
+  ::ng-deep .mat-mdc-form-field input,
+  ::ng-deep .mat-mdc-form-field .mat-mdc-input-element,
+  ::ng-deep .mat-mdc-form-field .mdc-text-field__input,
+  ::ng-deep .mdc-text-field__input,
+  ::ng-deep .mat-mdc-text-field-wrapper input,
+  ::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-input-element,
+  ::ng-deep .mat-mdc-text-field-wrapper .mdc-text-field__input {
+    color: white !important;
+  }
+}
+
+// Global dialog centering
+::ng-deep .cdk-overlay-pane {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  margin: auto !important;
+}
+
+// Product Review Dialog Global Styles
+.product-review-dialog-panel {
+  .mat-mdc-dialog-container {
+    .mdc-dialog__surface {
+      background-color: transparent !important;
+      border-radius: 12px !important;
+      box-shadow: none !important;
+    }
+
+    .mdc-dialog__container {
+      border-radius: 12px !important;
+    }
+  }
+}
+
+// Ensure dialog backdrop is properly styled for both themes
+.cdk-overlay-pane.product-review-dialog-panel {
+  .cdk-overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+  }
+}
+
+// Dark mode backdrop adjustments
+@media (prefers-color-scheme: dark) {
+  .cdk-overlay-pane.product-review-dialog-panel {
+    .cdk-overlay-backdrop {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+    }
+  }
+  
+  // Force dark mode styles for the dialog
+  .product-review-dialog {
+    background-color: #1a1a1a !important;
+    border-color: #404040 !important;
+    
+    .dialog-header {
+      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%) !important;
+    }
+    
+    .status-section {
+      background-color: #2d2d2d !important;
+      border-bottom-color: #404040 !important;
+      
+      .product-meta .product-id {
+        color: #a0a0a0 !important;
+      }
+      
+      .product-meta .vendor-name {
+        color: #ff9800 !important;
+      }
+    }
+    
+    .product-content {
+      .product-grid {
+        .image-section .image-container {
+          background-color: #2d2d2d !important;
+          border-color: #404040 !important;
+          margin-top: 0.5rem !important;
+          
+          .no-image {
+            color: #a0a0a0 !important;
+          }
+        }
+        
+        .details-section {
+          .product-name h3 {
+            color: #e0e0e0 !important;
+          }
+          
+          .product-info .info-row {
+            background-color: #2d2d2d !important;
+            border-left-color: #ff9800 !important;
+            
+            &:hover {
+              background-color: #404040 !important;
+            }
+            
+            .label {
+              color: #e0e0e0 !important;
+            }
+            
+            .value {
+              color: #a0a0a0 !important;
+              
+              &.price {
+                color: #66bb6a !important;
+              }
+            }
+          }
+        }
+      }
+      
+      .description-section {
+        .section-title {
+          color: #e0e0e0 !important;
+          border-bottom-color: #404040 !important;
+          
+          mat-icon {
+            color: #ff9800 !important;
+          }
+        }
+        
+        .description-content {
+          background-color: #2d2d2d !important;
+          border-left-color: #ff9800 !important;
+          
+          p {
+            color: #a0a0a0 !important;
+          }
+        }
+      }
+    }
+    
+    .dialog-actions {
+      background-color: #2d2d2d !important;
+      border-top-color: #404040 !important;
+      
+      .cancel-btn {
+        border-color: #404040 !important;
+        color: #a0a0a0 !important;
+        background-color: #1a1a1a !important;
+        
+        &:hover {
+          background-color: #2d2d2d !important;
+          border-color: #606060 !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,471 @@
+[
+  {
+    "Name": "47 New York Yankees Cap Black",
+    "Description": "Show your team pride with this classic black New York Yankees cap by '47 Brand. A timeless design for any fan, featuring a comfortable fit and durable construction.",
+    "Price": 34.99,
+    "PictureUrl": "/images/products/New_York_Yankees_Cap_black.png",
+    "Type": "Hats",
+    "Brand": "47 Brand",
+    "status": "approved",
+    "QuantityInStock": 88
+  },
+  {
+    "Name": "Active new Soccer Football - White",
+    "Description": "A durable and reliable soccer ball designed for training sessions and casual matches. Its classic white design offers great visibility on the pitch.",
+    "Price": 24.95,
+    "PictureUrl": "/images/products/Activnew_Soccer_Ball_White.png",
+    "Type": "Ball",
+    "Brand": "Activnew",
+    "status": "approved",
+    "QuantityInStock": 120
+  },
+  {
+    "Name": "Adidas 3-Stripes Cushioned Crew Socks (3 Pairs)",
+    "Description": "Experience all-day comfort with these Adidas crew socks. Featuring cushioning in the heel and toe, this 3-pack is perfect for sports or daily wear.",
+    "Price": 18.00,
+    "PictureUrl": "/images/products/Adidas_Socks_3Pairs.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 250
+  },
+  {
+    "Name": "Adidas Al Ahly 25-26 Away Socks",
+    "Description": "Complete your kit with the official Al Ahly 2025-2026 away socks from Adidas. Engineered for performance and comfort on the field.",
+    "Price": 22.50,
+    "PictureUrl": "/images/products/Adidas_AlAhly_Away_Socks.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 115
+  },
+  {
+    "Name": "Adidas Al Ahly 25-26 Home Socks",
+    "Description": "Official Al Ahly 2025-2026 home socks by Adidas. Designed with supportive cushioning and sweat-wicking fabric to keep you comfortable during the match.",
+    "Price": 22.50,
+    "PictureUrl": "/images/products/Adidas_AlAhly_Home_Socks.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 130
+  },
+  {
+    "Name": "Adidas FC Bayern 25-26 Home Socks",
+    "Description": "Wear the colors of your team from head to toe. These FC Bayern 2025-2026 home socks from Adidas offer a snug, supportive fit for dedicated fans.",
+    "Price": 23.00,
+    "PictureUrl": "/images/products/Adidas_FCBayern_Home_Socks.png",
+    "Type": "Socks",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 110
+  },
+  {
+    "Name": "Adidas Liverpool FC Home Club Ball",
+    "Description": "A durable club football celebrating Liverpool FC. Perfect for kickabouts and showing your support for the Reds. Machine-stitched for longevity.",
+    "Price": 29.99,
+    "PictureUrl": "/images/products/Adidas_Liverpool_FCHome_Club_Ball.png",
+    "Type": "Ball",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 95
+  },
+  {
+    "Name": "Adidas Predator League Goalkeeper Gloves",
+    "Description": "Take control of your box with Adidas Predator League Goalkeeper Gloves. Featuring a high-grip palm for confident saves and a comfortable fit.",
+    "Price": 55.00,
+    "PictureUrl": "/images/products/Adidas_Predator_League_Goalkeeper_Gloves.png",
+    "Type": "Gloves",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 75
+  },
+  {
+    "Name": "Adidas Predator Training Goalkeeper Gloves",
+    "Description": "Hone your skills with the Adidas Predator Training Gloves. Designed for durability and grip, they are perfect for practice sessions.",
+    "Price": 35.00,
+    "PictureUrl": "/images/products/Adidas_Predator_Training_Goalkeeper_Gloves.png",
+    "Type": "Gloves",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 89
+  },
+  {
+    "Name": "Adidas Tiro Club Shin Guards Black-White",
+    "Description": "Stay protected on the pitch with Adidas Tiro Club Shin Guards. Hard shields with EVA backing provide comfortable cushioning and impact absorption.",
+    "Price": 19.99,
+    "PictureUrl": "/images/products/Adidas_Tiro_Club_Shin_Guards_black&white.png",
+    "Type": "Gym Equipment",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 140
+  },
+  {
+    "Name": "Adidas Tiro Club Shin Guards Gold-Metallic",
+    "Description": "A stylish and protective choice, the gold-metallic Adidas Tiro Club Shin Guards offer a hard shell and cushioned backing for safety during play.",
+    "Price": 21.99,
+    "PictureUrl": "/images/products/Adidas_Tiro_Club_Shin_Guards_Gold&Metalic.png",
+    "Type": "Gym Equipment",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 98
+  },
+  {
+    "Name": "Adidas UCL 25-26 League Stage Ball",
+    "Description": "The official league stage ball for the UEFA Champions League 2025-2026 season. Designed for top-level performance with a seamless, thermally bonded surface.",
+    "Price": 150.00,
+    "PictureUrl": "/images/products/Adidas_UCL_League_League_Stage_Ball.png",
+    "Type": "Ball",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 60
+  },
+  {
+    "Name": "ALLSIX Volleyball Knee Pads VKP500 - Black",
+    "Description": "Protect your knees during intense matches with the ALLSIX VKP500 Volleyball Knee Pads. Designed for optimal flexibility and impact protection.",
+    "Price": 28.00,
+    "PictureUrl": "/images/products/Kipsta_Allsix_Volleyball_KneePads_Black.png",
+    "Type": "Gym Equipment",
+    "Brand": "ALLSIX",
+    "status": "approved",
+    "QuantityInStock": 105
+  },
+  {
+    "Name": "Babolat RH X 12 Pure Drive Tennis Bag",
+    "Description": "Carry all your gear in style with the Babolat RH X 12 Pure Drive bag. Features insulated compartments to protect your rackets and ample space for accessories.",
+    "Price": 119.95,
+    "PictureUrl": "/images/products/Babolat_Tennis_Bag.png",
+    "Type": "Bag",
+    "Brand": "Babolat",
+    "status": "approved",
+    "QuantityInStock": 45
+  },
+  {
+    "Name": "Body Solid Tools - SB840 Rubber Coated Fixed Straight Barbell, 40Kg",
+    "Description": "A professional-grade 40kg fixed straight barbell from Body Solid. Rubber coated for durability and to protect floors. Perfect for heavy lifting.",
+    "Price": 189.99,
+    "PictureUrl": "/images/products/Rubber_Coated_Fixed_Straight_Barbell_40Kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Body Solid",
+    "status": "approved",
+    "QuantityInStock": 15
+  },
+  {
+    "Name": "Centr x Hyrox Competition Octo Kettlebell 24kg",
+    "Description": "Official competition-grade 24kg Octo Kettlebell from Centr x Hyrox. Engineered for performance, balance, and a secure grip during high-intensity workouts.",
+    "Price": 110.00,
+    "PictureUrl": "/images/products/Hyrox_Kettlebells_24Kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Centr",
+    "status": "approved",
+    "QuantityInStock": 38
+  },
+  {
+    "Name": "Competition Steel Kettlebell 16Kg",
+    "Description": "A high-quality 16kg competition steel kettlebell. Its uniform size and smooth handle make it ideal for swings, presses, and goblet squats.",
+    "Price": 79.99,
+    "PictureUrl": "/images/products/AlphaFit_Kettlebells_16Kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Competition",
+    "status": "approved",
+    "QuantityInStock": 55
+  },
+  {
+    "Name": "Copa Pure 3 Club Firm-Ground Boots",
+    "Description": "Experience a flawless touch with the Copa Pure 3 Club Firm-Ground Boots. Designed for comfort and control on natural grass pitches.",
+    "Price": 75.00,
+    "PictureUrl": "/images/products/Adidas_Copa_Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 82
+  },
+  {
+    "Name": "Copa Pure 3 League Turf Boots",
+    "Description": "Dominate on artificial turf with the Copa Pure 3 League Boots. The lugged rubber outsole provides excellent traction for quick movements.",
+    "Price": 85.00,
+    "PictureUrl": "/images/products/Adidas_Copa_League_Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 78
+  },
+  {
+    "Name": "Element Fitness Kettlebell 2.0 - 6 kg-24 kg",
+    "Description": "A versatile adjustable kettlebell from Element Fitness. Easily switch between 6 kg and 24 kg, making it a perfect all-in-one solution for home gyms.",
+    "Price": 199.99,
+    "PictureUrl": "/images/products/Element_Kettlebell_24kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Element Fitness",
+    "status": "approved",
+    "QuantityInStock": 30
+  },
+  {
+    "Name": "F50 League Turf Boots",
+    "Description": "Unleash your speed with the F50 League Turf Boots. A lightweight design and supportive fit for explosive acceleration on artificial surfaces.",
+    "Price": 90.00,
+    "PictureUrl": "/images/products/Adidas_F50League_Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 68
+  },
+  {
+    "Name": "FitRx Adjustable Smartbell Dumbbell Set 52.5lb",
+    "Description": "The ultimate space-saving solution for your home gym. The FitRx Smartbell set offers adjustable weights up to 52.5lbs, perfect for a wide range of exercises.",
+    "Price": 349.99,
+    "PictureUrl": "/images/products/FitRx_Adjustable_Dumbbells_52.5lb.png",
+    "Type": "Gym Equipment",
+    "Brand": "FitRx",
+    "status": "approved",
+    "QuantityInStock": 25
+  },
+  {
+    "Name": "Inspace Premium Black Rubber Kettlebell 6kg",
+    "Description": "A 6kg premium kettlebell from Inspace. The black rubber coating protects your floors and the equipment, while the chrome handle ensures a solid grip.",
+    "Price": 39.95,
+    "PictureUrl": "/images/products/Inspace_Black_Rubber_Kettlebell_6kg.png",
+    "Type": "Gym Equipment",
+    "Brand": "Inspace",
+    "status": "approved",
+    "QuantityInStock": 85
+  },
+  {
+    "Name": "Authentic Boston Celtics Larry Bird 1985-86 Jersey",
+    "Description": "A throwback jersey celebrating the legendary Larry Bird and the 1985-86 Boston Celtics. A must-have for any true NBA fan, crafted by Mitchell & Ness.",
+    "Price": 130.00,
+    "PictureUrl": "/images/products/Jersey_Boston_Celtics_Authentic_Larry_Bird.png",
+    "Type": "Shirt",
+    "Brand": "Mitchell & Ness",
+    "status": "approved",
+    "QuantityInStock": 42
+  },
+  {
+    "Name": "Jordan Pro Jumpman Snapback Cap Midnight Navy",
+    "Description": "A classic snapback with iconic style. The Jordan Pro Jumpman Cap features a high crown, flat bill, and the legendary Jumpman logo front and center.",
+    "Price": 38.00,
+    "PictureUrl": "/images/products/Jordan_Cap_midnight_NavyBlackBlue.png",
+    "Type": "Hats",
+    "Brand": "Jordan",
+    "status": "approved",
+    "QuantityInStock": 92
+  },
+  {
+    "Name": "Kipsta Beach Volleyball Size 5 BY100 Classic - Turquoise",
+    "Description": "Perfect for fun in the sun, this Kipsta size 5 beach volleyball offers a soft touch and good durability for recreational play.",
+    "Price": 15.99,
+    "PictureUrl": "/images/products/KIPSTA_Beach_Volleyball_Turquoise.png",
+    "Type": "Ball",
+    "Brand": "Kipsta",
+    "status": "approved",
+    "QuantityInStock": 150
+  },
+  {
+    "Name": "Kipsta UEFA Conference League Replica Football 2024-2025 Size 5",
+    "Description": "Play like the pros with this official replica of the 2024-2025 UEFA Conference League football by Kipsta. Size 5, ideal for matches and training.",
+    "Price": 32.00,
+    "PictureUrl": "/images/products/KIPSTA_UEFA_League_Replica_Football.png",
+    "Type": "Ball",
+    "Brand": "Kipsta",
+    "status": "approved",
+    "QuantityInStock": 110
+  },
+  {
+    "Name": "Men's Jason Richardson Golden State Warriors Maxxed Out Fashion Jersey",
+    "Description": "A vibrant and stylish 'Maxxed Out' fashion jersey for Golden State Warriors star Jason Richardson. A unique piece for any collection.",
+    "Price": 95.00,
+    "PictureUrl": "/images/products/Men'sJason_Warriors_Jersey_Navy&Golden.png",
+    "Type": "Shirt",
+    "Brand": "NBA",
+    "status": "approved",
+    "QuantityInStock": 65
+  },
+  {
+    "Name": "Mitchell & Ness Authentic Michael Jordan 1996-97 Chicago Bulls Alternate Jersey",
+    "Description": "Own a piece of history. This authentic Mitchell & Ness alternate jersey celebrates Michael Jordan's iconic 1996-97 season with the Chicago Bulls.",
+    "Price": 300.00,
+    "PictureUrl": "/images/products/Nba_Jersey_Chicago_Bulls_Michael_Jordan.png",
+    "Type": "Shirt",
+    "Brand": "Mitchell & Ness",
+    "status": "approved",
+    "QuantityInStock": 25
+  },
+  {
+    "Name": "Mizuno T10 Plus Volleyball Kneepad",
+    "Description": "Low-profile yet highly protective, the Mizuno T10 Plus kneepad offers strategic padding and freedom of movement for volleyball players.",
+    "Price": 25.99,
+    "PictureUrl": "/images/products/Mizuno_Kneepad_volleyball.png",
+    "Type": "Gym Equipment",
+    "Brand": "Mizuno",
+    "status": "approved",
+    "QuantityInStock": 115
+  },
+  {
+    "Name": "Nike Everyday Playground 8P Basketball",
+    "Description": "Built for the blacktop, the Nike Everyday Playground basketball has a durable rubber exterior to stand up to outdoor play. Note: Ships deflated.",
+    "Price": 29.95,
+    "PictureUrl": "/images/products/Nike_Everyday_Basketball.png",
+    "Type": "Ball",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 180
+  },
+  {
+    "Name": "Nike Flight Soccer Ball",
+    "Description": "Engineered for precision flight, the Nike Flight Soccer Ball features molded grooves for a more consistent and true spin. The ultimate ball for serious players.",
+    "Price": 160.00,
+    "PictureUrl": "/images/products/Nike_Flight_Soccer_Ball1.png",
+    "Type": "Ball",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 70
+  },
+  {
+    "Name": "Nike Performance Gym Club Sports Bag - Black",
+    "Description": "A lightweight and durable option for all your gym essentials. The Nike Performance Gym Club bag features a spacious main compartment and multiple pockets.",
+    "Price": 45.00,
+    "PictureUrl": "/images/products/Nike_Gym_Sports_bag_black.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 95
+  },
+  {
+    "Name": "Nike Performance Gym Club Sports Bag - Light Silver",
+    "Description": "Carry your gear in a sleek, light silver gym bag. The Nike Performance Gym Club bag is both stylish and functional, with ample storage for your workout needs.",
+    "price": 45.00,
+    "PictureUrl": "/images/products/Nike_Gym_Sports_bag_lightsilver.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 80
+  },
+  {
+    "Name": "Nike Performance Utility Power Duffel Sports Bag - Black",
+    "Description": "Designed to keep your gear secure and organized, the Nike Utility Power Duffel is built with durable materials and features several zippered pockets.",
+    "Price": 70.00,
+    "PictureUrl": "/images/products/Nike_Utility_Power_Sports_bag_black.png",
+    "Type": "Bag",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 60
+  },
+  {
+    "Name": "Nike Sportswear Huarache Trainers - White/Pure Platinum",
+    "Description": "An iconic design that hugs your foot for ultimate comfort. The Nike Huarache delivers a classic '90s look with a snug, cushioned fit for all-day wear.",
+    "Price": 125.00,
+    "PictureUrl": "/images/products/Nike_AirHuarache_Trainers_whitepure.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 88
+  },
+  {
+    "Name": "Nike Sportswear Air Max 270 Trainers - Black/Anthracite",
+    "Description": "Featuring Nike's biggest-ever Air unit in the heel, the Air Max 270 provides visible air and unbelievable comfort with every step.",
+    "Price": 160.00,
+    "PictureUrl": "/images/products/Nike_AIRMAX270_Trainers_whiteblack.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 76
+  },
+  {
+    "Name": "Nike Sportswear Blazer Mid 77 VNTG High-Top Trainers - White",
+    "Description": "Crisp, clean, and classic. The all-white Nike Blazer Mid '77 Vintage high-top offers versatile style and proven comfort that lasts.",
+    "Price": 110.00,
+    "PictureUrl": "/images/products/Nike_BLAZER_Trainers_white.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 85
+  },
+  {
+    "Name": "Nike Sportswear Dunk Trainers - White/Black",
+    "Description": "From the hardwood to the streets, the Nike Dunk's iconic style is a slam dunk. This classic white and black colorway is a must-have for any sneakerhead.",
+    "Price": 115.00,
+    "PictureUrl": "/images/products/Nike_Dunk_Trainers_whiteblack.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 112
+  },
+  {
+    "Name": "Nike Sportswear Dunk Unisex Trainers - Grey/Mineral Teal",
+    "Description": "A fresh take on the classic Dunk silhouette. This version features a subtle grey and mineral teal color scheme for a unique, modern look.",
+    "Price": 120.00,
+    "PictureUrl": "/images/products/Nike_Dunk_Trainers_Football_tealpearl.png",
+    "Type": "Shoes",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 79
+  },
+  {
+    "Name": "Nike Sportswear Heritage Futura Washed Hat - Elemental Gold",
+    "Description": "A classic 6-panel cap with a washed fabric for a soft, worn-in feel. Features an embroidered Nike logo for a timeless, sporty look.",
+    "Price": 28.00,
+    "PictureUrl": "/images/products/Nike_Heritage_Cap_elementalGold.png",
+    "Type": "Hats",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 130
+  },
+  {
+    "Name": "Nike Sportswear Heritage Adjustable Unisex Cap - Black",
+    "Description": "An everyday essential, this black Nike Heritage cap offers a comfortable, adjustable fit and the iconic swoosh logo for a simple, classic style.",
+    "Price": 25.00,
+    "PictureUrl": "/images/products/Nike_Heritage_Cap_black.png",
+    "Type": "Hats",
+    "Brand": "Nike",
+    "status": "approved",
+    "QuantityInStock": 155
+  },
+  {
+    "Name": "Nivia Spotvolley VFI-Approved Leather Match Volleyball",
+    "Description": "An official VFI-approved match volleyball from Nivia. Crafted from high-quality leather for superior performance, touch, and durability in competitive play.",
+    "Price": 42.50,
+    "PictureUrl": "/images/products/Nivia_Leather_Volleyball.png",
+    "Type": "Ball",
+    "Brand": "Nivia",
+    "status": "approved",
+    "QuantityInStock": 65
+  },
+  {
+    "Name": "Peak Basketball Shoes - Red",
+    "Description": "Explode to the hoop with these vibrant red basketball shoes from Peak. Designed for high performance, offering excellent traction and ankle support.",
+    "Price": 95.99,
+    "PictureUrl": "/images/products/Peak_Shoes_Basketball_Red.png",
+    "Type": "Shoes",
+    "Brand": "Peak",
+    "status": "approved",
+    "QuantityInStock": 77
+  },
+  {
+    "Name": "Predator League Firm Ground Boots",
+    "Description": "Built for goals. The Predator League boots provide a stable platform for powerful, accurate striking on firm ground pitches.",
+    "Price": 90.00,
+    "PictureUrl": "/images/products/Adidas_Predator_Firm_Ground_Boots.png",
+    "Type": "Shoes",
+    "Brand": "Adidas",
+    "status": "approved",
+    "QuantityInStock": 81
+  },
+  {
+    "Name": "Men's Jason blue NewYork Knicks Jersey",
+    "Description": "A vibrant and stylish 'Maxxed Out' fashion jersey for Golden State Warriors star Jason Richardson. A unique piece for any collection.",
+    "PictureUrl": "/images/products/Blue_NewYork_Jersey.png",
+    "Type": "Shirt",
+    "Brand": "NBA",
+    "status": "approved",
+    "QuantityInStock": 50
+  },
+  {
+    "Name": "TARMAK Basketball BT900 size 7",
+    "Description": "Explode to the hoop with these vibrant red basketball shoes from Peak. Designed for high performance, offering excellent traction and ankle support.",
+    "Price": 90.00,
+    "PictureUrl": "/images/products/TARMAK_Basketball_BT900.png",
+    "Type": "Ball",
+    "Brand": "TARMAK",
+    "status": "approved",
+    "QuantityInStock": 50
+  }
+]

@@ -1,0 +1,277 @@
+<div class="admin-dashboard">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <div class="header-content">
+      <div class="welcome-section">
+        <h1 class="dashboard-title">
+          Welcome back, <span class="admin-name">Administrator</span>
+        </h1>
+        <p class="dashboard-subtitle">Manage the platform and oversee all operations</p>
+      </div>
+      <div class="header-actions ">
+        <button mat-icon-button (click)="loadDashboardData()" matTooltip="Refresh Data" class="refresh-btn ">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card total-orders" (click)="navigateToOrders()">
+        <div class="stat-icon">
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Total Orders</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ totalOrders }}</p>
+          }
+          <p class="stat-description">All platform orders</p>
+        </div>
+      </div>
+
+      <div class="stat-card total-products" (click)="navigateToProducts()">
+        <div class="stat-icon">
+          <mat-icon>inventory_2</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Total Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ acceptedProducts + pendingProducts + rejectedProducts + suspendedProducts }}</p>
+          }
+          <p class="stat-description">All platform products</p>
+        </div>
+      </div>
+
+      <div class="stat-card total-vendors" (click)="navigateToVendors()">
+        <div class="stat-icon">
+          <mat-icon>group</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Total Vendors</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ activeVendors }}</p>
+          }
+          <p class="stat-description">Registered vendors</p>
+        </div>
+      </div>
+
+      <div class="stat-card total-revenue">
+        <div class="stat-icon">
+          <mat-icon>trending_up</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Total Revenue</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ totalRevenue | currency }}</p>
+          }
+          <p class="stat-description">Platform earnings</p>
+        </div>
+      </div>
+
+      <div class="stat-card pending-products" (click)="navigateToPendingProducts()">
+        <div class="stat-icon">
+          <mat-icon>pending_actions</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Pending Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ pendingProducts }}</p>
+          }
+          <p class="stat-description">Awaiting review</p>
+        </div>
+      </div>
+
+      <div class="stat-card accepted-products" (click)="navigateToAcceptedProducts()">
+        <div class="stat-icon">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Approved Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ acceptedProducts }}</p>
+          }
+          <p class="stat-description">Approved products</p>
+        </div>
+      </div>
+
+      <div class="stat-card rejected-products" (click)="navigateToRejectedProducts()">
+        <div class="stat-icon">
+          <mat-icon>cancel</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Rejected Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ rejectedProducts }}</p>
+          }
+          <p class="stat-description">Declined products</p>
+        </div>
+      </div>
+
+      <div class="stat-card suspended-products" (click)="navigateToSuspendedProducts()">
+        <div class="stat-icon">
+          <mat-icon>pause_circle</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">Suspended Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ suspendedProducts }}</p>
+          }
+          <p class="stat-description">Temporarily disabled</p>
+        </div>
+      </div>
+
+      <div class="stat-card admin-products" (click)="navigateToAdminProducts()">
+        <div class="stat-icon">
+          <mat-icon>store</mat-icon>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-title">My Published Products</h3>
+          @if (isLoading) {
+            <div class="loading-spinner">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+          } @else {
+            <p class="stat-value">{{ adminPublishedProducts }}</p>
+          }
+          <p class="stat-description">ExtraMile products</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="main-content">
+    <!-- Quick Actions Section -->
+    <div class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <mat-icon>flash_on</mat-icon>
+          Quick Actions
+        </h2>
+      </div>
+
+      <div class="actions-card">
+        <div class="actions-grid">
+          <button mat-raised-button color="primary" (click)="navigateToProducts()" class="action-btn">
+            <mat-icon>checklist</mat-icon>
+            <span>Manage Products</span>
+          </button>
+          <button mat-raised-button color="accent" (click)="navigateToOrders()" class="action-btn">
+            <mat-icon>receipt_long</mat-icon>
+            <span>View Orders</span>
+          </button>
+          <button mat-raised-button color="warn" (click)="navigateToVendors()" class="action-btn">
+            <mat-icon>people</mat-icon>
+            <span>Manage Vendors</span>
+          </button>
+          <button mat-raised-button color="success" (click)="navigateToAddProduct()" class="action-btn">
+            <mat-icon>add_circle</mat-icon>
+            <span>Add Product</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <mat-icon>bar_chart</mat-icon>
+          Analytics Overview
+        </h2>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card" 
+             [class.expanded]="isSalesChartExpanded"
+             (mouseenter)="onSalesChartMouseEnter()"
+             (mouseleave)="onSalesChartMouseLeave()">
+          <div class="card-header">
+            <h3 class="card-title">Sales Over Time</h3>
+            <p class="card-subtitle">Monthly revenue from completed orders</p>
+          </div>
+          <div class="card-content">
+            <div class="chart-container">
+              @if (salesData.length > 0) {
+                <ngx-charts-bar-vertical
+                  [results]="salesData"
+                  [xAxis]="true"
+                  [yAxis]="true"
+                  [legend]="false"
+                  [showXAxisLabel]="true"
+                  [showYAxisLabel]="true"
+                  [gradient]="true"
+                  colorScheme="fire"
+                  xAxisLabel="Month"
+                  yAxisLabel="Revenue (USD)">
+                </ngx-charts-bar-vertical>
+              } @else {
+                <div class="chart-empty-state">
+                  <mat-icon>bar_chart</mat-icon>
+                  <p>No sales data available</p>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" 
+             [class.expanded]="isProductStatusChartExpanded"
+             (mouseenter)="onProductStatusChartMouseEnter()"
+             (mouseleave)="onProductStatusChartMouseLeave()">
+          <div class="card-header">
+            <h3 class="card-title">Product Status Distribution</h3>
+            <p class="card-subtitle">Distribution of products by status</p>
+          </div>
+          <div class="card-content">
+            <div class="chart-container">
+              <ngx-charts-pie-chart
+                [results]="productStatusData"
+                [labels]="true"
+                [legend]="true"
+                colorScheme="cool">
+              </ngx-charts-pie-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

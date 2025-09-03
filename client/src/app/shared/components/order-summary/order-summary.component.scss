@@ -1,0 +1,439 @@
+// Order Summary Component Styles
+.order-summary-container {
+  margin: 0 auto;
+  max-width: 400px;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  background: var(--card-background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.summary-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+}
+
+.item-label {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.item-value {
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 0.9rem;
+
+  &.discount {
+    color: #22c55e;
+  }
+}
+
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.5rem;
+  margin: 0;
+}
+
+.total-label {
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.total-value {
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  button {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    padding: 0.75rem 1rem !important;
+
+    &:hover {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+
+  .checkout-btn {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+
+    &:hover {
+      background: var(--primary-color-dark) !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
+    }
+  }
+
+  .continue-shopping-btn {
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+
+    &:hover {
+      background: var(--hover-background-color) !important;
+      border-color: var(--primary-color) !important;
+    }
+  }
+}
+
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--card-background-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.coupon-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.voucher-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.applied-coupon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.applied-coupon-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.remove-coupon-btn {
+  color: #ef4444 !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.1) !important;
+    transform: scale(1.1);
+  }
+}
+
+.coupon-input {
+  ::ng-deep .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      background: var(--input-background-color) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    .mat-mdc-form-field-label {
+      color: var(--placeholder-text-color) !important;
+    }
+
+    .mat-mdc-input-element {
+      color: var(--text-color) !important;
+    }
+
+    .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: var(--border-color) !important;
+      }
+    }
+
+    &.mat-focused {
+      .mdc-notched-outline {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: var(--primary-color) !important;
+        }
+      }
+
+      .mat-mdc-form-field-label {
+        color: var(--primary-color) !important;
+      }
+    }
+  }
+}
+
+.apply-coupon-btn {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  padding: 0.75rem 1rem !important;
+
+  &:hover {
+    background: var(--primary-color-dark) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3) !important;
+  }
+
+  &:disabled {
+    background: var(--border-color) !important;
+    color: var(--placeholder-text-color) !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// Dark theme specific adjustments
+body.dark-theme {
+  .summary-card,
+  .coupon-card {
+    background: var(--card-background-color);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .summary-title {
+    color: var(--text-color);
+  }
+
+  .item-label,
+  .item-value,
+  .total-label,
+  .total-value {
+    color: var(--text-color);
+  }
+
+  .voucher-label {
+    color: var(--text-color);
+  }
+
+  .applied-coupon {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.4);
+  }
+
+  .applied-coupon-text {
+    color: #4ade80;
+  }
+
+  .action-buttons {
+    .continue-shopping-btn {
+      border-color: var(--border-color);
+      color: var(--text-color);
+
+      &:hover {
+        background: var(--hover-background-color);
+      }
+    }
+  }
+
+  // Dark theme input field overrides
+  .coupon-input {
+    ::ng-deep .mat-mdc-form-field {
+      .mat-mdc-text-field-wrapper {
+        background: var(--input-background-color) !important;
+        border-color: var(--border-color) !important;
+      }
+
+      .mat-mdc-form-field-label {
+        color: var(--placeholder-text-color) !important;
+      }
+
+      .mat-mdc-input-element {
+        color: white !important;
+      }
+
+      .mdc-notched-outline {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: var(--border-color) !important;
+        }
+      }
+
+      &.mat-focused {
+        .mdc-notched-outline {
+          .mdc-notched-outline__leading,
+          .mdc-notched-outline__notch,
+          .mdc-notched-outline__trailing {
+            border-color: var(--primary-color) !important;
+          }
+        }
+
+        .mat-mdc-form-field-label {
+          color: var(--primary-color) !important;
+        }
+      }
+    }
+
+    // Additional aggressive overrides for input text
+    ::ng-deep input.mat-mdc-input-element {
+      color: white !important;
+    }
+
+    ::ng-deep .mat-mdc-input-element {
+      color: white !important;
+    }
+
+    ::ng-deep input {
+      color: white !important;
+    }
+
+    ::ng-deep .mdc-text-field__input {
+      color: white !important;
+    }
+
+    // Force white text for all input elements in this component
+    ::ng-deep input[type="text"] {
+      color: white !important;
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper input {
+      color: white !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field input {
+      color: white !important;
+    }
+
+    // Target the specific Material Design input structure
+    ::ng-deep .mdc-text-field--outlined .mdc-text-field__input {
+      color: white !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field .mdc-text-field--outlined .mdc-text-field__input {
+      color: white !important;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .order-summary-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-summary-container {
+    gap: 1rem;
+  }
+
+  .summary-card,
+  .coupon-card {
+    padding: 0.75rem;
+  }
+
+  .summary-title {
+    font-size: 1.125rem;
+  }
+
+  .item-label,
+  .item-value {
+    font-size: 0.85rem;
+  }
+
+  .total-label {
+    font-size: 0.9rem;
+  }
+
+  .total-value {
+    font-size: 1rem;
+  }
+
+  .voucher-label {
+    font-size: 0.8rem;
+  }
+
+  .applied-coupon-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-card,
+  .coupon-card {
+    padding: 0.5rem;
+  }
+
+  .action-buttons button,
+  .apply-coupon-btn {
+    padding: 0.6rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+}

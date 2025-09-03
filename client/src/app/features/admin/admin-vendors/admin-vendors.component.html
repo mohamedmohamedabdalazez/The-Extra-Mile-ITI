@@ -1,0 +1,119 @@
+<div class="admin-vendors">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">
+          <mat-icon>people</mat-icon>
+          Vendor Management
+        </h1>
+        <p class="page-subtitle">View and manage all registered vendors on the platform</p>
+      </div>
+      <div class="header-actions">
+        <button mat-icon-button (click)="loadVendors()" matTooltip="Refresh Data" class="refresh-btn">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendors Table Section -->
+  <div class="table-section">
+    <div class="table-card">
+      <div class="card-header">
+        <div class="header-info">
+          <h2 class="card-title">
+            <mat-icon>table_chart</mat-icon>
+            Vendors Overview
+          </h2>
+          <p class="card-subtitle">{{ dataSource.data.length }} vendors registered</p>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <div class="table-container">
+          @if (isLoading) {
+            <div class="loading-container">
+              <mat-spinner diameter="50"></mat-spinner>
+              <p>Loading vendors...</p>
+            </div>
+          } @else if (dataSource.data.length === 0) {
+            <div class="empty-state">
+              <mat-icon>people_outline</mat-icon>
+              <h3>No Vendors Found</h3>
+              <p>There are no vendors registered on the platform yet.</p>
+            </div>
+          } @else {
+            <table mat-table [dataSource]="dataSource" class="vendors-table">
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="column-header">
+                  <div class="header-content">
+                    <mat-icon>person</mat-icon>
+                    <span>Vendor Name</span>
+                  </div>
+                </th>
+                <td mat-cell *matCellDef="let vendor" class="name-cell">
+                  <div class="vendor-info">
+                    <span class="vendor-name">{{ getVendorFullName(vendor) }}</span>
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Email Column -->
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef class="column-header">
+                  <div class="header-content">
+                    <mat-icon>email</mat-icon>
+                    <span>Email Address</span>
+                  </div>
+                </th>
+                <td mat-cell *matCellDef="let vendor" class="email-cell">
+                  <span class="vendor-email">{{ vendor.email }}</span>
+                </td>
+              </ng-container>
+
+              <!-- Username Column -->
+              <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef class="column-header">
+                  <div class="header-content">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Username</span>
+                  </div>
+                </th>
+                <td mat-cell *matCellDef="let vendor" class="username-cell">
+                  <span class="vendor-username">{{ vendor.userName }}</span>
+                </td>
+              </ng-container>
+
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="column-header">
+                  <div class="header-content">
+                    <mat-icon>settings</mat-icon>
+                    <span>Actions</span>
+                  </div>
+                </th>
+                <td mat-cell *matCellDef="let vendor" class="actions-cell">
+                  <div class="action-buttons">
+                    <button mat-raised-button 
+                            color="primary" 
+                            (click)="viewVendorProducts(vendor)" 
+                            matTooltip="View Vendor Products"
+                            class="action-btn view-btn">
+                      <mat-icon>inventory_2</mat-icon>
+                      <span>View Products</span>
+                    </button>
+                  </div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,156 @@
+<div class="vendor-product-detail mt-16">
+  <div class="detail-container">
+    @if (product) {
+      <!-- Header Section -->
+      <div class="detail-header">
+        <div class="header-content">
+          <div class="product-title-section">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-subtitle">Product Details & Status Information</p>
+          </div>
+          <div class="header-actions">
+            <button 
+              mat-raised-button 
+              color="accent" 
+              class="edit-btn"
+              (click)="onEditProduct()"
+            >
+              <mat-icon>edit</mat-icon>
+              Edit Product
+            </button>
+            <button 
+              mat-raised-button 
+              color="primary" 
+              class="review-btn"
+              (click)="onSubmitForReview()"
+            >
+              <mat-icon>send</mat-icon>
+              Submit for Review
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="main-content">
+        <!-- Product Information Card -->
+        <div class="content-section">
+          <div class="info-card">
+            <div class="card-header">
+              <h2>
+                <mat-icon>inventory_2</mat-icon>
+                Product Information
+              </h2>
+            </div>
+            <div class="card-content">
+              <div class="product-grid">
+                <!-- Product Image -->
+                <div class="image-section">
+                  @if (imageUrl && !imageError) {
+                    <div class="image-container">
+                      <img 
+                        [src]="imageUrl" 
+                        [alt]="product.name" 
+                        class="product-image"
+                        (error)="onImageError($event)" 
+                        (load)="onImageLoad($event)"
+                      >
+                    </div>
+                  } @else {
+                    <div class="image-placeholder">
+                      <div class="placeholder-content">
+                        <mat-icon class="placeholder-icon">image_not_supported</mat-icon>
+                        <p class="placeholder-text">Image not available</p>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <!-- Product Details -->
+                <div class="details-section">
+                  <div class="detail-item">
+                    <label class="detail-label">Description</label>
+                    <p class="detail-value">{{ product.description }}</p>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <label class="detail-label">Price</label>
+                    <p class="detail-value price-value">{{ product.price | currency }}</p>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <label class="detail-label">Type</label>
+                    <p class="detail-value">{{ product.type }}</p>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <label class="detail-label">Brand</label>
+                    <p class="detail-value">{{ product.brand }}</p>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <label class="detail-label">Quantity in Stock</label>
+                    <p class="detail-value">{{ product.quantityInStock }}</p>
+                  </div>
+                  
+                  <div class="detail-item">
+                    <label class="detail-label">Current Status</label>
+                    <div class="status-container">
+                      <span class="status-badge" [ngClass]="{
+                        'status-approved': product.status === 'Approved',
+                        'status-pending': product.status === 'Pending',
+                        'status-rejected': product.status === 'Rejected',
+                        'status-suspended': product.status === 'Suspended'
+                      }">
+                        {{ product.status }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status History Card -->
+        <div class="content-section">
+          <div class="history-card">
+            <div class="card-header">
+              <h2>
+                <mat-icon>timeline</mat-icon>
+                Status History
+              </h2>
+            </div>
+            <div class="card-content">
+              <div class="timeline-container">
+                @for (status of statusHistory; track status) {
+                  <div class="timeline-item">
+                    <div class="timeline-marker">
+                      <mat-icon class="marker-icon">check_circle</mat-icon>
+                    </div>
+                    <div class="timeline-content">
+                      <h3 class="timeline-title">{{ status.status }}</h3>
+                      <time class="timeline-date">
+                        {{ status.date | date: 'fullDate' }} at {{ status.date | date: 'shortTime' }}
+                      </time>
+                      <p class="timeline-notes">{{ status.notes }}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <!-- Loading State -->
+      <div class="loading-state">
+        <div class="loading-content">
+          <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+          <h2 class="loading-title">Loading Product Details</h2>
+          <p class="loading-text">Please wait while we fetch the product information...</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,13 @@
+@if (busyService.busyRequestCount === 0) {
+<div class="empty-state-container mt-70 mb-60">
+    <div class="empty-state-content">
+        <mat-icon class="empty-state-icon">{{icon()}}</mat-icon>
+        <p class="empty-state-message">
+            {{message()}}
+        </p>
+        <button (click)="onAction()" mat-flat-button class="empty-state-button">{{actionText()}}</button>
+    </div>
+</div>
+}
+
+

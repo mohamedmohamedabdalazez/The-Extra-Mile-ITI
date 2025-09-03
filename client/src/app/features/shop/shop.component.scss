@@ -1,0 +1,682 @@
+/* Shop Container */
+.shop-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--background-color);
+  min-height: 100vh;
+  transition: background-color 0.3s;
+}
+
+/* Header Section */
+.shop-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-background-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 1. Product Count and Pagination Area (Green/Blue) */
+.count-pagination-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-self: start;
+}
+
+.product-count {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+// Reusable class for the paginator dropdown trigger
+%paginator-select-trigger {
+  border: none;
+  border-radius: 6px;
+  background: var(--background-color);
+  padding: 0.5rem 1rem;
+  min-height: auto;
+  min-width: 70px; // Ensure enough space for 2-digit numbers
+
+  .mat-mdc-select-value {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    transition: color 0.3s;
+  }
+
+  .mat-mdc-select-arrow {
+    color: var(--text-color);
+    transition: color 0.3s;
+  }
+
+  &:hover {
+    background-color: var(--hover-background-color);
+  }
+}
+
+.header-paginator {
+  background: transparent;
+  box-shadow: none;
+  
+  // Style the pagination buttons to match website design
+  ::ng-deep {
+    .mat-mdc-paginator-container {
+      padding: 0;
+      min-height: auto;
+    }
+    
+    .price-range {
+      padding: 0 10px;
+
+      .price-slider {
+        --slider-fill-width: 0%;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        background: var(--border-color);
+        border-radius: 3px;
+        outline: none;
+        opacity: 0.9;
+        transition: opacity .2s;
+        background-image: linear-gradient(to right, var(--primary-color), var(--primary-color));
+        background-size: var(--slider-fill-width) 100%;
+        background-repeat: no-repeat;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          background: var(--primary-color);
+          border-radius: 50%;
+          cursor: pointer;
+          border: 2px solid white;
+          box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        &::-moz-range-thumb {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: var(--primary-color);
+          cursor: pointer;
+          border: 2px solid white;
+          box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+      }
+    }
+
+    .mat-mdc-paginator-range-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .mat-mdc-paginator-range-label {
+      font-size: 0.875rem;
+      color: var(--text-color);
+      margin: 0;
+      transition: color 0.3s;
+    }
+    
+    .mat-mdc-paginator-navigation-previous,
+    .mat-mdc-paginator-navigation-next,
+    .mat-mdc-paginator-navigation-first,
+    .mat-mdc-paginator-navigation-last {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover:not([disabled]) {
+        background: var(--hover-background-color);
+        border-color: var(--primary-color);
+      }
+      
+      &[disabled] {
+        background: var(--background-color);
+        color: var(--disabled-text-color);
+        border-color: var(--border-color);
+      }
+    }
+    
+    .mat-mdc-paginator-page-size {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      .mat-mdc-paginator-page-size-label {
+        font-size: 0.875rem;
+        color: var(--text-color);
+        margin: 0;
+        transition: color 0.3s;
+      }
+      
+      .mat-mdc-paginator-page-size-select {
+        .mat-mdc-select-trigger {
+          @extend %paginator-select-trigger;
+          margin-left: -8px;
+        }
+      }
+    }
+  }
+}
+
+/* 2. Search Area (Yellow) */
+.search-area {
+  justify-self: center;
+}
+
+/* 3. Sort Area (Pink) */
+.sort-area {
+  justify-self: end;
+}
+
+/* Search Form */
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 300px;
+  padding: 0.75rem 1rem;
+  padding-right: 5.5rem; // Increased padding for both icons
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: border-color 0.2s ease, background-color 0.3s, color 0.3s;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  &::placeholder {
+    color: var(--placeholder-text-color);
+  }
+}
+
+.search-btn {
+  position: absolute;
+  right: 0.5rem;
+  color: var(--text-color);
+  transition: color 0.3s;
+  
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.clear-btn {
+  position: absolute;
+  right: 3rem;
+  color: var(--text-color);
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+/* Sort Controls */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-label {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.sort-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+
+/* View Toggle */
+.view-toggle {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.view-btn {
+  padding: 0.5rem;
+  border: none;
+  background: var(--background-color);
+  color: var(--text-color);
+  border-radius: 0;
+  transition: background-color 0.3s, color 0.3s;
+  
+  &.active {
+    background: var(--primary-color);
+    color: var(--background-color);
+  }
+  
+  &:hover:not(.active) {
+    background: var(--hover-background-color);
+    color: var(--primary-color);
+  }
+}
+
+/* Main Content */
+.shop-main {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+  flex: 0 0 190px;
+  background: var(--card-background-color);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s;
+  
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    transition: color 0.3s;
+  }
+}
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+  
+  &:hover {
+    color: var(--primary-color-hover);
+    text-decoration: underline;
+  }
+}
+
+/* Filter Sections */
+.filter-section {
+  margin-bottom: 2rem;
+  
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 1rem 0;
+    transition: color 0.3s;
+  }
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 200px; // Adjust the height as needed
+  overflow-y: auto;
+  transition: background-color 0.3s;
+}
+
+.filter-options-scrollable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px; // Adjust as needed
+  overflow-y: auto;
+  padding-right: 0.5rem; // For scrollbar spacing
+  transition: background-color 0.3s;
+}
+
+.category-item {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s;
+  
+  &:hover {
+    background-color: var(--hover-background-color);
+    border-color: var(--border-color-hover);
+  }
+
+  &.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+  }
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: color 0.3s, opacity 0.3s;
+  
+  input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    accent-color: var(--primary-color);
+    
+    &:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  }
+  
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* Price Range */
+.price-range {
+  margin-top: 0.5rem;
+}
+
+.price-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-color);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  &::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  &::-webkit-slider-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) 0%, var(--border-color) 0%, var(--border-color) 100%);
+    border-radius: 3px;
+  }
+}
+
+.price-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+/* Products Section */
+.products-section {
+  flex: 1;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Pagination */
+.pagination-section {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  transition: border-color 0.3s;
+}
+
+.custom-paginator {
+  background: var(--card-background-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  ::ng-deep {
+    .mat-mdc-paginator-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0;
+      min-height: auto;
+    }
+
+    .mat-mdc-paginator-page-size {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .mat-mdc-paginator-page-size-label {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      .mat-mdc-paginator-page-size-select {
+        .mat-mdc-select-trigger {
+          @extend %paginator-select-trigger;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+          margin-left: -8px;
+        }
+      }
+    }
+
+    .mat-mdc-paginator-range-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .mat-mdc-paginator-range-label {
+      font-size: 0.875rem;
+      color: var(--text-color);
+      opacity: 0.7;
+      margin: 0 1rem 0 0;
+      transition: color 0.3s, opacity 0.3s;
+    }
+
+    .mat-mdc-paginator-navigation-previous,
+    .mat-mdc-paginator-navigation-next,
+    .mat-mdc-paginator-navigation-first,
+    .mat-mdc-paginator-navigation-last {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--background-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+
+      .mat-icon {
+        color: #000 !important; // Black in light mode
+      }
+
+      &:hover:not([disabled]) {
+        background: var(--hover-background-color);
+        border-color: var(--primary-color);
+      }
+
+      &[disabled] {
+        background: var(--background-color);
+        color: var(--disabled-text-color);
+        border-color: var(--border-color);
+      }
+
+      .dark-mode & {
+        .mat-icon {
+          color: #fff !important; // White in dark mode
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .shop-main {
+    flex-direction: column;
+  }
+  
+  .filters-sidebar {
+    flex: none;
+    width: 100%;
+    position: static;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-container {
+    padding: 1rem;
+  }
+  
+  .shop-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .shop-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .filters-sidebar {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .view-toggle {
+    display: none;
+  }
+}
+
+// Force pagination arrow colors
+:host ::ng-deep {
+  .header-paginator,
+  .custom-paginator {
+    .mat-mdc-paginator-navigation-previous .mat-icon,
+    .mat-mdc-paginator-navigation-next .mat-icon,
+    .mat-mdc-paginator-navigation-first .mat-icon,
+    .mat-mdc-paginator-navigation-last .mat-icon {
+      color: #000 !important;
+    }
+  }
+
+  .dark-mode {
+    .header-paginator,
+    .custom-paginator {
+      .mat-mdc-paginator-navigation-previous .mat-icon,
+      .mat-mdc-paginator-navigation-next .mat-icon,
+      .mat-mdc-paginator-navigation-first .mat-icon,
+      .mat-mdc-paginator-navigation-last .mat-icon {
+        color: #fff !important;
+      }
+    }
+  }
+}

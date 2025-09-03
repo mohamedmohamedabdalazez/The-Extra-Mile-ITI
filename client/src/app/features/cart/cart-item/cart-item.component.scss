@@ -1,0 +1,29 @@
+:host {
+  .cart-item-container {
+    background-color: var(--card-background-color);
+    border-color: var(--border-color);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .product-name,
+  .font-semibold,
+  .price {
+    color: var(--text-color);
+  }
+
+  .quantity-control {
+    .remove-icon {
+      color: var(--danger-color);
+    }
+    .add-icon {
+      color: var(--success-color);
+    }
+  }
+
+  .delete-button {
+    color: var(--danger-color-dark);
+    mat-icon {
+      color: var(--danger-color-dark);
+    }
+  }
+}

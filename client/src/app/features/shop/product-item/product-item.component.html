@@ -1,0 +1,50 @@
+@if (product) {
+<div class="modern-product-card">
+  <!-- Product Image Container -->
+  <div class="product-image-container" routerLink="/shop/{{product.id}}">
+    <img src="{{product.pictureUrl}}" class="product-image" alt="image of {{product.name}}">
+    
+    <!-- New Label -->
+    @if (isProductNew()) {
+      <div class="new-label">
+        <span>NEW</span>
+      </div>
+    }
+  </div>
+
+  <!-- Product Info -->
+  <div class="product-info">
+    <!-- Brand/Category and Vendor -->
+    <div class="brand-vendor-section">
+      <span class="product-brand">{{product.brand || 'Extra Mile'}}</span>
+      <span class="vendor-name">{{getVendorName()}}</span>
+    </div>
+    
+    <!-- Product Name -->
+    <h3 class="product-name" routerLink="/shop/{{product.id}}">{{product.name}}</h3>
+    
+    <!-- Rating Stars -->
+    <div class="product-rating">
+      <div class="stars">
+        <span class="star" [class.filled]="i < getProductRating()" *ngFor="let i of [0,1,2,3,4]">★</span>
+      </div>
+      <span class="rating-text">({{getProductRating().toFixed(1)}})</span>
+    </div>
+    
+    <!-- Product Description -->
+    <p class="product-description">{{product.description}}</p>
+    
+    <!-- Price and Cart Section -->
+    <div class="price-cart-section">
+      <div class="price-section">
+        <span class="current-price">{{product.price | currency}}</span>
+      </div>
+      
+      <!-- Add to Cart Button -->
+      <button class="add-to-cart-btn" (click)="cartService.addItemToCart(product)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+}

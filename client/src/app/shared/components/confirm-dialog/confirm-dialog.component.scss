@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+[mat-dialog-title] {
+  color: var(--primary-color);
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: var(--background-color) !important;
+}

@@ -1,0 +1,33 @@
+.floating-arrow {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 1000;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}

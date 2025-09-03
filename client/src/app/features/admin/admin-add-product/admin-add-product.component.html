@@ -1,0 +1,186 @@
+<div class="admin-add-product">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">
+          <mat-icon>add_circle</mat-icon>
+          Add Product as ExtraMile
+        </h1>
+        <p class="page-subtitle">Add a new product to the platform as the ExtraMile vendor</p>
+      </div>
+      <div class="header-actions">
+        <button mat-icon-button (click)="onCancel()" matTooltip="Back to Dashboard" class="back-btn">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Form Section -->
+  <div class="form-section">
+    <div class="form-card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <mat-icon>inventory_2</mat-icon>
+          Product Information
+        </h2>
+        <p class="card-subtitle">Fill in the product details below</p>
+      </div>
+      
+      <div class="card-content">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+          <div class="form-grid">
+            <!-- Product Name -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Product Name</mat-label>
+              <input matInput formControlName="name" placeholder="Enter product name" required>
+              <mat-icon matSuffix>inventory</mat-icon>
+              @if (productForm.get('name')?.invalid && productForm.get('name')?.touched) {
+                <mat-error>Product name is required and must be at least 3 characters</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Product Description -->
+            <mat-form-field appearance="outline" class="form-field full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" placeholder="Enter product description" rows="4" required></textarea>
+              <mat-icon matSuffix>description</mat-icon>
+              @if (productForm.get('description')?.invalid && productForm.get('description')?.touched) {
+                <mat-error>Description is required and must be at least 10 characters</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Price -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Price</mat-label>
+              <input matInput type="number" formControlName="price" placeholder="0.00" step="0.01" min="0" required>
+              <mat-icon matSuffix>attach_money</mat-icon>
+              @if (productForm.get('price')?.invalid && productForm.get('price')?.touched) {
+                <mat-error>Valid price is required (minimum $0.01)</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Quantity in Stock -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Quantity in Stock</mat-label>
+              <input matInput type="number" formControlName="quantityInStock" placeholder="1" min="1" required>
+              <mat-icon matSuffix>inventory_2</mat-icon>
+              @if (productForm.get('quantityInStock')?.invalid && productForm.get('quantityInStock')?.touched) {
+                <mat-error>Valid quantity is required (minimum 1)</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Product Type -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Product Type</mat-label>
+              <mat-select formControlName="productType" required>
+                <mat-option *ngFor="let type of productTypes" [value]="type">
+                  {{ type }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>category</mat-icon>
+              @if (productForm.get('productType')?.invalid && productForm.get('productType')?.touched) {
+                <mat-error>Product type is required</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Product Brand -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Product Brand</mat-label>
+              <mat-select formControlName="productBrand" required>
+                <mat-option *ngFor="let brand of productBrands" [value]="brand">
+                  {{ brand }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>business</mat-icon>
+              @if (productForm.get('productBrand')?.invalid && productForm.get('productBrand')?.touched) {
+                <mat-error>Product brand is required</mat-error>
+              }
+            </mat-form-field>
+
+            <!-- Picture URL -->
+            <div class="form-field full-width">
+              <label class="field-label">Product Image</label>
+              <div class="drag-drop-area" 
+                   [class.drag-over]="isDragOver"
+                   (dragover)="onDragOver($event)"
+                   (dragleave)="onDragLeave($event)"
+                   (drop)="onDrop($event)">
+                <div class="drag-content">
+                  <mat-icon class="drag-icon">cloud_upload</mat-icon>
+                  <p class="drag-text">Drag and drop images here or click to browse</p>
+                  <p class="drag-hint">Supports: JPG, PNG, GIF, WebP</p>
+                  <button type="button" mat-stroked-button class="browse-btn" (click)="fileInput.click()">
+                    <mat-icon>folder_open</mat-icon>
+                    Choose from files
+                  </button>
+                  <input #fileInput type="file" 
+                         multiple 
+                         accept="image/*" 
+                         style="display: none;"
+                         (change)="onFileSelected($event)">
+                </div>
+
+                <!-- Preview Section -->
+                @if (draggedUrls.length > 0) {
+                  <div class="image-preview-section">
+                    <h4 class="preview-title">Selected Images</h4>
+                    <div class="preview-container">
+                      @for (url of draggedUrls; track $index) {
+                        <div class="preview-item">
+                          <img [src]="url" alt="Product preview" class="preview-image">
+                          <button type="button" mat-icon-button class="remove-btn" (click)="removeDraggedUrl($index)">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Vendor Information Display -->
+          <div class="vendor-info">
+            <h3 class="vendor-title">
+              <mat-icon>store</mat-icon>
+              Vendor Information
+            </h3>
+            <div class="vendor-details">
+              <div class="vendor-item">
+                <span class="label">Vendor Name:</span>
+                <span class="value">ExtraMile</span>
+              </div>
+                             <div class="vendor-item">
+                 <span class="label">Vendor Email:</span>
+                 <span class="value">extramile&#64;test.com</span>
+               </div>
+              <div class="vendor-item">
+                <span class="label">Status:</span>
+                <span class="value status-approved">Approved</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="form-actions">
+            <button type="button" mat-button (click)="onCancel()" class="cancel-btn">
+              <mat-icon>cancel</mat-icon>
+              Cancel
+            </button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="productForm.invalid || isLoading" class="submit-btn">
+              @if (isLoading) {
+                <mat-spinner diameter="20"></mat-spinner>
+              } @else {
+                <mat-icon>add_circle</mat-icon>
+              }
+              Add Product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

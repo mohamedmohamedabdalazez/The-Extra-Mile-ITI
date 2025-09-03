@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="w-full mb-3">
+    <mat-label>{{label}}</mat-label>
+    <input matInput [formControl]="control" [type]="type" placeholder="{{label}}" />
+    @if (control.hasError('required')) {
+        <mat-error>{{label}} is required</mat-error>
+    }
+    @if (control.hasError('email')) {
+        <mat-error>Email is invalid</mat-error>
+    }
+    @if (control.hasError('minlength')) {
+        <mat-error>{{label}} must be at least {{control.errors?.['minlength']?.requiredLength}} characters</mat-error>
+    }
+    @if (control.hasError('maxlength')) {
+        <mat-error>{{label}} must be no more than {{control.errors?.['maxlength']?.requiredLength}} characters</mat-error>
+    }
+    @if (control.hasError('pattern')) {
+        <mat-error>{{label}} contains invalid characters. Use only letters, numbers, spaces, hyphens, and underscores</mat-error>
+    }
+</mat-form-field>

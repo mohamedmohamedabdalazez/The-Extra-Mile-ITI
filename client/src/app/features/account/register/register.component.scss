@@ -1,0 +1,233 @@
+.register-background {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/images/1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  
+  mat-card {
+    max-width: 400px;
+    width: 90%;
+    padding: 2rem;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    
+    // Override Material Design default styling
+    ::ng-deep .mdc-card {
+      background: transparent !important;
+    }
+    
+    ::ng-deep .mat-mdc-card-content {
+      background: transparent !important;
+    }
+    
+    // Form styling to match website theme
+    form {
+      .text-center h1 {
+        color: black !important;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        margin-bottom: 1.5rem;
+        font-size: 1.875rem;
+      }
+      
+      // Text input components styling
+      app-text-input {
+        margin-bottom: 1rem;
+        
+        ::ng-deep .mat-mdc-form-field {
+          
+          .mat-mdc-text-field-wrapper {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            height: auto;
+          }
+          
+          .mat-mdc-form-field-label {
+            color: black !important;
+            font-weight: 500;
+          }
+          
+          ::ng-deep .mat-mdc-form-field-label {
+            color: black !important;
+            font-weight: 500;
+          }
+          
+          ::ng-deep .mdc-floating-label {
+            color: black !important;
+            font-weight: 500;
+          }
+          
+          .mat-mdc-input-element {
+            color: black;
+            font-weight: 500;
+          }
+          
+          .mat-mdc-form-field-outline {
+            border-color: rgba(255, 255, 255, 0.3);
+          }
+          
+          &.mat-focused {
+            .mat-mdc-form-field-outline {
+              border-color: white;
+            }
+            
+            .mat-mdc-form-field-label {
+              color: black !important;
+            }
+            
+            ::ng-deep .mat-mdc-form-field-label {
+              color: black !important;
+            }
+            
+            ::ng-deep .mdc-floating-label {
+              color: black !important;
+            }
+          }
+        }
+      }
+      
+      // Radio group styling
+      .mt-4.mb-4 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        label {
+          color: #ff6b35;
+          font-weight: 600;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        mat-radio-group {
+          mat-radio-button {
+            margin-right: 1rem !important;
+            ::ng-deep .mdc-form-field {
+              .mdc-radio {
+                .mdc-radio__background {
+                  .mdc-radio__outer-circle {
+                    border-color: rgba(255, 255, 255, 0.5);
+                  }
+                }
+              }
+              
+              .mdc-form-field__label {
+                color: black !important;
+                font-weight: 500;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+              }
+              color: black !important;
+            }
+
+          }
+        }
+      }
+      
+      // Error styling
+      .mb-3.p-4 {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: rgba(239, 68, 68, 0.2) !important;
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+        
+        ul li {
+          color: #fecaca;
+          font-weight: 500;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+      }
+      
+      button[type="submit"] {
+        background: #ff6b35 !important;
+        color: white !important;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+        height: auto;
+        padding: 0.75rem 1.5rem;
+        
+        &:hover {
+          background: #e55a2b !important;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+        }
+        
+        &:disabled {
+          background: #ff6b35 !important;
+          color: black!important;
+        }
+      }
+      
+      // Login link styling
+      .text-center.mt-4 {
+        margin-top: 1rem;
+        span {
+          color: rgba(255, 255, 255, 0.8);
+          font-weight: 500;
+        }
+        
+        a {
+          color: #ff6b35 !important;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            color: #e55a2b !important;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    
+    &:hover {
+      //   transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      //   background: rgba(255, 255, 255, 0.15) !important;
+    }
+  }
+}
+
+// Global label overrides for register form
+::ng-deep app-text-input {
+  .mat-mdc-form-field-label,
+  .mdc-floating-label,
+  .mat-mdc-floating-label {
+    color: black !important;
+  }
+  
+  &.mat-focused {
+    .mat-mdc-form-field-label,
+    .mdc-floating-label,
+    .mat-mdc-floating-label {
+      color: black !important;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .register-background {
+    padding: 1rem;
+    
+    mat-card {
+      margin-top: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      padding: 1rem;
+    }
+  }
+}

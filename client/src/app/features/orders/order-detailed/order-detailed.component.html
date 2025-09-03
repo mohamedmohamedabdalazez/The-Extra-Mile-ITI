@@ -1,0 +1,85 @@
+@if (order) {
+<mat-card class="order-card">
+    <div class="order-content">
+        <div class="order-header">
+            <h2 class="order-title">Order summary for order #{{order.id}}</h2>
+            <button (click)="onReturnClick()" mat-stroked-button class="return-btn">{{buttonText}}</button>
+        </div>
+
+        <div class="order-info-section">
+            <div class="info-column">
+                <h4 class="info-title">Billing and delivery information</h4>
+                <dl class="info-item">
+                    <dt class="info-label">Shipping address</dt>
+                    <dd class="info-value">{{order.shippingAddress | address }}</dd>
+                </dl>
+                <dl class="info-item">
+                    <dt class="info-label">Payment info</dt>
+                    <dd class="info-value">{{order.paymentSummary | paymentCard}}</dd>
+                </dl>
+            </div>
+            <div class="info-column">
+                <h4 class="info-title">Order details</h4>
+                <dl class="info-item">
+                    <dt class="info-label">Email address</dt>
+                    <dd class="info-value">{{order.buyerEmail}}</dd>
+                </dl>
+                <dl class="info-item">
+                    <dt class="info-label">Order status</dt>
+                    <dd class="info-value">{{order.status}}</dd>
+                </dl>
+                <dl class="info-item">
+                    <dt class="info-label">Order date</dt>
+                    <dd class="info-value">{{order.orderDate | date: 'medium'}}</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="order-items-section">
+            <div class="items-table-wrapper">
+                <table class="items-table">
+                    <tbody class="items-tbody">
+                        @for (item of order.orderItems; track item.productId) {
+                        <tr class="item-row">
+                            <td class="item-cell">
+                                <div class="item-content">
+                                    <img src="{{item.pictureUrl}}" alt="product image" class="item-image">
+                                    <span class="item-name">{{item.productName}}</span>
+                                </div>
+                            </td>
+                            <td class="quantity-cell">x{{item.quantity}}</td>
+                            <td class="price-cell">{{item.price | currency}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="order-summary-section">
+            <p class="summary-title">Order summary</p>
+            <div class="summary-details">
+                <div class="summary-items">
+                    <dl class="summary-item">
+                        <dt class="summary-label">Subtotal</dt>
+                        <dd class="summary-value">{{order.subtotal | currency}}</dd>
+                    </dl>
+                    <dl class="summary-item">
+                        <dt class="summary-label">Discount</dt>
+                        <dd class="summary-value discount">-{{order.discount | currency}}</dd>
+                    </dl>
+                    <dl class="summary-item">
+                        <dt class="summary-label">Delivery fee</dt>
+                        <dd class="summary-value">{{order.shippingPrice | currency}}</dd>
+                    </dl>
+                </div>
+
+                <dl class="total-row">
+                    <dt class="total-label">Total</dt>
+                    <dd class="total-value">{{order.total | currency}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</mat-card>
+}
